@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Models.FoodType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var mainID;
+
+    let openModal = (itemID) => {
+        debugger;
+        var txtBox = document.getElementById('itemID');
+        txtBox.value = itemID;
+        $('#staticBackdrop').modal('show');
+        window.location.reload();
+    }
+    let deleteItem = () => {
+        var itemID = $('#itemID').val();
+        $.ajax({
+            url: 'FoodType/Delete?id=' + itemID,
+            type: 'POST',
+            //data: { id: itemID },
+            success: function (result) {
+                $('#staticBackdrop').modal('hide');
+                window.location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    }
+</script>
+
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">List Of All Types Of Foods</h1>
+
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+            <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Food Type</a>
+            <table class="table table-responsive table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FoodTypeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FoodTypeName)
+                        </th>
+                      @*  <th>
+                            @Html.DisplayNameFor(model => model.SubCategoryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryName)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.FoodTypeDesc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FoodTypeImg)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoodTypeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoodTypeName)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.SubCategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoodTypeDesc)
+                            </td>
+                            <td>
+                                @if (item.FoodTypeImg != null)
+                                {
+                                    <img src="data:image/png;base64,@Convert.ToBase64String(item.FoodTypeImg)" style="height:150px; width:200px" />
+                                }
+                               
+                            </td>
+                            <td>
+                                <a asp-action="Add_Edit" class="btn btn-warning my-3" title="Edit" asp-route-id=@item.FoodTypeId><i class="fa-regular fa-pen-to-square"></i></a>
+
+                                <a id="btnShowDelete" role="button" onclick="openModal ('@item.FoodTypeId')" class="btn btn-danger my-3">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model Models.FoodType
+
+@{
+    ViewData["Title"] = "Add_Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">Type of Food</h1>
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+        <form asp-action="Add_Edit" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FoodTypeName" class="control-label"></label>
+                <input asp-for="FoodTypeName" class="form-control" />
+                <span asp-validation-for="FoodTypeName" class="text-danger"></span>
+            </div>
+          @*  <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                                <label asp-for="CatId" class="control-label"></label>
+                                <select class="form-control" asp-for="CatId" asp-items="@(ViewBag.Categories)">
+                                    <option value="0">Please Select Category</option>
+                                </select>
+                                <span asp-validation-for="CatId" class="text-danger"></span>
+                    </div>
+                        <div class="col-md-6">
+                            <label asp-for="SubCatid" class="control-label"></label>
+                            <select asp-for="SubCatid" class="form-control" asp-items="@(ViewBag.SubCategories)">
+                                <option value="0">Please Select Sub-Category</option>
+                            </select>
+                            <span asp-validation-for="SubCatid" class="text-danger"></span>
+                        </div>
+                </div>
+                
+            </div>*@
+           
+        
+            <div class="form-group">
+                <label asp-for="FoodTypeImg" class="control-label"></label>
+                <input asp-for="FoodTypeImg" type="file" class="form-control" />
+                <span asp-validation-for="FoodTypeImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodTypeDesc" class="control-label"></label>
+                    <textarea rows="8" asp-for="FoodTypeDesc" type="text" class="form-control  form-control-sm my-2"></textarea>
+                    <br />
+                <span asp-validation-for="FoodTypeDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <center><input type="submit" value=@ViewBag.Action class="btn btn-sm btn-outline-dark" /></center>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+    <div>
+        <a asp-action="Index" role="button" class="btn btn-warning btn-sm mt-3">Back to List</a>
+    </div>
+

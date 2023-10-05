@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Recipe";
+}
+<div class="container-fluid px-5" style="padding-top:60px;">
+    <div class="row my-2">
+        <div class="col-12" style="box-shadow: 0 3px 12px white;">
+            @{
+                await Html.RenderPartialAsync("_SearchBar");
+            }
+        </div>
+    </div>
+    <div class="row my-4" >
+        <div class="col-2" style="box-shadow: 0 3px 12px white;background-color:white" >
+            <div class="position-sticky" id="recipeList">
+                <div class="border-bottom border-3 p-2">
+                    <h4 class="text-center text-dark my-3" style="font-family: 'Permanent Marker', cursive;">Recipes</h4>
+                    @{await Html.RenderPartialAsync("_SideBar");}
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="mb-3">
+                <div class="text-white">Pizza</div>
+                <div class="row" id="pizzaRecipe">
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-white">Cake</div>
+                <div class="row" id="cakeRecipe">
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-white">Chicken</div>
+                <div class="row" id="chickenRecipe">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () { 
+        GetRecipe("pizza", "pizzaRecipe",false);
+        GetRecipe("Cake", "cakeRecipe",false);
+        GetRecipe("Chicken", "chickenRecipe",false);
+    })
+</script>

@@ -1,0 +1,252 @@
+﻿@model Models.ViewModel.HomePageViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>    @*style="background:linear-gradient(to right,black,#121212,grey,#121212,black) ">*@
+
+    <!--Banner-->
+    <div class="bannerDiv" id="Banner">
+        <div class="mask">
+            <div>
+                <span class="bannerImgText">
+                    AxA Foods<br />
+                    The Best Food Restaurant In India
+                </span>
+                <div class="row">
+                    <h2 class="text-white text-center" style="font-family: 'Permanent Marker', cursive;">
+                        Search For the Food
+                    </h2>
+                    <div class="col-md-10">
+                        <input type="search" class="form-control " style="border-radius:2rem" />
+                    </div>
+                    <div class="col-md-2">
+                        <a role="button" class="btn  btn-outline-light">Search</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Why Choose Us-->
+    <div class="DescriptionContainer col-12 my-3">
+        <div class="row my-3 mx-2">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">Why Choose Us?</h3>
+            <p class="text-center text-white" style="font-size:15px">You should Choose us because </p>
+            <div class="col-12">
+               
+                    @* <div class="card-body col-12">*@
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                       @* <div class="card" style="background-color: #121212;">*@
+                            <img src="~/images/bannermain.jpg" class="d-flex img-fluid" style="border-radius:1.5rem" />
+                           @* </div>*@
+                        </div>
+                        <div class="col-md-6" style="justify-content:center; align-items:center;display:flex">
+                       @* <div class="card" style="background-color: #121212;">
+                                <div class="card-body">*@
+                        <p class="text-white ms-3" style="text-align:justify; margin:0">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                              @*  </div>
+                            </div>*@
+                        </div>
+                    </div>
+
+                    @* </div>*@
+               
+            </div>
+            
+        </div>
+        </div>
+    <!--Category Row-->
+    <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
+        <div class="row my-2 mx-2 justify-content-center align-content-center">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
+                Categories
+            </h3>
+            <p class="text-center text-white" style="font-size:15px">Categories Provided By Us</p>
+            @{
+                foreach(var category in Model.TopCategories)
+                {
+
+                    <div class="TopFoodContainer">
+                        @* <div class="card-body">*@
+                        <a role="button" asp-route-Catid="@category.CatId">
+                            <img src="data:image/png;base64,@Convert.ToBase64String(category.IconImage)" class="img-fluid TopFoodImg" />
+
+                            <div class="txtArea">
+                                <div class="TopFoodtxt">
+                                    <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                        @category.CatName</h3>
+                            <p>
+                               @category.CatDesc
+                            </p>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                  }
+                
+            }
+        </div>
+    </div>
+    <!--SubCategory Row-->
+    <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
+        <div class="row my-2 mx-2 justify-content-center align-content-center">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
+                Sub-Categories
+            </h3>
+            <p class="text-center text-white" style="font-size:15px">Sub Categories Provided By Us</p>
+            <div class="row justify-content-center align-items-center">
+                
+                    @foreach (var cat in Model.Categories)
+                    {
+                    <div class="col-md-2">
+                        <center><a role="button" class="btn btn-sm btn-outline-light my-3 " asp-route-Catid="@cat.CatId">@cat.CatName</a></center>
+                    </div>
+                    }
+               
+                
+            </div>
+           
+          
+            
+        </div>
+    </div>
+    <!--FoodTypeRow-->
+    <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
+        <div class="row my-2 mx-2 justify-content-center align-content-center">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
+                Types of Foods
+            </h3>
+            <p class="text-center text-white" style="font-size:15px">Variety Of Foods Provided By Us</p>
+          
+            @{
+                foreach (var foodType in Model.FoodTypes)
+                {
+                    <div class="col-md-4 mx-2">
+                        <div class="_cardFoodType card" style="background: linear-gradient(to right,black,grey,black);">
+                            @* <div class="card-body">*@
+                            
+                                <img src="data:image/png;base64,@Convert.ToBase64String(foodType.FoodTypeImg)" class="img-fluid card-img" style="border-radius:2rem;" />
+
+                            <div class="_cardFoodTypeBody card-body text-white" style="height:350px">
+                                  
+                                        <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                            @foodType.FoodTypeName
+                                        </h3>
+                                        <p>
+                                            @foodType.FoodTypeDesc
+                                        </p>
+                                  
+                                    <center><a role="button" class="btn btn-sm btn-outline-light" asp-route-FoodTypeid="@foodType.FoodTypeId">View More</a></center>
+                                
+                                </div>
+                            
+                           
+                        </div>
+                    </div>
+                   
+                
+            }
+            }
+           
+        </div>
+    </div>
+    <!--Description-->
+    <div class="DescriptionContainer col-12 my-3">
+        <div class="row my-3 mx-2">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">Our Food</h3>
+            <div class="col-md-6">
+                <img src="~/indian-cuisine-spice-stock-photography-chili-pepper-seasoning-spices-for-recipe-png-b87eb3bbe793d730e4737f04b6fd5b9d.png" class="card-img-top d-flex" style="width:100%" />
+            </div>
+            <div class="col-md-6">
+                <p class="text-center text-white" style="text-align:justify;top:50%;left:50%">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!--Top Food Row-->
+    <div class="col-12 my-2 py-2 " id="CardRow">
+        <div class="row my-2 mx-2 justify-content-center align-content-center">
+            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
+                Our Top Rated Dish
+            </h3>
+            <p class="text-center text-white" style="font-size:15px">Top Dishes of Ours</p>
+
+            <div class="row justify-content-center align-content-center">
+                @foreach(var food in Model.Food)
+                {
+                    <div class="TopFoodContainer">
+                        @* <div class="card-body">*@
+                        <a href="#">
+                            <img src="data:image/png;base64,@Convert.ToBase64String(food.IconImage)" class="img-fluid TopFoodImg" />
+                            <div class="txtArea">
+                                <div class="TopFoodtxt">
+                                                <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">@food.FoodName</h3>
+                                    <p>
+                                        @food.FoodDesc
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        @*</div>*@
+                    </div>
+                }
+                <!--
+                <div class="TopFoodContainer">
+                    @*<div class="card-body">*@
+                    <a href="#">
+                        <img src="~/images/66031c94edede7cc8205dfca27b7f16a.jpg" class="d-flex  TopFoodImg" />
+                        <div class="txtArea">
+                            <div class="TopFoodtxt">
+                                <h3 class="text-center">Burgers</h3>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book. It has survived not only five centuries.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @*</div>*@
+                </div>
+                <div class="TopFoodContainer">
+                    @*<div class="card-body">*@
+                    <a href="#">
+                        <div class="imgWrapper">
+                            <img src="~/images/796ba3e8547ce1671dd74ddde8d52d84.jpg" class="d-flex  TopFoodImg" />
+                        </div>
+                        <div class="txtArea">
+                            <div class="TopFoodtxt">
+                                <h3 class="text-center">Burgers</h3>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book. It has survived not only five centuries.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @*</div>*@
+                </div>-->
+            </div>
+
+        </div>
+    </div>
+</div>

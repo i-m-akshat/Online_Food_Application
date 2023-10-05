@@ -1,0 +1,246 @@
+﻿@{
+    ViewData["Title"] = "AdminDashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/chart.js"></script>
+
+<div class="container">
+    <h1 class="row-header">
+        Dashboard
+    </h1>
+    <div class="row justify-content-center m-0 w-100 mb-4">
+        <div class="col-md-3 my-2">
+            <a class="card" style="background:linear-gradient(to right,#0096FF,#0096FF,#F0FFFF);border-style:none;text-decoration:none;cursor:pointer">
+                <div class="card-body">
+                    <h1 class="row-header">Category</h1>
+                    <p class="text-white" style="font-size:13px">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 my-2">
+            <a class="card" style="background:linear-gradient(to right,#db1b0c,#f44336,#fd7d74);border-style:none;text-decoration:none;cursor:pointer">
+                <div class="card-body">
+                    <h1 class="row-header">Category</h1>
+                    <p class="text-white" style="font-size:13px">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 my-2">
+            <a class="card" style="background:linear-gradient(to right,#f1c232,#ffd966,#ffe599);border-style:none;text-decoration:none;cursor:pointer">
+                <div class="card-body">
+                    <h1 class="row-header">Category</h1>
+                    <p class="text-white" style="font-size:13px">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 my-2">
+            <a class="card" style="background:linear-gradient(to right,#0000ff,#3d85c6,#6fa8dc);border-style:none;text-decoration:none;cursor:pointer">
+                <div class="card-body">
+                    
+                    <h1 class="row-header">Category</h1>
+                    <p class="text-white" style="font-size:13px">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row justify-content-center align-content-center g-2">
+        <div class="col-md-5 card mx-1">
+            <div class="card-body">
+                <div style="height:100%">
+                    <canvas id="Category2Chart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 card mx-1">
+            <div class="card-body">
+                <div style="width:100%;height:100%">
+                    <canvas id="CategoryChart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 card mx-1">
+            <div class="card-body">
+                <div style="width:100%;height:100%">
+                    <canvas id="Category1Chart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+</div>
+<script>
+    $(document).ready(function () {
+        var myChart1, myChart2, myChart3;
+        function createCategoryChart(Label, Data) {
+
+            if (myChart1 != undefined || myChart1 != null) {
+                myChart1.destroy();
+            }
+            var ctx = $('#CategoryChart').get(0).getContext("2d");
+            myChart1 = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Label,
+                    datasets: [
+                        {
+                            label: 'Name',
+                            data: Data,
+                            fill: false,
+
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(153, 102, 255)',
+                                'rgb(255, 159, 64)'
+                            ],
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    Animation: true,
+                    AnimationEffect: 'EaseIn',
+                    duration: 2000,
+                    easing: 'easeInOutQuad',
+                    responsive: true,
+                    acceleration: {
+                        disable: true
+                    },
+                    title: { display: true, text: 'Name' },
+                    legend: { position: 'bottom' },
+                    //scales: {
+                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+                    //},
+                }
+
+            });
+        }
+
+        function createCategory1Chart(Label, Data) {
+
+            if (myChart2 != undefined || myChart2 != null) {
+                myChart2.destroy();
+            }
+            var ctx = $('#Category1Chart').get(0).getContext("2d");
+            myChart2 = new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    labels: Label,
+                    datasets: [
+                        {
+                            label: 'Name',
+                            data: Data,
+                            fill: false,
+
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(153, 102, 255)',
+                                'rgb(255, 159, 64)'
+                            ],
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    Animation: true,
+                    AnimationEffect: 'EaseIn',
+                    duration: 2000,
+                    easing: 'easeInOutQuad',
+                    responsive: true,
+                    acceleration: {
+                        disable: true
+                    },
+                    title: { display: true, text: 'Name' },
+                    legend: { position: 'bottom' },
+                    //scales: {
+                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+                    //},
+                }
+
+            });
+        }
+        function createCategory2Chart(Label, Data) {
+
+            if (myChart3 != undefined || myChart3 != null) {
+                myChart3.destroy();
+            }
+            var ctx = $('#Category2Chart').get(0).getContext("2d");
+            myChart3 = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Label,
+                    datasets: [
+                        {
+                            label: 'Name',
+                            data: Data,
+                            fill: false,
+
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(153, 102, 255)',
+                                'rgb(255, 159, 64)'
+                            ],
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    Animation: true,
+                    AnimationEffect: 'EaseIn',
+                    duration: 2000,
+                    easing: 'easeInOutQuad',
+                    responsive: true,
+                    acceleration: {
+                        disable: true
+                    },
+                    title: { display: true, text: 'Name' },
+                    legend: { position: 'bottom' },
+                    //scales: {
+                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+                    //},
+                }
+
+            });
+        }
+
+        var ctx1 = $('#Category1Chart').get(0).getContext("2d");
+        var ctx2 = $('#Category2Chart').get(0).getContext("2d");
+        var Label = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+        var Data = [12, 19, 3, 5, 2, 3];
+        createCategoryChart(Label, Data);
+        createCategory1Chart(Label, Data);
+        createCategory2Chart(Label, Data);
+
+    })
+</script>

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Models.SubCategory>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@*<p>
+    <a asp-action="Add_Edit">Create New</a>
+</p>*@
+<script type="text/javascript">
+    var mainID;
+
+    let openModal = (itemID) => {
+        debugger;
+        var txtBox = document.getElementById('itemID');
+        txtBox.value = itemID;
+        $('#staticBackdrop').modal('show');
+    }
+    let deleteItem = () => {
+        var itemID = $('#itemID').val();
+        $.ajax({
+            url: 'SubCategory/Delete?id=' + itemID,
+            type: 'POST',
+            success: function (result) {
+                $('#staticBackdrop').modal('hide');
+                window.location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    }
+</script>
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">List Of All Sub Categories</h1>
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+            <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Sub-Category</a>
+            <table class="table table-responsive table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCatid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CatName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCatName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCatDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BannerImg)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IconImg)
+                        </th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubCatid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CatName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubCatName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubCatDescription)
+                            </td>
+                            @if (item.BannerImg!=null)
+                            {
+                                 <td>
+                                    <img src="data:image/png;base64,@Convert.ToBase64String(item.BannerImg)" style="height:150px; width:200px" />
+                                </td>
+                            }
+                            @if (item.IconImg != null)
+                            {
+                                <td>
+                                    <img src="data:image/png;base64,@Convert.ToBase64String(item.IconImg)" style="height:150px; width:200px" />
+                                </td>
+                            }
+                            <td>
+                                <a asp-action="Add_Edit" class="btn btn-sm btn-warning" asp-route-id=@item.SubCatid><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a id="btnShowDelete" class="btn btn-sm btn-danger" role="button" onclick="openModal ('@item.SubCatid')"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

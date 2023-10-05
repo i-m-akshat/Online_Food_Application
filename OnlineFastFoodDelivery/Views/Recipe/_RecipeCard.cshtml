@@ -1,0 +1,12 @@
+﻿@model IEnumerable<OnlineFastFoodDelivery.Models.Recipe>;
+@foreach(var recipe in Model){
+    <div class="col-4">
+        <div class="card dishCard">
+            <img src="@recipe.Image_URL" class="card-img-top h-75"/>
+            <div class="card-body">
+                <p class="card-title">@recipe.Title</p>
+                <p class="card-text">@recipe.Publisher</p>
+            </div>
+        </div>
+    </div>
+}   

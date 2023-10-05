@@ -1,0 +1,61 @@
+﻿@model Models.Category
+
+@{
+    ViewData["Title"] = "Add_Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">Category</h1>
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+            <form asp-action="Add_Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="CatName" class="form-label my-2 my-2">Category Name :</label>
+                    <input asp-for="CatName" class="form-control  form-control-sm my-2" />
+                    <span asp-validation-for="CatName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                   
+                    @Html.CheckBoxFor(model=>model.ShowOnHomepage)
+
+                    <label asp-for="ShowOnHomepage" class="form-label my-2">Show On HomePage :</label>
+                    @*<input type="checkbox" class="form-check-inline ms-4" value="1" id="option" />
+                    <label for="option" class="form-check-label" id="SOHChk">Yes</label>
+                    <span asp-validation-for="ShowOnHomepage" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="BannerImage" class="form-label my-2"></label>
+                            <input type="file" asp-for="BannerImage" class="form-control  form-control-sm my-2" />
+                            <span asp-validation-for="BannerImage" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="IconImage" class="form-label my-2"></label>
+                            <input type="file" asp-for="IconImage" class="form-control  form-control-sm my-2" />
+                            <span asp-validation-for="IconImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CatDesc" class="form-label my-2">Description : </label>
+                    <textarea rows="8" asp-for="CatDesc" type="text" class="form-control  form-control-sm my-2"></textarea>
+                    <br />
+                    <span asp-validation-for="CatDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group my-3">
+                    <center><input type="submit" value=@ViewBag.Action class="btn btn-outline-dark" /></center>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" role="button" class="btn btn-warning btn-sm">Back to List</a>
+</div>
+

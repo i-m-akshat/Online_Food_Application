@@ -1,0 +1,57 @@
+﻿@model Models.Admin
+
+<div class="itemContainer">
+    @if (TempData["Success"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                swal("Successfull!", '@TempData["Success"]', "success");
+            };
+        </script>
+
+    }
+    else if (TempData["Error"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                swal("Failed ! Please try Again", '@TempData["Error"]', "error");
+            };
+        </script>
+
+    }
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-12 col-xl-10">
+                <div class="card-body">
+
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-md-8" style="border-style:none">
+                            <img src="../undraw_Tasting_re_3k5a.png" alt="Image" class="d-none d-md-flex img-fluid" style="border-radius:2rem" />
+                        </div>
+
+                        <div class="card col-md-4" style="border-style:none;background-color:transparent">
+                            <div class="card-body">
+                                <h1 class="Heading text-black">Login</h1>
+                                <form asp-action="Login">
+
+                                    <div class="col-12 my-3">
+                                        <label class="form-label text-center" asp-for="AdminName">AdminName</label>
+                                        <input type="text" class="form-control form-control-sm" asp-for="AdminName" />
+                                    </div>
+                                    <div class="col-12 my-3">
+                                        <label class="form-label text-center" asp-for="Password">Password</label>
+                                        <input type="text" class="form-control form-control-sm" asp-for="Password" />
+                                    </div>
+                                    <div class="form-group my-3 mx-auto">
+                                        <center><input type="submit" value="Login" class="btn btn-outline-dark" style="border-radius:2rem" /></center>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
