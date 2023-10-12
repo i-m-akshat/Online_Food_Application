@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Online Fast Food Delivery project\\DAL\\DAL.csproj",
+      "projectUniqueName": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "D:\\Online Fast Food Delivery project\\DAL\\DAL.csproj",
+      "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\aksha\\.nuget\\packages\\",
-      "outputPath": "D:\\Online Fast Food Delivery project\\DAL\\obj\\",
+      "outputPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aksha\\AppData\\Roaming\\NuGet\\NuGet.Config",

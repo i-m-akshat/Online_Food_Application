@@ -127,11 +127,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Online Fast Food Delivery project\\Models\\Models.csproj",
+      "projectUniqueName": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "D:\\Online Fast Food Delivery project\\Models\\Models.csproj",
+      "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\aksha\\.nuget\\packages\\",
-      "outputPath": "D:\\Online Fast Food Delivery project\\Models\\obj\\",
+      "outputPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aksha\\AppData\\Roaming\\NuGet\\NuGet.Config",
