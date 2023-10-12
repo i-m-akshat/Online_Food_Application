@@ -123,5 +123,30 @@ namespace BLL.Implementation
         {
             throw new NotImplementedException();
         }
+        public async Task<User> GetUserDetails(int id)
+        {
+            try
+            {
+              await using(var _context= new Online_Food_ApplicationContext())
+                {
+                    var userdetails=_context.TblUsers.Where(x=>x.UserId==id).Select(x => new User()
+                    {
+                        FullName = x.FullName,
+                        Password = x.Password,
+                        UserId = x.UserId,
+                        UserName = x.UserName,
+                        Image = x.Image,
+                        PhoneNumber = x.PhoneNumber,
+                        IsActive = x.IsActive
+                    }).FirstOrDefault();
+                    return userdetails;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

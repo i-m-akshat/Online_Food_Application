@@ -16,5 +16,6 @@ namespace BLL.Interfaces
         Task<List<Food>> GetTopRatingFood();
         Task<List<Category>> GetAllCategories();
         Task<List<FoodType>> GetAllFoodTypes();
+        Task<User> GetUserDetails(int id);
     }
 }

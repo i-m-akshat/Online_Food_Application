@@ -11,6 +11,6 @@ namespace BLL.Interfaces
     {
         public Task<User> GetUserDetails(string UserID, string Password);
         public Task<bool> SignUp(User user);
-
+        Task<User> Login(string Username, string Password);
     }
 }

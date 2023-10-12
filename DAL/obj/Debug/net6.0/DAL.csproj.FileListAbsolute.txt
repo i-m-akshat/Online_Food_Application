@@ -12,3 +12,17 @@ D:\Online Fast Food Delivery project\DAL\obj\Debug\net6.0\refint\DAL.dll
 D:\Online Fast Food Delivery project\DAL\obj\Debug\net6.0\DAL.pdb
 D:\Online Fast Food Delivery project\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
 D:\Online Fast Food Delivery project\DAL\obj\Debug\net6.0\ref\DAL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\bin\Debug\net6.0\DAL.deps.json
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\bin\Debug\net6.0\DAL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\bin\Debug\net6.0\DAL.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\refint\DAL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\DAL\obj\Debug\net6.0\ref\DAL.dll

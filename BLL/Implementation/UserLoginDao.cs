@@ -44,5 +44,30 @@ namespace BLL.Implementation
                 throw;
             }
         }
+        public async Task<User> Login(string Username, string Password)
+        {
+            try
+            {
+                await using ( var _context=new Online_Food_ApplicationContext())
+                {
+                    var UserDetails =  _context.TblUsers.Where(x => x.UserName == Username && x.Password == Password).Select(x => new User()
+                    {
+                        FullName = x.FullName,
+                        Password = x.Password,
+                        UserId = x.UserId,
+                        UserName = x.UserName,
+                        Image = x.Image,
+                        PhoneNumber = x.PhoneNumber,
+                        IsActive = x.IsActive
+                    }).FirstOrDefault();
+                    return UserDetails;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

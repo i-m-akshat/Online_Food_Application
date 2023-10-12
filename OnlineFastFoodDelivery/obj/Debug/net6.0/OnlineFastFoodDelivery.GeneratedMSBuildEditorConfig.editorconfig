@@ -9,109 +9,113 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OnlineFastFoodDelivery
 build_property.RootNamespace = OnlineFastFoodDelivery
-build_property.ProjectDir = D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\
+build_property.ProjectDir = D:\AllGitRepositories_LOCAL\OnilneFoodApplication\OnlineFastFoodDelivery\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Online Fast Food Delivery project\OnlineFastFoodDelivery
+build_property.MSBuildProjectDirectory = D:\AllGitRepositories_LOCAL\OnilneFoodApplication\OnlineFastFoodDelivery
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Admin/AdminDashboard.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Admin/AdminDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5EYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Admin/Login.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Admin/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Category/Add_Edit.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Category/Add_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkX0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Category/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/FoodType/Add_Edit.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/FoodType/Add_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFR5cGVcQWRkX0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/FoodType/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/FoodType/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFR5cGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Food/Add_Edit.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Food/Add_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxBZGRfRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Food/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Food/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Home/Foods.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Home/Foods.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb29kcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Home/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Home/Privacy.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Recipe/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Home/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Recipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Recipe/_RecipeCard.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Recipe/_RecipeCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9SZWNpcGVDYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Recipe/_SearchBar.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Recipe/_SearchBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9TZWFyY2hCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Recipe/_SideBar.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Recipe/_SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9TaWRlQmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Shared/Error.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Shared/_AdminLayout.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/SubCategory/Add_Edit.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/SubCategory/Add_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViQ2F0ZWdvcnlcQWRkX0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/SubCategory/Index.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/SubCategory/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/User/UserLogin.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/User/UserLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/User/UserSignUp.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/User/UserSignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/_ViewImports.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/_ViewStart.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Shared/_Layout.cshtml]
+[D:/AllGitRepositories_LOCAL/OnilneFoodApplication/OnlineFastFoodDelivery/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-penemjawgi

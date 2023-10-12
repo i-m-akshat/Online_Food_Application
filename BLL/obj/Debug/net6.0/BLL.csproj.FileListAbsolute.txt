@@ -15,3 +15,20 @@ D:\Online Fast Food Delivery project\BLL\bin\Debug\net6.0\Models.dll
 D:\Online Fast Food Delivery project\BLL\bin\Debug\net6.0\DAL.pdb
 D:\Online Fast Food Delivery project\BLL\bin\Debug\net6.0\Models.pdb
 D:\Online Fast Food Delivery project\BLL\obj\Debug\net6.0\BLL.csproj.CopyComplete
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\BLL.deps.json
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\BLL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\BLL.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\DAL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\Models.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\DAL.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\bin\Debug\net6.0\Models.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.csproj.AssemblyReference.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.AssemblyInfoInputs.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.AssemblyInfo.cs
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.csproj.CoreCompileInputs.cache
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.csproj.CopyComplete
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\refint\BLL.dll
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\BLL.pdb
+D:\AllGitRepositories_LOCAL\OnilneFoodApplication\BLL\obj\Debug\net6.0\ref\BLL.dll

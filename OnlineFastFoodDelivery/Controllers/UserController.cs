@@ -10,7 +10,7 @@ namespace OnlineFastFoodDelivery.Controllers
 {
     public class UserController : Controller
     {
-
+        bool IsSuccess = false;
         //public IFormFile imageFile { get; set; }//this is necessary to accept a file or get a file through httpcontext
         public static readonly List<string> ImageExtensions = new() { ".JPG", ".BMP", ".PNG" };
         UserLogin DAL= new UserLoginDao();
@@ -21,7 +21,9 @@ namespace OnlineFastFoodDelivery.Controllers
         [HttpPost]
         public async Task<IActionResult> UserLogin(string Username, string Password)
         {
-            return View();
+            User user = new User();
+            user = await DAL.Login(Username, Password);
+            return RedirectToAction("UserProfile", "Home", new {Id=user.UserId});
         }
         public IActionResult UserSignUp()
         {
@@ -45,6 +47,22 @@ namespace OnlineFastFoodDelivery.Controllers
                             user.Image = nec.ImageSave(user.Image, user.imageFile);
                         }
                     }
+                    if (user != null)
+                    {
+                        IsSuccess=await DAL.SignUp(user);
+                        if (IsSuccess)
+                        {
+                            TempData["Success"] = "Signed up SuccessFully";
+                            ModelState.Clear();
+
+                        }
+                        else
+                        {
+                            TempData["Error"] = "Sign Up Failed Please try again";
+
+                        }
+                    }
+
                 }
                 
                 

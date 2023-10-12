@@ -52,7 +52,6 @@ namespace OnlineFastFoodDelivery.Controllers
             categories = await DAL.GetAllCategories();
             topcategories = await DAL.GetCategoriesForHomepage();
             foodTypes = await DAL.GetAllFoodTypes();
-            //subCategories = await DAL.GetSubCategoriesForHomePage(int Catid);
             foods = await DAL.GetFoodsForHomepage();
             var _viewModel = new HomePageViewModel()
             {
@@ -67,6 +66,20 @@ namespace OnlineFastFoodDelivery.Controllers
         public IActionResult FoodDetails()
         {
             return View();
+        }
+        public async Task<IActionResult> UserProfile(int id)
+        {
+            try
+            {
+                User user = new User();
+                user = await DAL.GetUserDetails(id);
+                return View(user);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public IActionResult Privacy()
         {
