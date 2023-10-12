@@ -29,6 +29,20 @@ namespace OnlineFastFoodDelivery.Controllers
         {
             return View();  
         }
+        public async Task<bool> Checkusername(string Username)
+        {
+            try
+            {
+                IsSuccess = await DAL.checkUsername(Username);
+                
+                return IsSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         [HttpPost]
         public async Task<IActionResult> UserSignUp(User user)
        {

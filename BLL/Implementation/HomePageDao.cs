@@ -11,6 +11,31 @@ namespace BLL.Implementation
 {
     public class HomePageDao : HomePageDAO
     {
+        public async Task<List<SubCategory>> GetAllSubCategories(List<SubCategory> subCat)
+        {
+            try
+            {
+                await using (var _context = new Online_Food_ApplicationContext())
+                {
+                    subCat = _context.TblSubCategories.Where(x => x.IsActive == true && x.Cat.IsActive == true).Select(x => new SubCategory()
+                    {
+                        SubCatid = x.SubCatid,
+                        SubCatName = x.SubCatName,
+                        SubCatDescription = x.SubCatDescription,
+                        BannerImg = x.BannerImg,
+                        IconImg = x.IconImg,
+                        CatId = (short)(x.CatId),
+                        CatName = x.Cat.CatName
+                    }).ToList();
+                    return subCat;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         public async Task<List<FoodType>> GetAllFoodTypes()
         {
             try
@@ -82,6 +107,32 @@ namespace BLL.Implementation
                     ShowOnHomePage = x.ShowOnHomePage
                 }
                     ).Take(3).OrderBy(x=>x.FoodId).ToList();
+                return list;
+            }
+        }
+        public async Task<List<Food>> GetAllFoods()
+        {
+            await using (var _context = new Online_Food_ApplicationContext())
+            {
+                List<Food> list = _context.TblFoods.Where(x => x.IsActive == true).Select(x => new Food
+                {
+                    FoodId = x.FoodId,
+                    FoodName = x.FoodName,
+                    FoodDesc = x.FoodDesc,
+                    FoodAmount = x.FoodAmount,
+                    Quantity = (int)(x.Quantity),
+                    FoodTypeId = x.FoodTypeId,
+                    FoodTypeName = x.FoodType.FoodType,
+                    SubCatId = x.SubCatId,
+                    SubCategoryName = x.SubCat.SubCatName,
+                    CatId = x.CatId,
+                    CategoryName = x.Cat.CatName,
+                    IsActive = x.IsActive,
+                    BannerImage = x.BannerImage,
+                    IconImage = x.IconImage,
+                    ShowOnHomePage = x.ShowOnHomePage
+                }
+                    ).ToList();
                 return list;
             }
         }

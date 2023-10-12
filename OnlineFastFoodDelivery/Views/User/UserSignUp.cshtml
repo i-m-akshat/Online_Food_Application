@@ -8,12 +8,13 @@
 <div class="itemContainer">
     @if (TempData["Error"] != null)
     {
-    <script type="text/javascript">
-        window.onload = function () {
-            swal("Registration Failed ! Please try Again", '@TempData["Error"]', "error");
-        };
-    </script>
-    @*<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <script type="text/javascript">
+            window.onload = function () {
+                swal("Registration Failed ! Please try Again", '@TempData["Error"]', "error");
+            };
+        </script>
+       
+        @*<div class="alert alert-danger alert-dismissible fade show" role="alert">
     @TempData["Error"]
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>*@
@@ -39,12 +40,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="UserName" class="control-label"></label>
-                                        <input asp-for="UserName" class="form-control" />
+
+                                        <input id="txtUserName" asp-for="UserName" class="form-control" />
+                                        <a role="button" onclick="searchUsername()" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
+
                                         <span asp-validation-for="UserName" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Image" class="control-label"></label>
-                                        <input type="file" asp-for="Image"  accept="image/*" value="fileName" name="UserImage" class="form-control" />
+                                        <input type="file" asp-for="Image" accept="image/*" value="fileName" name="UserImage" class="form-control" />
                                         <span asp-validation-for="Image" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
@@ -80,4 +84,23 @@
 <div>
     <a style="text-decoration:none;color:white" asp-action="UserLogin">Back to Login</a>
 </div>
+<script>
+    
+    let searchUsername = () => {
+        
+        var userName = $('#txtUserName').val();
+        
+        $.ajax({
+            url: 'Checkusername?Username=' + userName,
+            type: 'POST',
+            success: function (result) {
+                alert('Username already exist please enter a different one');
+               
+            },
+                error: function (error) {
+                alert(error);
+                }
+        })
+    }
 
+</script>

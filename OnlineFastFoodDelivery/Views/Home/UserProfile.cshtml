@@ -11,75 +11,44 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-4">
                 <div class="card">
-                   
                     <center><img style="border-radius:50%" src="data:image/png;base64,@Convert.ToBase64String(Model.Image)" height="100" width="100" class="d-flex my-3" /></center>
-                    <dl class="card-body">
-                        <div class="row">
+                    <div class="card-body">
+                        <div class="row my-2">
                             <div class="col-md-4">
-                                <label for="@Model.FullName">Full name</label>
+                                
+                                <label class="form-label" style="font-weight:bold" for="@Model.FullName">Full name</label>
                             </div>
                             <div class="col-md-8">
-                                <label>@Model.FullName</label>
+                                <input value="@Model.FullName" disabled type="text" class="form-control form-control-sm" />
                             </div>
                         </div>
-                         <div class="row">
+                        <div class="row my-2">
                             <div class="col-md-4">
-                                <label for="@Model.FullName">Full name</label>
+                                <label class="form-label" style="font-weight:bold" for="@Model.FullAddress">Full Address</label>
                             </div>
                             <div class="col-md-8">
-                                <label>@Model.FullName</label>
+                                <input value="@Model.FullAddress" disabled type="text" class="form-control form-control-sm" />
                             </div>
                         </div>
-
-                       @* <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.FullName)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.FullName)
-                        </dd>*@
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.UserName)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.UserName)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.Image)
-                        </dt>
-                        <dd class="col-sm-10">
-                           
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.FullAddress)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.FullAddress)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.PhoneNumber)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.PhoneNumber)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.Password)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.Password)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.AccountStatus)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.AccountStatus)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.IsActive)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.IsActive)
-                        </dd>
-                    </dl>
+                         <div class="row my-2">
+                            <div class="col-md-4">
+                                <label class="form-label" style="font-weight:bold" for="@Model.PhoneNumber">Phone Number</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input value="@Model.PhoneNumber" disabled type="text" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                             
+                            <div class="col-md-4">
+                                <label class="form-label" style="font-weight:bold" for="@Model.UserName">Username</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input value="@Model.UserName" disabled type="text" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    <hr/>   
+                       </div>
                 </div>
             </div>
             <div class="col-md-8">

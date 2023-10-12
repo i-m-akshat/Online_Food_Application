@@ -3,6 +3,7 @@ using Models;
 using OnlineFastFoodDelivery;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,34 @@ namespace BLL.Implementation
                 }
             }
             catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public async Task<bool> checkUsername(string Username)
+        {
+            try
+            {
+                await using (var _context= new Online_Food_ApplicationContext())
+                {
+                    var details = _context.TblUsers.Where(x => x.UserName == Username).Select(x => new User()
+                    {
+                        UserId = x.UserId,
+                        UserName = x.UserName,
+                        Password = x.Password
+                    }).FirstOrDefault();
+                    if (details != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception)
             {
 
                 throw;

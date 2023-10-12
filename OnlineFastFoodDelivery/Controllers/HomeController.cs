@@ -50,9 +50,10 @@ namespace OnlineFastFoodDelivery.Controllers
             List<Food> foods = new List<Food>();
             List<FoodType> foodTypes = new List<FoodType>();
             categories = await DAL.GetAllCategories();
+            subCategories = await DAL.GetAllSubCategories(subCategories);
             topcategories = await DAL.GetCategoriesForHomepage();
             foodTypes = await DAL.GetAllFoodTypes();
-            foods = await DAL.GetFoodsForHomepage();
+            foods = await DAL.GetAllFoods();
             var _viewModel = new HomePageViewModel()
             {
                 Categories = categories,
