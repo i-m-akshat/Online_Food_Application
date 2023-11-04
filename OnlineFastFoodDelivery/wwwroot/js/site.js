@@ -19,7 +19,7 @@ function showRecipes(recipes, id) {
         type: 'Post',
         url: '/Recipe/GetRecipeCard',
         data: JSON.stringify(recipes),
-        success: function (htmlResult) {
+        success: function (htmlResult) { 
             $('#' + id).html(htmlResult);
         }
       })
@@ -33,3 +33,20 @@ function showRecipes(recipes, id) {
 //    $('.carousel-inner').animate({ scrollleft: scrollPosition },600)
 //})
 //scrollPosition = scrollPosition + cardWidth
+//function displayLoader() {
+//    $('#main').hide();
+//    $('.loading').show();
+//}
+//function hideLoader() {
+//    $('#main').show();
+//    $('.loading').hide();
+//}
+//$(window).on('beforeunload', function () {
+//    displayLoader();
+//})
+//$(document).on('sumbit', 'form', function () {
+//    displayLoader();
+//})
+//window.setTimeout(function () {
+//    hideLoader();
+//}, 2000);

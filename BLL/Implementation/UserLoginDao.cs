@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLL.Implementation
 {
     public class UserLoginDao : UserLogin
@@ -23,11 +24,13 @@ namespace BLL.Implementation
             {
                 await using (var _context = new Online_Food_ApplicationContext())
                 {
+                    
                     int UserID = _context.TblUsers.Max(x => (int?)x.UserId) ?? 0;
                     TblUser tbl = new TblUser();
                     tbl.UserId = UserID + 1;
                     tbl.UserName = user.UserName;
                     tbl.Password = user.Password;
+                    tbl.Salt = user.Salt;
                     tbl.AccountStatus = "Pending";
                     tbl.IsActive = true;
                     tbl.FullAddress = user.FullAddress;
@@ -96,6 +99,14 @@ namespace BLL.Implementation
             {
 
                 throw;
+            }
+        }
+        public async Task<string> GetHashString(string Username)
+        {
+            await using (var _context = new Online_Food_ApplicationContext())
+            {
+                string HashPassword = _context.TblUsers.Where(x => x.UserName == Username).Select(x => x.Password).FirstOrDefault();
+                return HashPassword;
             }
         }
     }

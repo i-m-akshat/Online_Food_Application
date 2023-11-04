@@ -2027,11 +2027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\BLL\\BLL.csproj",
+      "projectUniqueName": "D:\\Online Fast Food Delivery project\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\BLL\\BLL.csproj",
+      "projectPath": "D:\\Online Fast Food Delivery project\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\aksha\\.nuget\\packages\\",
-      "outputPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\BLL\\obj\\",
+      "outputPath": "D:\\Online Fast Food Delivery project\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aksha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2048,11 +2048,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\DAL\\DAL.csproj": {
-              "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\DAL\\DAL.csproj"
+            "D:\\Online Fast Food Delivery project\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\Online Fast Food Delivery project\\DAL\\DAL.csproj"
             },
-            "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj": {
-              "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj"
+            "D:\\Online Fast Food Delivery project\\Models\\Models.csproj": {
+              "projectPath": "D:\\Online Fast Food Delivery project\\Models\\Models.csproj"
             }
           }
         }

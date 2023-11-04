@@ -161,6 +161,10 @@
       "PackagePath": "staticwebassets\\Images\\japaneseCuisine2.jpg"
     },
     {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\persona3-mitsuru-kirij.gif",
+      "PackagePath": "staticwebassets\\Images\\persona3-mitsuru-kirij.gif"
+    },
+    {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\vegFood.jpg",
       "PackagePath": "staticwebassets\\Images\\vegFood.jpg"
     },

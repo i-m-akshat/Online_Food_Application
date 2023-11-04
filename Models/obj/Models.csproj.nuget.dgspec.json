@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj": {}
+    "D:\\Online Fast Food Delivery project\\Models\\Models.csproj": {}
   },
   "projects": {
-    "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj": {
+    "D:\\Online Fast Food Delivery project\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj",
+        "projectUniqueName": "D:\\Online Fast Food Delivery project\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\Models.csproj",
+        "projectPath": "D:\\Online Fast Food Delivery project\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\aksha\\.nuget\\packages\\",
-        "outputPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\Models\\obj\\",
+        "outputPath": "D:\\Online Fast Food Delivery project\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aksha\\AppData\\Roaming\\NuGet\\NuGet.Config",

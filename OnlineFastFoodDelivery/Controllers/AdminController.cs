@@ -45,7 +45,7 @@ namespace OnlineFastFoodDelivery.Controllers
                 HttpContext.Session.SetInt32("SessionID", (int)sessionID);
                 HttpContext.Session.SetString("AdminSession",admin.FullName);
                 HttpContext.Session.SetString("AdminRole", admin.RoleName);
-                TempData["Success"] = "Login SuccessFull";
+                TempData["AdminID"] = admin.AdminId;
                 return RedirectToAction("Dashboard");
             }
             else
@@ -56,10 +56,19 @@ namespace OnlineFastFoodDelivery.Controllers
             
 
         }
+        [HttpGet]
         [Route("Dashboard")]
-        [SessionAuthorize]
+        //[SessionAuthorize]
         public IActionResult AdminDashboard()
-        {
+       {
+
+            int AdminID = Convert.ToInt32(TempData["AdminID"]);
+            Admin admin = DAL.getImage(AdminID);
+            if (admin.Image != null) { 
+                //var AdminImage= Convert.ToBase64String(admin.Image);
+             HttpContext.Session.Set("AdminImage",admin.Image);
+            }
+
             return View();
         }
         [Route("Logout")]
@@ -87,7 +96,7 @@ namespace OnlineFastFoodDelivery.Controllers
             
 
         }
-
+        
     }
 }
 //Scaffold - DbContext "Server=<ServerName>;Database=<DatabaseName>;User=<Username>;Password=<Password>;" Microsoft.EntityFrameworkCore.SqlServer - OutputDir < ModelOutputDirectory > -ContextDir < DbContextOutputDirectory > -Context<DbContextName>

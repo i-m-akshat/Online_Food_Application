@@ -19,7 +19,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>*@
     }
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row justify-content-center align-items-center">
             <div class="card col-md-12 col-xl-10 ">
                 <div class="card-body">
@@ -33,42 +33,47 @@
                                 <h1 class="Heading text-black">Register</h1>
                                 <form asp-action="UserSignUp" enctype="multipart/form-data">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <div class="form-group">
-                                        <label asp-for="FullName" class="control-label"></label>
-                                        <input asp-for="FullName" class="form-control" />
+                                    <div class="form-floating my-3">
+                                        
+                                        <input asp-for="FullName" class="form-control form-control-sm" />
+                                        <label asp-for="FullName"></label>
                                         <span asp-validation-for="FullName" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="UserName" class="control-label"></label>
-
-                                        <input id="txtUserName" asp-for="UserName" class="form-control" />
+                                    <div class="form-floating my-3">
+                                        
+                                        <input id="txtUserName" asp-for="UserName" class="form-control form-control-sm" />
+                                        <label asp-for="UserName">Username</label>
                                         <a role="button" onclick="searchUsername()" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
 
                                         <span asp-validation-for="UserName" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="Image" class="control-label"></label>
-                                        <input type="file" asp-for="Image" accept="image/*" value="fileName" name="UserImage" class="form-control" />
+                                    <div class="form-group my-3">
+                                        <label asp-for="Image"></label>
+                                        <input type="file" asp-for="Image" accept="image/*" value="fileName" name="UserImage" class="form-control form-control-sm" />
+                                        
                                         <span asp-validation-for="Image" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="FullAddress" class="control-label"></label>
-                                        <input asp-for="FullAddress" class="form-control" />
+                                    <div class="form-floating my-3">
+                                        
+                                        <input asp-for="FullAddress" class="form-control form-control-sm" />
+                                        <label asp-for="FullAddress"></label>
                                         <span asp-validation-for="FullAddress" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="PhoneNumber" class="control-label"></label>
-                                        <input asp-for="PhoneNumber" class="form-control" />
+                                    <div class="form-floating my-3">
+                                        
+                                        <input asp-for="PhoneNumber" class="form-control form-control-sm" />
+                                        <label asp-for="PhoneNumber"></label>
                                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="Password" class="control-label"></label>
-                                        <input asp-for="Password" class="form-control" />
+                                    <div class="form-floating my-3">
+                                        
+                                        <input type="password" asp-for="Password" class="form-control form-control-sm" />
+                                        <label asp-for="Password"></label>
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <div class="form-group my-2">
                                         <input type="submit" value="SignUp" class="btn btn-outline-dark float-end" style="border-radius:2rem" />
-                                        <a asp-action="UserLogin" value="SignIn" class="btn btn-outline-dark float-start" style="border-radius:2rem">Login</a>
+                                        <p Registered Already? Please <span class="badge bg-primary text-bg-light"><a asp-action="UserLogin" value="SignIn" class=" float-start text-white" style="border-radius:2rem;text-decoration:none;">Login</a></span>
                                     </div>
                                 </form>
                             </div>
@@ -94,7 +99,12 @@
             url: 'Checkusername?Username=' + userName,
             type: 'POST',
             success: function (result) {
-                alert('Username already exist please enter a different one');
+                if(result==true){
+                    alert('Username already exist please enter a different one');
+                }
+                else{
+                    alert('This Username can be used');
+                }
                
             },
                 error: function (error) {

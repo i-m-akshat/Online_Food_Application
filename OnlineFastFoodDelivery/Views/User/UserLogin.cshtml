@@ -20,24 +20,25 @@
                         <div class="card col-md-4" style="border-style:none;background-color:transparent">
                             <div class="card-body">
                                 <h1 class="Heading text-black">Login</h1>
-                                <form asp-action="UserLogin">
+                                <form asp-action="UserLogin" method="post">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                                    <div class="form-group my-3">
-                                        <label asp-for="UserName" class="form-label"></label>
-                                        <input asp-for="UserName" class="form-control" placeholder="Please Enter your Username" />
+                                    <div class="form-floating  my-3">
+                                        <input asp-for="UserName" class="form-control form-control-sm" placeholder="Please Enter your Username" />
+                                        <label asp-for="UserName"></label>
                                         <span asp-validation-for="UserName" class="text-danger"></span>
                                     </div>
 
-                                    <div class="form-group my-3">
-                                        <label asp-for="Password" class="form-label"></label>
-                                        <input asp-for="Password" placeholder="Please Enter the password" class="form-control" />
-                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    <div class="form-floating my-3">
+                                        <input asp-for="Password" placeholder="Please Enter the password" class="form-control form-control-sm" />
+                                        <label asp-for="Password"></label>
+                                        <span asp-validation-for="Password"  class="text-danger"></span>
                                     </div>
 
                                     <div class="form-group my-3 mx-auto">
                                         <input type="submit" value="Login" class="btn btn-outline-dark float-end" style="border-radius:2rem" />
-                                        <a asp-action="UserSignUp" value="SignUp" class="btn btn-outline-dark float-start" style="border-radius:2rem">Sign Up</a>
+                                       @* <span class="badge bg-danger">Hello</span>*@
+                                        new user? Please <span class="badge bg-primary text-bg-light"><a asp-action="UserSignUp" value="SignUp" class="float-start text-white" style="border-radius:2rem;text-decoration:none;">Sign Up</a></span>
                                     </div>
                                 </form>
                             </div>

@@ -21,6 +21,7 @@ namespace OnlineFastFoodDelivery
         public string? FullAddress { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Password { get; set; }
+        public byte[]? Salt { get; set; }
         public string? AccountStatus { get; set; }
         public bool? IsActive { get; set; }
 

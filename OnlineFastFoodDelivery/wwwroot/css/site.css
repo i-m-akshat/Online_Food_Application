@@ -18,37 +18,20 @@ html {
 #UserBody {
     margin-bottom: 60px;
     overflow-x: hidden;
-    /*background: linear-gradient(to right,black,grey,black);*/
-    /*background: linear-gradient(to right,black,#121212,black)*/
+    
     background-color: #121212;
 }
 #Body {
-    background-color: black;
+    background-color: #121212;
 }
-    /*.navigationBar {
-    background-color: transparent;
-    z-index: 1;
-    position: absolute;
-    text-align:center;*/
-    /*justify-content:space-between;
-    display:flex;*/
-    /*}*/
-    /*.navbar-nav{
-    display:flex;
-    position:absolute;
-    text-align:center;
-   
-}*/
-    .navbar-solid {
+.navbar-solid {
         background-color: whitesmoke;
         transition: background-color 1s ease 0s;
         color: white;
     }
 
 .bannerDiv {
-    /*background-image: url('../hiclipart.com.png');*/
-    /*background-image: url('../images/bannermain.jpg');*/
-    /*background-image: url('../images/rotate.jpg');*/
+  
     background-image: url('../images/65babfa10a37ee049e6b556f672103e5 (1).jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -108,9 +91,9 @@ html {
 
 
 .card {
-    /*background-color: #ffffff;*/
+  
     border-radius: 1rem;
-    /* width: 380px;*/
+  
     justify-content: center;
     align-content: center;
     text-justify: auto;
@@ -121,14 +104,7 @@ html {
         box-shadow: 0 1px 15px white;
         transition: ease-in-out 0.5s;
     }
-/*.card-body {
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-}
-.card-img {
-    width: 100%;
-}*/
+
 .card-text {
     margin-top: 5px;
     text-align: justify;
@@ -208,15 +184,11 @@ html {
 
     .VerticalSnap > .section {
     }
-/*.DescriptionContainer {
-    height:400px;
-}*/
+
 .dishCard {
     height: 250px;
 }
-/*#Body{
-    transition:ease-in-out 0.5s;
-}*/
+
 #UserBody::-webkit-scrollbar {
     width: 0px;
 }
@@ -253,7 +225,7 @@ html {
     }
 
     #recipeList::-webkit-scrollbar-thumb {
-       /* background: linear-gradient(to bottom,black,grey,black);*/
+      
        background:black;
         border-radius: 20px;
     }
@@ -355,9 +327,15 @@ html {
 }
 
 
-
+@media only screen and (max-width:950px) and (min-width:650px){
+    .TopFoodContainer {
+        width:400px;
+    }
+}
 
 @media only screen and (max-width:950px) and (min-width:300px) {
+    
+    
     .TopFoodContainer:hover .txtArea {
         top: 50%;
         left: 50%;
@@ -366,9 +344,7 @@ html {
     .TopFoodContainer:hover .TopFoodtxt {
         font-size: 10px;
     }
-    /*._cardFoodType {
-        
-    }*/
+  
     .bannerDiv {
         width: 100%;
         display: flex;
@@ -383,20 +359,22 @@ html {
     .navbar-toggler {
         margin-right: 0px;
     }
-
-    /*.navbar-nav {
-        background: linear-gradient(to right,black,grey,black);
-    }*/
+    
+    ._cardFoodType{
+        overflow-y:hidden;
+        font-size:12px;
+    }
+ 
 }
 
 
-/* display 4 */
+
 ._cardFoodType {
   
     margin-top: 2rem;
-   /* width: 450px;*/
+   
     display: flex;
-    height: auto;
+    height:auto;
     border-radius: 2rem;
     border-style: solid;
     border-color: white;
@@ -419,58 +397,3 @@ html {
     font-family: 'Permanent Marker', cursive;
     margin-top:20px;
 }
-/*.cardFoodTypeBody:hover {
-    -ms-transform: scale(1.5);*/ /* IE 9 */
-    /*-webkit-transform: scale(1.5);*/ /* Safari 3-8 */
-    /*transform: scale(1.5);
-   
-}*/
-/*.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    margin-top: 45px;
-    margin-bottom: 45px;
-    background-color: #121212;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-    .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-    .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-        .sidenav a {
-            font-size: 18px;
-        }
-}*/
-

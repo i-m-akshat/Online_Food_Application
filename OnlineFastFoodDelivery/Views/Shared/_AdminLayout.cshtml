@@ -32,7 +32,11 @@
         <div class="sideBar" id="mySidebar">
             
             <div class="profile">
-                <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture">
+                @if (@accessor.HttpContext.Session.GetString("AdminImage") != null)
+                {
+                    <img src="data:image/jpg;base64,@Convert.ToBase64String(accessor.HttpContext.Session.Get("AdminImage"))" alt="profile_picture">
+                }
+                
                 <h3 class="profileName">@accessor.HttpContext.Session.GetString("AdminSession")</h3>
                 <p class="profileDesc">@accessor.HttpContext.Session.GetString("AdminRole")</p>
             </div>
@@ -41,7 +45,7 @@
                     <a style="text-decoration:none;color:black" asp-action="Index" asp-controller="Food"><i class="fa-solid fa-bowl-food"></i>Add Food</a>
                 </li>
                 <li class="sidebarItem">
-                    <a> <i class="fa-solid fa-person-military-rifle"></i>Add Role</a>
+                    <a style="text-decoration:none;color:black" asp-action="Index" asp-controller="Role"> <i class="fa-solid fa-person-military-rifle"></i>Add Role</a>
                 </li>
                 <li class="sidebarItem">
                     <a style="text-decoration:none;color:black" asp-action="Index" asp-controller="Category"><i class="fa-solid fa-folder-plus"></i>Add Category</a>
@@ -54,7 +58,7 @@
                     <a style="text-decoration:none;color:black" asp-action="Index" asp-controller="SubCategory"><i class="fa-solid fa-puzzle-piece"></i>Add Sub-Category</a>
                 </li>
                 <li class="sidebarItem">
-                    <a><i class="fa-solid fa-user-plus"></i>Add Moderators</a>
+                    <a style="text-decoration:none;color:black" asp-action="Index" asp-controller="Moderator"><i class="fa-solid fa-user-plus"></i>Add Moderators</a>
                 </li>   
                 <li class="sidebarItem">
                     <a><i class="fas fa-shipping-fast"></i>Order Status</a>

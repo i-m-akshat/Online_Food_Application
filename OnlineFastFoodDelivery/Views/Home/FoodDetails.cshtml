@@ -1,0 +1,42 @@
+﻿@model Models.Food
+
+@{
+    ViewData["Title"] = "FoodDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+  <div class="container-fluid mt-5 pt-5">
+        <div class="col-md-12" style="color:white;">
+          <div class="row justify-content-center align-items-center px-2">
+              <div class="col-md-5" >
+                    <div class="d-flex px-4">
+                       @* <img src="~/images/vegfood.jpg" class="img-fluid" />*@
+                        <img src="data:image/png;base64,@Convert.ToBase64String(Model.IconImage)" class="img-fluid" />
+                       
+                  </div>    
+                    
+              </div>
+              <div class="col-md-7">
+                  <div class="col-12 p-5">
+                      <h2 class="text-center row-header">@Model.FoodName</h2>
+                        <p class="text-white-50">@Model.FoodDesc</p>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 mt-5 pt-5">
+                               @* <div class="row justify-content-center align-items-center mb-0 mt-auto">*@
+                                <a role="button" class="btn btn-block btn-outline-light col-12">Add 1 To Order · ₹ @Model.FoodAmount</a>
+                                @*<a role="button" class="btn btn-block  btn-outline-light float-end">Add To Cart</a>*@
+                               @* </div>*@
+                            </div>
+                        </div>
+                        
+                        
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+

@@ -11,5 +11,6 @@ namespace BLL.Interfaces
     {
         public Task<Admin> Login(string AdminName, string Password);
         //public Task<Admin> Logout();
+        Admin getImage(int AdminID);
     }
 }

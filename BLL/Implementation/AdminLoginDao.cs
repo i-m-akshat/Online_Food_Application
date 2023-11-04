@@ -21,26 +21,43 @@ namespace BLL.Implementation
 
         public async Task<Admin> Login(string AdminName, string Password)
         {
-            await using(Online_Food_ApplicationContext _context=new Online_Food_ApplicationContext())
+            await using (Online_Food_ApplicationContext _context = new Online_Food_ApplicationContext())
             {
-                var Admindetails = _context.TblAdmins.Where(x => x.AdminName == AdminName && x.Password == Password).Select(x => new Admin()
+                var Admindetails = _context.TblAdmins.Where(x => x.AdminName == AdminName && x.Password == Password && x.IsActive == true).Select(x => new Admin()
                 {
                     AdminName = x.AdminName,
                     Password = x.Password,
                     AdminId = x.AdminId,
                     FullName = x.FullName,
-                    RoleId=x.RoleId,
-                    RoleName=x.Role.Role
-                   
-                }).FirstOrDefault(); 
+                    RoleId = x.RoleId,
+                    RoleName = x.Role.Role,
+                    Image = x.Image
+                }).FirstOrDefault();
                 //if (Admindetails.RoleId != null)
                 //{
                 //    var RoleName=_context.TblAdmins.Role
                 //}
-                
+
                 return Admindetails;
             }
         }
-                
+        public Admin getImage(int AdminID)
+        {
+             using (Online_Food_ApplicationContext _context = new Online_Food_ApplicationContext())
+            {
+
+                var Admindetails = _context.TblAdmins.Where(x => x.AdminId == AdminID && x.IsActive == true).Select(x => new Admin()
+                {
+                    AdminName = x.AdminName,
+                    Password = x.Password,
+                    AdminId = x.AdminId,
+                    FullName = x.FullName,
+                    RoleId = x.RoleId,
+                    RoleName = x.Role.Role,
+                    Image = x.Image
+                }).FirstOrDefault();
+                return Admindetails;
+            }
+        }
     }
 }

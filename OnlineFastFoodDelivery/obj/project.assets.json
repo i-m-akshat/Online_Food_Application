@@ -10784,11 +10784,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\OnlineFastFoodDelivery\\OnlineFastFoodDelivery.csproj",
+      "projectUniqueName": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\OnlineFastFoodDelivery.csproj",
       "projectName": "OnlineFastFoodDelivery",
-      "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\OnlineFastFoodDelivery\\OnlineFastFoodDelivery.csproj",
+      "projectPath": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\OnlineFastFoodDelivery.csproj",
       "packagesPath": "C:\\Users\\aksha\\.nuget\\packages\\",
-      "outputPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\OnlineFastFoodDelivery\\obj\\",
+      "outputPath": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aksha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10805,8 +10805,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\BLL\\BLL.csproj": {
-              "projectPath": "D:\\AllGitRepositories_LOCAL\\OnilneFoodApplication\\BLL\\BLL.csproj"
+            "D:\\Online Fast Food Delivery project\\BLL\\BLL.csproj": {
+              "projectPath": "D:\\Online Fast Food Delivery project\\BLL\\BLL.csproj"
             }
           }
         }

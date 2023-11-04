@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Models
         {
             AdminSessions = new HashSet<AdminSession>();
         }
-
+        public IFormFile imageFile_Admin { get; set; }
         public int AdminId { get; set; }
         public int RoleId { get; set; }
         public string RoleName { get; set; }
@@ -22,7 +23,7 @@ namespace Models
         public string FullAddress { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
         public string Password { get; set; } = null!;
-
+        public bool? IsActive { get; set; }
         public virtual Role Role { get; set; } = null!;
         public virtual ICollection<AdminSession> AdminSessions { get; set; }
     }

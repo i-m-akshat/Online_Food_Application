@@ -13,5 +13,6 @@ namespace BLL.Interfaces
         public Task<bool> SignUp(User user);
         Task<User> Login(string Username, string Password);
         Task<bool> checkUsername(string Username);
+        Task<string> GetHashString(string Username);
     }
 }

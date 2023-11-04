@@ -22,8 +22,29 @@ namespace OnlineFastFoodDelivery.Controllers
         public async Task<IActionResult> UserLogin(string Username, string Password)
         {
             User user = new User();
-            user = await DAL.Login(Username, Password);
-            return RedirectToAction("UserProfile", "Home", new {Id=user.UserId});
+            if (Password != null)
+            {
+                string hashString =await DAL.GetHashString(Username);
+                bool isValid = _passSecurity.verify(Password, hashString);
+                if (isValid)
+                {
+                    user = await DAL.Login(Username, hashString);
+                    TempData["Success"] = "Welcome "+ user.FullName;
+                    return RedirectToAction("UserProfile", "Home", new { Id = user.UserId });
+
+                }
+                else
+                {
+                    TempData["Error"] = "Login Failed!";
+                    return View();
+                }
+            }
+            else
+            {
+                TempData["Error"] = "Login Failed!";
+                return View();
+            }
+
         }
         public IActionResult UserSignUp()
         {
@@ -61,39 +82,42 @@ namespace OnlineFastFoodDelivery.Controllers
                             user.Image = nec.ImageSave(user.Image, user.imageFile);
                         }
                     }
-                    if (user != null)
-                    {
-                        IsSuccess=await DAL.SignUp(user);
-                        if (IsSuccess)
-                        {
-                            TempData["Success"] = "Signed up SuccessFully";
-                            ModelState.Clear();
-
-                        }
-                        else
-                        {
-                            TempData["Error"] = "Sign Up Failed Please try again";
-
-                        }
-                    }
-
-                }
-                
-                
-                bool isSuccess = false;
-                isSuccess = await DAL.SignUp(user);
-                if (isSuccess)
-                {
-                    TempData["Success"] = "Registered Successfully ! Please Login";
                     
-                    return RedirectToAction("Index","Home");   
+                }
+
+                if (user != null)
+                {
+                    if (user.Password != null)
+                    {
+                        byte[] salt;
+                        string _hashPassword = _passSecurity.Hashpassword(user.Password, out salt);
+                        if (_hashPassword != null)
+                        {
+                            user.Password = _hashPassword;
+                            user.Salt = salt;
+                        }
+
+                    }
+                    bool isSuccess = false;
+                    isSuccess = await DAL.SignUp(user);
+                    if (isSuccess)
+                    {
+                        TempData["Success"] = "Registered Successfully ! Please Login";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Registration Failed";
+                        return View();
+                    }
                 }
                 else
                 {
-                    TempData["Error"] = "Registration Failed"; 
+                    TempData["Error"] = "Registration Failed";
                     return View();
                 }
-                
+
+
             }
             catch (Exception ex)
             {
@@ -102,6 +126,6 @@ namespace OnlineFastFoodDelivery.Controllers
             }
             
         }
-        
+       
     }
 }

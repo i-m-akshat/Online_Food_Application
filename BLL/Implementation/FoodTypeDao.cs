@@ -160,7 +160,7 @@ namespace BLL.Implementation
                         }
                         //tbl.SubCatid = foodType.SubCatid;
                         //tbl.CatId = foodType.CatId;
-                        tbl.UpdatedBy = null;
+                        tbl.UpdatedBy = foodType.UpdatedBy;
                         tbl.UpdatedDate = Convert.ToDateTime(DateTime.Now.ToString());
                         _context.TblFoodTypes.Update(tbl);
                         _context.SaveChanges();

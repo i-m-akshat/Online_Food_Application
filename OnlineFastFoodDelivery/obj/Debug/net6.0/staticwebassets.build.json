@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cIoEJvrduAhw75hjqi0eGQfIAXqIl1bZSs6rplzLc2E=",
+  "Hash": "RaHbKkVGlK6f7b7pmtGzKaP2wOl4WlqQ/bO5kcFxfec=",
   "Source": "OnlineFastFoodDelivery",
   "BasePath": "_content/OnlineFastFoodDelivery",
   "Mode": "Default",
@@ -36582,6 +36582,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Nonverg.jpg"
+    },
+    {
+      "Identity": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\persona3-mitsuru-kirij.gif",
+      "SourceId": "OnlineFastFoodDelivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\",
+      "BasePath": "_content/OnlineFastFoodDelivery",
+      "RelativePath": "Images/persona3-mitsuru-kirij.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\persona3-mitsuru-kirij.gif"
     },
     {
       "Identity": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Pizza.jpg",

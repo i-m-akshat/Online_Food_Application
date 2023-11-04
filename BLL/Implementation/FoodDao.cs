@@ -222,8 +222,8 @@ namespace BLL.Implementation
                         tbl.CatId = food.CatId;
                         tbl.IsActive = true;
                         tbl.SubCatId = food.SubCatId;
-                        tbl.CreatedBy = food.CreatedBy;
-                        tbl.CreatedDate = Convert.ToDateTime(DateTime.Now.ToString());
+                        tbl.UpdatedBy = food.UpdatedBy;
+                        tbl.UpdatedDate = Convert.ToDateTime(DateTime.Now.ToString());
                         tbl.FoodAmount = food.FoodAmount;
                         tbl.Quantity = food.Quantity;
                         tbl.FoodTypeId = food.FoodTypeId;

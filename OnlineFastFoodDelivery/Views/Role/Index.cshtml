@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript">
+    var mainID;
+
+    let openModal = (itemID) => {
+        var txtBox = document.getElementById('itemID');
+        txtBox.value = itemID;
+        $('#staticBackdrop').modal('show');
+    }
+    let deleteItem = () => {
+        var itemID = $('#itemID').val();
+        $.ajax({
+            url: 'Role/Delete?id=' + itemID,
+            type: 'POST',
+            success: function (result) {
+                $('#staticBackdrop').modal('hide');
+                window.location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    }
+</script>
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">List Of All Roles</h1>
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+            <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Role</a>
+            <table class="table table-responsive table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RoleId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Roles)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoleId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Roles)
+                            </td>
+                            <td>
+                                <a asp-action="Add_Edit" class="btn btn-sm btn-warning" asp-route-id=@item.RoleId><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a id="btnShowDelete" class="btn btn-sm btn-danger" role="button" onclick="openModal ('@item.RoleId')"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

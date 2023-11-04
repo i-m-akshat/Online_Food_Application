@@ -22,10 +22,18 @@
     <link rel="icon" href="~/undraw_breakfast_psiw.png" type="image">
     <link rel="stylesheet" href="~/OnlineFastFoodDelivery.styles.css" asp-append-version="true" />
     <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script type="text/javascript" src="~/js/sweetalert.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 </head>
 <body id="UserBody">
+   
+    <div id="body">
+
+    
     <header>
         <!-- Animated navbar-->
 
@@ -111,8 +119,10 @@
         <!-- Animated navbar -->
 
     </header>
+   
     <div>
-        <main role="main" class="pb-1">
+            @*<partial name="_Loader" />*@
+        <main role="main" id="main" class="pb-1">
             @RenderBody()
         </main>
     </div>
@@ -134,12 +144,13 @@
                 <li class="ms-3"><a class="text-white" href="#"><i class="fa-brands fa-facebook"></i></a></li>
             </ul>
         </footer>
+      
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-ui.min.js"></script>
-    
+   
     <script>
         $(document).ready(function () {
             // Transition effect for navbar
@@ -174,5 +185,6 @@
 
     }
     @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>
