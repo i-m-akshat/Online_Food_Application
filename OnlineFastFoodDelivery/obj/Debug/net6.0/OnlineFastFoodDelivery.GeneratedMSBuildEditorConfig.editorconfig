@@ -10,6 +10,8 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OnlineFastFoodDelivery
 build_property.RootNamespace = OnlineFastFoodDelivery
 build_property.ProjectDir = D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
@@ -24,12 +26,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Category/Add_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkX0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/Checkout/OrderConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tvdXRcT3JkZXJDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Online Fast Food Delivery project/OnlineFastFoodDelivery/Views/FoodType/Add_Edit.cshtml]

@@ -4,7 +4,8 @@
     string sessionName = accessor.HttpContext.Session.GetString("AdminSession").ToString();
 }*@
 @{
-    string sessionName = accessor.HttpContext.Session.GetString("AdminSession");
+    string sessionName = accessor.HttpContext.Session.GetString("UserName");
+
 }
 
 <!DOCTYPE html>
@@ -37,9 +38,9 @@
     <header>
         <!-- Animated navbar-->
 
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand " asp-area="Go To Home" asp-controller="Home" asp-action="Index" style="font-family: 'Permanent Marker', cursive;font-size:25px">AxA Food</a>
+                <a class="navbar-brand" role="button" asp-area="Go To Home" asp-controller="Home" asp-action="Index" style="font-family: 'Permanent Marker', cursive;font-size:25px;">AxA Food</a>
                 <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,17 +53,17 @@
                             <a class="nav-link " aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Go To Home" asp-controller="Recipe" asp-action="Index">Recipe</a>
+                                <a class="nav-link " asp-area="Go To Foods" asp-controller="Home" asp-action="Foods">Foods</a>
                         </li>
-                        <li class="nav-item">
+                       @*  <li class="nav-item">
                             <a class="nav-link " aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                        </li> *@
+                       @*  <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " href="#"  data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item text-black" href="#">Action</a></li>
@@ -70,7 +71,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-black" href="#">Something else here</a></li>
                             </ul>
-                        </li>
+                        </li> *@
                         @* <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>
                         </li>*@
@@ -95,17 +96,24 @@
                             </a>
                             <ul class="dropdown-menu">
                                 
-                                    <li><a class="dropdown-item text-black" asp-area="LogOut" asp-action="Logout">Logout</a></li>
-                                    <li><a class="dropdown-item text-black" href="#">Your Profile</a></li>
+                                    <li><a class="dropdown-item text-black" asp-area="LogOut" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="Home" asp-action="UserProfile" asp-route-id="@accessor.HttpContext.Session.GetInt32("UserID")">Your Profile</a></li>
                                
-                                
-                                
-
                             </ul>
                         </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Go To Home" asp-controller="Recipe" asp-action="Index" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <a class="nav-link btn position-relative" asp-action="Index" asp-controller="Cart" asp-area="Go to Cart" title="Cart">
+                                    <i class="fa-solid fa-cart-shopping"></i> 
+                                    @if (accessor.HttpContext.Session.GetInt32("CartNumber") != null)
+                                    {
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                                            <span id="lblCartNumber">@accessor.HttpContext.Session.GetInt32("CartNumber")</span>
+                                            <span class="visually-hidden">Cart items</span>
+                                        </span>
+                                    }
+                                  
+                                </a>
                         </li>
 
                     </ul>
@@ -135,7 +143,7 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
                 </a>
-                <span class="mb-3 mb-md-0 text-white">&copy; 2023 Company, Inc</span>
+                <span class="mb-3 mb-md-0 text-white">&copy; 2023 AxA Foods, Inc</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

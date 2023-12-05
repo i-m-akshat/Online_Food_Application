@@ -25,17 +25,39 @@ namespace OnlineFastFoodDelivery.Controllers
             if (Password != null)
             {
                 string hashString =await DAL.GetHashString(Username);
-                bool isValid = _passSecurity.verify(Password, hashString);
-                if (isValid)
+                if (hashString != null)
                 {
-                    user = await DAL.Login(Username, hashString);
-                    TempData["Success"] = "Welcome "+ user.FullName;
-                    return RedirectToAction("UserProfile", "Home", new { Id = user.UserId });
+                    bool isValid = _passSecurity.verify(Password, hashString);
+                    if (isValid)
+                    {
+                        user = await DAL.Login(Username, hashString);
+                        if (user != null)
+                        {
+                            HttpContext.Session.SetString("UserName", user.FullName);
+                            HttpContext.Session.SetInt32("UserID", (int)user.UserId);
+                            if (user.UserId != null)
+                            {
+                                CartDAO cartDAL = new CartDao();
+                                int CartNumber = await cartDAL.GetTotalNumberOFItemsInCart((int)user.UserId);
+                                if (CartNumber != 0)
+                                {
+                                    HttpContext.Session.SetInt32("CartNumber", (int)CartNumber);
+                                }
 
+                            }
+                        }
+                        TempData["Success"] = "Welcome " + user.FullName;
+                        return RedirectToAction("UserProfile", "Home", new { Id = user.UserId });
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Login Failed!";
+                        return View();
+                    }
                 }
                 else
                 {
-                    TempData["Error"] = "Login Failed!";
+                    TempData["Error"] = "ID does not exist!";
                     return View();
                 }
             }

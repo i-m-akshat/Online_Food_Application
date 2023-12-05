@@ -22,6 +22,8 @@ namespace OnlineFastFoodDelivery.Controllers
         [Route("")]
         public async Task<IActionResult> Index()
         {
+            int? UserID = 0;
+            UserID = HttpContext.Session.GetInt32("UserID");
             List<Category> categories=new List<Category>();
             List<Category> topcategories = new List<Category>();
             List<SubCategory> subCategories=new List<SubCategory>();
@@ -40,6 +42,10 @@ namespace OnlineFastFoodDelivery.Controllers
                 Food=foods,
                 FoodTypes=foodTypes
             };
+            
+            
+            
+            
             return View(_viewModel);
         }
         [Route("Foods")]
@@ -91,9 +97,6 @@ namespace OnlineFastFoodDelivery.Controllers
             List<Food> listFood = new List<Food>();
             HomePageViewModel _viewModel = new HomePageViewModel();
             listFood = await DAL.GetAllFoods_Filter(listCat, listSubCat, listFoodType);
-            
-           
-
             return PartialView("_Food",listFood);
 
             
@@ -133,12 +136,15 @@ namespace OnlineFastFoodDelivery.Controllers
        
         public IActionResult Logout()
         {
-
-            if (HttpContext.Session.GetString("AdminSession").ToString() != null)
+            HttpContext.Session.GetString("UserName");
+            
+            if (HttpContext.Session.GetString("UserName").ToString() != null && HttpContext.Session.GetInt32("UserID")!=null)
             {
-                HttpContext.Session.Remove("AdminSession");
+                HttpContext.Session.Remove("UserName");
+                HttpContext.Session.Remove("UserID");
+                HttpContext.Session.Remove("CartNumber");
             }
-            return View("Index");
+            return RedirectToAction("Index");
 
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

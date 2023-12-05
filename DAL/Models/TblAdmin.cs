@@ -19,6 +19,7 @@ namespace OnlineFastFoodDelivery
         public string PhoneNumber { get; set; } = null!;
         public string Password { get; set; } = null!;
         public bool? IsActive { get; set; }
+
         public virtual TblRole Role { get; set; } = null!;
         public virtual ICollection<TblAdminSession> TblAdminSessions { get; set; }
     }

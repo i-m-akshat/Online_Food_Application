@@ -66,7 +66,7 @@ namespace OnlineFastFoodDelivery
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.PhoneNumber)
@@ -402,6 +402,11 @@ namespace OnlineFastFoodDelivery
 
                 entity.Property(e => e.ProcessedBy).HasColumnName("processed_by");
 
+                entity.Property(e => e.TransactionId)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("transaction_id");
+
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.TblPaymentDetails)
                     .HasForeignKey(d => d.OrderId)
@@ -621,9 +626,7 @@ namespace OnlineFastFoodDelivery
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
+                entity.Property(e => e.Password).IsUnicode(false);
 
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(10)

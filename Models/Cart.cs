@@ -15,7 +15,12 @@ namespace Models
         public long UserId { get; set; }
         public string CartStatus { get; set; } = null!;
         public DateTime? AddedDate { get; set; }
-
+        public string FoodName { get; set; } = null!;
+        public byte[] BannerImage { get; set; } = null!;
+        public decimal FoodAmount { get; set; }
+        public decimal TotalFoodPrice { get; set; }
+        public decimal SubTotal { get; set; }
+        public int Stock { get; set; }
         public virtual Food Food { get; set; } = null!;
         public virtual User User { get; set; } = null!;
     }

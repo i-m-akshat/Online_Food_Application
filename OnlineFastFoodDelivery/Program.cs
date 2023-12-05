@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineFastFoodDelivery;
-
+using Stripe;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,7 +24,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseAuthorization();
 
 app.MapControllerRoute(

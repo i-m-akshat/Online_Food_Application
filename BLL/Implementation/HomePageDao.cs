@@ -289,9 +289,29 @@ namespace BLL.Implementation
                         }
 
                     }
-                    else
+                    else if (listFoodType.Count != 0)
                     {
-                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId)  && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                        {
+                            FoodId = x.FoodId,
+                            FoodName = x.FoodName,
+                            FoodDesc = x.FoodDesc,
+                            FoodAmount = x.FoodAmount,
+                            Quantity = (int)(x.Quantity),
+                            FoodTypeId = x.FoodTypeId,
+                            FoodTypeName = x.FoodType.FoodType,
+                            SubCatId = x.SubCatId,
+                            SubCategoryName = x.SubCat.SubCatName,
+                            CatId = x.CatId,
+                            CategoryName = x.Cat.CatName,
+                            IsActive = x.IsActive,
+                            BannerImage = x.BannerImage,
+                            IconImage = x.IconImage,
+                            ShowOnHomePage = x.ShowOnHomePage
+                        }).ToList();
+                    } else
+                    {
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && x.IsActive == true).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -315,7 +335,7 @@ namespace BLL.Implementation
                 {
                     if (listCat.Count != 0)
                     {
-                        if (listFood.Count != 0)
+                        if (listFoodType.Count != 0)
                         {
                             listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
                             {
@@ -357,6 +377,28 @@ namespace BLL.Implementation
                                 ShowOnHomePage = x.ShowOnHomePage
                             }).ToList();
                         }
+                    }
+                    else if (listFoodType.Count != 0)
+                    {
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                        {
+                            FoodId = x.FoodId,
+                            FoodName = x.FoodName,
+                            FoodDesc = x.FoodDesc,
+                            FoodAmount = x.FoodAmount,
+                            Quantity = (int)(x.Quantity),
+                            FoodTypeId = x.FoodTypeId,
+                            FoodTypeName = x.FoodType.FoodType,
+                            SubCatId = x.SubCatId,
+                            SubCategoryName = x.SubCat.SubCatName,
+                            CatId = x.CatId,
+                            CategoryName = x.Cat.CatName,
+                            IsActive = x.IsActive,
+                            BannerImage = x.BannerImage,
+                            IconImage = x.IconImage,
+                            ShowOnHomePage = x.ShowOnHomePage
+                        }).ToList();
+
                     }
                     else
                     {
@@ -426,6 +468,26 @@ namespace BLL.Implementation
                                 ShowOnHomePage = x.ShowOnHomePage
                             }).ToList();
                         }
+                    } else if (listCat.Count != 0)
+                    {
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                        {
+                            FoodId = x.FoodId,
+                            FoodName = x.FoodName,
+                            FoodDesc = x.FoodDesc,
+                            FoodAmount = x.FoodAmount,
+                            Quantity = (int)(x.Quantity),
+                            FoodTypeId = x.FoodTypeId,
+                            FoodTypeName = x.FoodType.FoodType,
+                            SubCatId = x.SubCatId,
+                            SubCategoryName = x.SubCat.SubCatName,
+                            CatId = x.CatId,
+                            CategoryName = x.Cat.CatName,
+                            IsActive = x.IsActive,
+                            BannerImage = x.BannerImage,
+                            IconImage = x.IconImage,
+                            ShowOnHomePage = x.ShowOnHomePage
+                        }).ToList();
                     }
                     else
                     {

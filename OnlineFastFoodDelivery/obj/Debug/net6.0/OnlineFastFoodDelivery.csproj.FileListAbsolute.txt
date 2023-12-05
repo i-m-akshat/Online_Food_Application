@@ -253,3 +253,4 @@ D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Mod
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\BLL.pdb
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\DAL.pdb
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Models.pdb
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Stripe.net.dll

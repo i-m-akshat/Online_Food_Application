@@ -45,7 +45,7 @@ namespace OnlineFastFoodDelivery.Controllers
                 HttpContext.Session.SetInt32("SessionID", (int)sessionID);
                 HttpContext.Session.SetString("AdminSession",admin.FullName);
                 HttpContext.Session.SetString("AdminRole", admin.RoleName);
-                TempData["AdminID"] = admin.AdminId;
+                HttpContext.Session.SetInt32("AdminID", admin.AdminId);
                 return RedirectToAction("Dashboard");
             }
             else
@@ -62,7 +62,7 @@ namespace OnlineFastFoodDelivery.Controllers
         public IActionResult AdminDashboard()
        {
 
-            int AdminID = Convert.ToInt32(TempData["AdminID"]);
+            int AdminID = Convert.ToInt32(HttpContext.Session.GetInt32("AdminID"));
             Admin admin = DAL.getImage(AdminID);
             if (admin.Image != null) { 
                 //var AdminImage= Convert.ToBase64String(admin.Image);
