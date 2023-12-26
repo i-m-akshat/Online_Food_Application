@@ -8,6 +8,10 @@
 
 <div class="row justify-content-center align-items-center mt-4">
     <h1 class="row-header text-center">Sub Category</h1>
+    <div class="my-2">
+        <a asp-action="Index" role="button" class="btn btn-warning btn-sm mt-3">Back to List</a>
+    </div>
+
     <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
         <div class="card-body px-2">
             <form asp-action="Add_Edit" enctype="multipart/form-data" method="post">
@@ -29,13 +33,13 @@
                     <div class="row">
                         <div class="col-md-6">
                     <label asp-for="BannerImg" class="control-label"></label>
-                    <input asp-for="BannerImg" type="file" class="form-control" />
-                    <span asp-validation-for="BannerImg" class="text-danger"></span>
+                    <input asp-for="imageFile_Banner" type="file" class="form-control" />
+                    <span asp-validation-for="imageFile_Banner" class="text-danger"></span>
                     </div>
                         <div class="col-md-6">
                     <label asp-for="IconImg" class="control-label"></label>
-                    <input asp-for="IconImg" type="file" class="form-control" />
-                    <span asp-validation-for="IconImg" class="text-danger"></span>
+                    <input asp-for="imageFile_Icon" type="file" class="form-control" />
+                    <span asp-validation-for="imageFile_Icon" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -53,7 +57,4 @@
             </div>
             </div>
 
-<div>
-    <a asp-action="Index" role="button" class="btn btn-warning btn-sm mt-3">Back to List</a>
-</div>
 

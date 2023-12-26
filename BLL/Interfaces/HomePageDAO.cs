@@ -10,6 +10,9 @@ namespace BLL.Interfaces
 {
     public interface HomePageDAO
     {
+        Task<long> getFoodByName(string Name);
+        Task<List<string>> getAllFoodNames();
+        Task<List<FoodType>> GetAllFoodTypesForHomepage();
         Task<List<Category>> GetCategoriesForHomepage();
         Task<List<SubCategory>> GetSubCategoriesForHomePage(List<int> list);
         Task<List<SubCategory>> GetSubCategoriesForHomePage();

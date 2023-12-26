@@ -7,46 +7,46 @@
 
 <div class="row justify-content-center align-items-center mt-4">
     <h1 class="row-header text-center">Food</h1>
-    <div>
+    <div class="my-2">
         <a asp-action="Index" role="button" class="btn btn-warning btn-sm mt-3">Back to List</a>
     </div>
     <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
         <div class="card-body px-2">
             <form asp-action="Add_Edit" enctype="multipart/form-data" method="post">
                 <div class="form-group my-3">
-                    <label asp-for="FoodName" class="control-label">Food Name</label>
-                    <input asp-for="FoodName" class="form-control" />
+                    <label asp-for="FoodName" class="form-label">Food Name</label>
+                    <input asp-for="FoodName" class="form-control form-control-sm my-2" />
                     <span asp-validation-for="FoodName" class="text-danger"></span>
                 </div>
                 <div class="col-md-12 my-3">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label asp-for="CatId" class="control-label">Category: </label>
-                                <select asp-for="CatId" asp-items="@ViewBag.Categories">
+                                <label asp-for="CatId" class="form-label">Category: </label>
+                                <select asp-for="CatId" class="form-control form-control-sm my-2" asp-items="@ViewBag.Categories">
                                     <option value="">Please Select the Category</option>
                                 </select>
-                                @*<input asp-for="CatId" class="form-control" />*@
+                                @*<input asp-for="CatId" class="form-control-sm my-2" />*@
                                 <span asp-validation-for="CatId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label asp-for="SubCatId" class="control-label">Sub Category: </label>
-                                <select asp-for="SubCatId" asp-cascade-from="CatId" asp-items="@ViewBag.SubCategories">
+                                <label asp-for="SubCatId" class="form-label">Sub Category: </label>
+                                <select asp-for="SubCatId" class="form-control form-control-sm my-2" asp-cascade-from="CatId" asp-items="@ViewBag.SubCategories">
                                     <option value="">Please Select the Sub Category</option>
                                 </select>
-                                @* <input asp-for="SubCatId" class="form-control" />*@
+                                @* <input asp-for="SubCatId" class="form-control-sm my-2" />*@
                                 <span asp-validation-for="SubCatId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label asp-for="FoodTypeId" class="control-label">Food Type:  </label>
-                                <select asp-for="FoodTypeId" asp-items="@ViewBag.FoodType">
+                                <label asp-for="FoodTypeId" class="form-label">Food Type:  </label>
+                                <select asp-for="FoodTypeId" class="form-control form-control-sm my-2" asp-items="@ViewBag.FoodType">
                                     <option value="">Please Select the Food Type</option>
                                 </select>
-                                @*<input asp-for="FoodTypeId" class="form-control" />*@
+                                @*<input asp-for="FoodTypeId" class="form-control-sm my-2" />*@
                                 <span asp-validation-for="FoodTypeId" class="text-danger"></span>
                             </div>
                         </div>
@@ -62,16 +62,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="IconImage" class="control-label"></label>
-                                <input asp-for="IconImage" type="file" class="form-control" />
-                                <span asp-validation-for="IconImage" class="text-danger"></span>
+                                <label asp-for="IconImage" class="form-label"></label>
+                                <input asp-for="imageFile_Icon" type="file" class="form-control form-control-sm my-2" />
+                                <span asp-validation-for="imageFile_Icon" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="BannerImage" class="control-label"></label>
-                                <input asp-for="BannerImage" type="file" class="form-control" />
-                                <span asp-validation-for="BannerImage" class="text-danger"></span>
+                                <label asp-for="BannerImage" class="form-label"></label>
+                                <input asp-for="imageFile_Banner" type="file" class=" form-control form-control-sm my-2" />
+                                <span asp-validation-for="imageFile_Banner" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -80,22 +80,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group my-3">
-                                <label asp-for="FoodAmount" class="control-label"></label>
-                                <input asp-for="FoodAmount" class="form-control" />
+                                <label asp-for="FoodAmount" class="form-label"></label>
+                                <input asp-for="FoodAmount" class="form-control form-control-sm my-2" />
                                 <span asp-validation-for="FoodAmount" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group my-3">
-                                <label asp-for="Quantity" class="control-label"></label>
-                                <input asp-for="Quantity" class="form-control" />
+                                <label asp-for="Quantity" class="form-label"></label>
+                                <input asp-for="Quantity" class="form-control form-control-sm my-2" />
                                 <span asp-validation-for="Quantity" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group my-3">
-                    <label asp-for="FoodDesc" class="control-label"></label>
+                    <label asp-for="FoodDesc" class="form-label"></label>
                     <textarea rows="8" asp-for="FoodDesc" type="text" class="form-control  form-control-sm my-2"></textarea>
                     <br />
                     <span asp-validation-for="FoodDesc" class="text-danger"></span>

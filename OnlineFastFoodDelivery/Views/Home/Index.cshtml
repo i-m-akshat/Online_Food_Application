@@ -18,10 +18,10 @@
                         Search For the Food
                     </h2>
                     <div class="col-md-10 col-sm-10 col-10">
-                        <input type="search" class="form-control " style="border-radius:2rem" />
+                        <input type="search" class="form-control" id="tags" style="border-radius:2rem" />
                     </div>
                     <div class="col-md-2 col-sm-1 col-1">
-                        <a role="button" class="btn  btn-outline-light">Search</a>
+                        <a role="button" class="btn  btn-outline-light" onclick="goToFoodDetails()">Search</a>
                     </div>
                 </div>
 
@@ -75,22 +75,22 @@
                 foreach(var category in Model.TopCategories)
                 {
 
-                    <div class="TopFoodContainer">
-                        @* <div class="card-body">*@
-                        <a target="_blank" role="button" asp-asp-controller="Home" asp-action="Foods" asp-route-CatID="@category.CatId">
-                            <img src="data:image/png;base64,@Convert.ToBase64String(category.IconImage)" class="img-fluid TopFoodImg" />
+                                    <div class="TopFoodContainer">
+                                        @* <div class="card-body">*@
+                                        <a target="_blank" role="button" asp-asp-controller="Home" asp-action="Foods" asp-route-CatID="@category.CatId">
+                                            <img src="data:image/png;base64,@Convert.ToBase64String(category.IconImage)" class="img-fluid TopFoodImg" />
 
-                            <div class="txtArea">
-                                <div class="TopFoodtxt">
-                                    <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
-                                        @category.CatName</h3>
-                            <p>
-                               @category.CatDesc
-                            </p>
-                        </div>
-                        </div>
-                        </a>
-                    </div>
+                                            <div class="txtArea">
+                                                <div class="TopFoodtxt">
+                                                    <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                                        @category.CatName</h3>
+                                            <p>
+                                               @category.CatDesc
+                                            </p>
+                                        </div>
+                                        </div>
+                                        </a>
+                                    </div>
                   }
                 
             }
@@ -107,9 +107,26 @@
                 
                     @foreach (var Subcat in Model.SubCategories)
                     {
-                    <div class="col-md-2">
-                        <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light my-3 " asp-asp-controller="Home" asp-action="Foods" asp-route-SubCatID="@Subcat.SubCatid">@Subcat.SubCatName</a></center>
+                    <div class="TopFoodContainer">
+                        @* <div class="card-body">*@
+                        <a target="_blank" role="button" asp-asp-controller="Home" asp-action="Foods" asp-route-SubCatID="@Subcat.SubCatid">
+                            <img src="data:image/png;base64,@Convert.ToBase64String(Subcat.IconImg)" class="img-fluid TopFoodImg" />
+
+                            <div class="txtArea">
+                                <div class="TopFoodtxt">
+                                    <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                        @Subcat.SubCatName
+                                    </h3>
+                                    <p>
+                                        @Subcat.SubCatDescription
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
+                   @*  <div class="col-md-2">
+                        <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light my-3 " asp-asp-controller="Home" asp-action="Foods" asp-route-SubCatID="@Subcat.SubCatid">@Subcat.SubCatName</a></center>
+                    </div> *@
                     }
                
                 
@@ -130,28 +147,28 @@
             @{
                 foreach (var foodType in Model.FoodTypes)
                 {
-                    <div class="col-md-4 col-sm-8 mx-2">
-                        <div class="_cardFoodType card d-flex align-items-stretch" style="background-color: #121212;">
-                            @* <div class="card-body">*@
-                            
-                                <img src="data:image/png;base64,@Convert.ToBase64String(foodType.FoodTypeImg)" class="card-img" style="border-radius:2rem;" />
+                                    <div class="col-md-4 col-sm-8 mx-2">
+                                        <div class="_cardFoodType card d-flex align-items-stretch" style="background-color: #121212;">
+                                            @* <div class="card-body">*@
+                                            
+                                                <img src="data:image/png;base64,@Convert.ToBase64String(foodType.FoodTypeImg)" class="card-img" style="border-radius:2rem;" />
 
-                            <div class="_cardFoodTypeBody card-body text-white flex-column" >
-                                  
-                                        <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
-                                            @foodType.FoodTypeName
-                                        </h3>
-                                        @*<p>
+                                            <div class="_cardFoodTypeBody card-body text-white flex-column" >
+                                                  
+                                                        <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                                            @foodType.FoodTypeName
+                                                        </h3>
+                                                        @*<p>
                                             @foodType.FoodTypeDesc
                                         </p>*@
 
-                                <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light mt-auto" asp-asp-controller="Home" asp-action="Foods" asp-route-FoodTypeID="@foodType.FoodTypeId">View More</a></center>
-                                
-                                </div>
-                            
-                           
-                        </div>
-                    </div>
+                                                <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light mt-auto" asp-asp-controller="Home" asp-action="Foods" asp-route-FoodTypeID="@foodType.FoodTypeId">View More</a></center>
+                                                
+                                                </div>
+                                            
+                                           
+                                        </div>
+                                    </div>
                    
                 
             }
@@ -205,48 +222,51 @@
                                 </div>
                             </div>
                         </a>
-                        @*</div>*@
+                       
                     </div>
                 }
-                <!--
-                <div class="TopFoodContainer">
-                    @*<div class="card-body">*@
-                    <a href="#">
-                        <img src="~/images/66031c94edede7cc8205dfca27b7f16a.jpg" class="d-flex  TopFoodImg" />
-                        <div class="txtArea">
-                            <div class="TopFoodtxt">
-                                <h3 class="text-center">Burgers</h3>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                    scrambled it to make a type specimen book. It has survived not only five centuries.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    @*</div>*@
-                </div>
-                <div class="TopFoodContainer">
-                    @*<div class="card-body">*@
-                    <a href="#">
-                        <div class="imgWrapper">
-                            <img src="~/images/796ba3e8547ce1671dd74ddde8d52d84.jpg" class="d-flex  TopFoodImg" />
-                        </div>
-                        <div class="txtArea">
-                            <div class="TopFoodtxt">
-                                <h3 class="text-center">Burgers</h3>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                    scrambled it to make a type specimen book. It has survived not only five centuries.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    @*</div>*@
-                </div>-->
+               
             </div>
 
         </div>
     </div>
 </div>
+
+<script>
+    function goToFoodDetails(){
+        var FoodName = $('#tags').val();
+        
+        console.log(FoodName);
+        $.ajax({
+            url: "Home/getFoodIDbyName?FoodName=" + FoodName,
+            method:"GET",
+            success:function(result){
+                console.log(result);
+                window.location.href = "Home/FoodDetails?FoodID=" + result;
+                // $.ajax({
+                //     url: "Home/FoodDetails?FoodID="+result,
+                //     method:"POST",
+                //     success: function (result) {
+                //         console.log(result);
+                //     }
+                // })
+            }
+        })
+    }
+    var availableTags;
+    $.ajax({
+        url: 'Home/getAllFoodsName',
+        type: 'GET',
+        success: function (result) {
+            availableTags = result;
+            console.log(availableTags);
+        }
+    })
+    $(function () {
+        $("#tags").autocomplete({
+            source: availableTags,
+            minLength: 1
+            
+        });
+    });
+</script>

@@ -29,7 +29,6 @@ namespace OnlineFastFoodDelivery.Controllers
         [AllowAnonymous]
         public IActionResult Login()
         {
-            
            return View();
            
         }

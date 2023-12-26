@@ -68,6 +68,36 @@ namespace BLL.Implementation
                 throw;
             }
         }
+        public async Task<List<FoodType>> GetAllFoodTypesForHomepage()
+        {
+            try
+            {
+                await using (var _context = new Online_Food_ApplicationContext())
+                {
+                    List<FoodType> list = new List<FoodType>();
+                    list = _context.TblFoodTypes.Where(x => x.IsActive == true).Select(
+                        x => new FoodType()
+                        {
+                            FoodTypeId = x.FoodTypeId,
+                            FoodTypeImg = x.FoodTypeImg,
+                            FoodTypeName = x.FoodType,
+                            IsActive = x.IsActive,
+                            FoodTypeDesc = x.FoodTypeDesc,
+                            //SubCatid = (int)x.SubCatid,
+                            //SubCategoryName = x.SubCat.SubCatName,
+                            //CatId = x.CatId,
+                            //CategoryName = x.Cat.CatName
+                        }
+                        ).Take(2).ToList();
+                    return list;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public async Task<List<Category>> GetCategoriesForHomepage()
         {
            await using (var _Context=new Online_Food_ApplicationContext())
@@ -223,6 +253,7 @@ namespace BLL.Implementation
                         UserName = x.UserName,
                         Image = x.Image,
                         PhoneNumber = x.PhoneNumber,
+                        FullAddress=x.FullAddress,
                         IsActive = x.IsActive
                     }).FirstOrDefault();
                     return userdetails;
@@ -855,6 +886,23 @@ namespace BLL.Implementation
                     ShowOnHomePage = x.ShowOnHomePage
                 }).ToList();
                 return listFood;
+            }
+        }
+        public async Task<List<string>> getAllFoodNames()
+        {
+            await using (var _context=new Online_Food_ApplicationContext())
+            {
+                List<String> foodNames= new List<String>();
+                foodNames = _context.TblFoods.Select(x => x.FoodName).ToList();
+                return foodNames;   
+            }
+        }
+        public async Task<long> getFoodByName(string Name)
+        {
+            await using (var _context = new Online_Food_ApplicationContext())
+            {
+                long FoodID = _context.TblFoods.Where(x => x.FoodName == Name).Select(x =>x.FoodId).FirstOrDefault();
+                return FoodID;
             }
         }
     }

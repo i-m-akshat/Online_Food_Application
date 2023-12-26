@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@* <script type="text/javascript">
+    var mainID;
+
+    let openModal = (itemID) => {
+        debugger;
+        var txtBox = document.getElementById('itemID');
+        txtBox.value = itemID;
+        $('#staticBackdrop_Order').modal('show');
+        window.location.reload();
+    }
+    let DeliverItem = () => {
+        var itemID = $('#itemID').val();
+        $.ajax({
+            url: 'Order/Delivery?id=' + itemID,
+            type: 'POST',
+            //data: { id: itemID },
+            success: function (result) {
+                $('#staticBackdrop').modal('hide');
+                window.location.reload();
+            }, do
+                error: function(error) {
+                console.log(error);
+            }
+        })
+    }
+</script> *@
+
+<div class="row justify-content-center align-items-center mt-4">
+    <h1 class="row-header text-center">List Of All Foods</h1>
+    @* <div class="modal fade" id="staticBackdrop_Order" data-bs-backdrop="static"
+         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Do You Really Want To Update This ?
+                    <input id="itemID" type="hidden" name="itemID" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i class="fa-regular fa-circle-xmark"></i></button>
+                    <button class="btn btn-sm btn-success my-3" title="Update" onclick="DeliverItem()"><i class="fa-regular fa-circle-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div> *@
+    <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
+        <div class="card-body px-2">
+            @* <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Food </a> *@
+            <table class="table table-responsive table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderStatus)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProcessedBy_Name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProcessedDate)
+                        </th>
+
+                     
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderStatus)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProcessedBy_Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProcessedDate)
+                            </td>
+
+                          
+                            <td>
+                                <a role="button" class="btn btn-sm btn-danger" title="Cancel" asp-route-id="@item.OrderId" asp-action="Cancelled" asp-controller="Order"><i class="fa-regular fa-circle-xmark"></i></a>
+                                <a role="button" class="btn btn-sm btn-info" title="Waiting To be picked" asp-route-id="@item.OrderId" asp-action="Waiting" asp-controller="Order"><i class="fa-solid fa-hourglass-end"></i></a>
+                                @* <a role="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-truck-ramp-box"></i></a> *@
+                                <a role="button" class="btn btn-sm btn-warning" title="Picked Up by Delivery Person" asp-route-id="@item.OrderId" asp-action="Picked" asp-controller="Order"><i class="fa-solid fa-people-carry-box"></i></a>
+                                <a role="button" class="btn btn-sm btn-primary" asp-route-id="@item.OrderId" title="OutForDelivery" asp-action="OutForDelivery" asp-controller="Order"><i class="fa-solid fa-truck-fast"></i></a>
+                                @* <a role="button" class="btn btn-sm btn-info"><i class="fa-solid fa-route"></i></a> *@
+                                <a role="button" class="btn btn-sm btn-success" title="Delivered" asp-route-id="@item.OrderId" asp-action="Deliver" asp-controller="Order"><i class="fa-regular fa-circle-check"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

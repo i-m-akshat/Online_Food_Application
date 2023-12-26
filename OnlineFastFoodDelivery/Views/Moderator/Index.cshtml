@@ -103,10 +103,20 @@
                             </td>
                             <td>
                                 <a asp-action="Add_Edit" class="btn btn-warning my-3" title="Edit" asp-route-id=@item.AdminId><i class="fa-regular fa-pen-to-square"></i></a>
-
+                                @if ((bool)item.IsActive)
+                                {
                                 <a asp-action="Delete" class="btn btn-danger my-3" title="Activate/Deactivate" asp-route-id=@item.AdminId>
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Delete" class="btn btn-success my-3" title="Activate/Deactivate" asp-route-id=@item.AdminId>
+                                        <i class="fa-solid fa-check-double"></i>
+                                    </a>
+                                    }
+                                
                             </td>
                         </tr>
                     }

@@ -49,6 +49,7 @@ namespace BLL.Implementation
 
                     OrderId = order_id + 1,
                     UserId = order.UserId,
+                    PaymentId=order.PaymentId,
                     OrderDate = Convert.ToDateTime(DateTime.Today),
                     TotalAmount = order.TotalAmount,
                     ProcessedBy = order.ProcessedBy,
@@ -61,7 +62,7 @@ namespace BLL.Implementation
             }
         }
 
-        public async Task<bool> Checkout_OrderDetails(OrderDetail orderDetails)
+        public async Task<int> Checkout_OrderDetails(OrderDetail orderDetails)
         {
             await using (var _context = new Online_Food_ApplicationContext())
             {
@@ -70,7 +71,7 @@ namespace BLL.Implementation
                 {
 
                     OrderDetailsId = orderDetails_id + 1,
-                    OrderId = orderDetails.OrderId,
+                    OrderId=orderDetails.OrderId,
                     FoodId = orderDetails.FoodId,
                     Amount = orderDetails.Amount,
                     NoOfServings = orderDetails.NoOfServings,
@@ -78,11 +79,11 @@ namespace BLL.Implementation
                 };
                 _context.TblOrderDetails.Add(tbl);
                 _context.SaveChanges();
-                return true;
+                return (int)tbl.OrderDetailsId;
             }
         }
 
-        public async Task<bool> CheckOut_PaymentDetails(PaymentDetail payDetails)
+        public async Task<int> CheckOut_PaymentDetails(PaymentDetail payDetails)
         {
             await using (var _context = new Online_Food_ApplicationContext())
             {
@@ -90,16 +91,15 @@ namespace BLL.Implementation
                 TblPaymentDetail tbl = new TblPaymentDetail
                 {
                     PaymentId = payment_id + 1,
-                    OrderId=payDetails.OrderId,
                     Amount=payDetails.Amount,
                     PaidBy=payDetails.PaidBy,
                     PaymentDate= payDetails.PaymentDate,
                     ProcessedBy=payDetails.ProcessedBy,
-                    TransactionId=payDetails.TransactionID
+                    TransactionId=payDetails.TransactionId
                 };
                 _context.TblPaymentDetails.Add(tbl);
                 _context.SaveChanges();
-                return true;
+                return (int)tbl.PaymentId;
             }
         }
     }

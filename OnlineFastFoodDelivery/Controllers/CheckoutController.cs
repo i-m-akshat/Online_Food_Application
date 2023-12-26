@@ -91,39 +91,41 @@ namespace OnlineFastFoodDelivery.Controllers
             var paymentService = new PaymentIntentService();
             var payment = paymentService.Get(session.PaymentIntentId);
             string paymentid = payment.Id;
-            Order order = new Order
-            {
-                UserId = (int)HttpContext.Session.GetInt32("UserID"),
-                ProcessedBy = (int)HttpContext.Session.GetInt32("UserID"),
-                OrderStatus = "In Process",
-                TotalAmount = (payment.Amount/100)
-            };
-            int order_id=await DAL.Checkout_Order(order);
             List<Cart> listCart = await _cartDAL.GetAllItems((int)UserID);
             PaymentDetail payDetails = new PaymentDetail
             {
-                OrderId = order_id,
+                
                 Amount = payment.Amount/100,
                 PaidBy = session.CustomerDetails.Name,
                 PaymentDate= Convert.ToDateTime(DateTime.Today),
                 ProcessedBy=(long)UserID,
-                TransactionID=payment.Id
+                TransactionId=payment.Id
             };
-            bool isSuccess=await DAL.CheckOut_PaymentDetails(payDetails);
-            foreach(var item in listCart)
+            int _paymentId=await DAL.CheckOut_PaymentDetails(payDetails);
+            Order order = new Order
+            {
+                PaymentId=_paymentId,
+                UserId = (int)HttpContext.Session.GetInt32("UserID"),
+                ProcessedBy = (int)HttpContext.Session.GetInt32("UserID"),
+                OrderStatus = "In Process",
+                TotalAmount = (payment.Amount / 100)
+            };
+            int OrderID = await DAL.Checkout_Order(order);
+            foreach (var item in listCart)
             {
                 OrderDetail orderDetails = new OrderDetail
                 {
-                    OrderId=order_id,
-                    FoodId=item.FoodId, 
+                    OrderId= OrderID,
+                    FoodId =item.FoodId, 
                     Amount=item.FoodAmount,
                     TotalAmount=item.TotalFoodPrice,    
                     NoOfServings=(short)item.Quantity
                 };
-                bool isSaved = await DAL.Checkout_OrderDetails(orderDetails);
+                int _orderDetailsID = await DAL.Checkout_OrderDetails(orderDetails);
                 DAL.ChangeCartStatus((int)UserID, item.CartId);
                 DAL.changeFoodQuantity((int)item.FoodId,item.Quantity);
             }
+            
             CartDAO cartDAL = new CartDao();
             int CartNumber = await cartDAL.GetTotalNumberOFItemsInCart((int)UserID);
             if (CartNumber == 0)
@@ -141,7 +143,7 @@ namespace OnlineFastFoodDelivery.Controllers
 
             //string Content=$"<html><body><h1>Thanks for your order, {session.Customer}!</h1></body></html>";
 
-            if (session.PaymentStatus == "paid"&&order_id!=0&& isSuccess)
+            if (session.PaymentStatus == "paid")
             {
                 TempData["Success"] = "Payment Done ! "+session.CustomerDetails.Name;
                 return View();

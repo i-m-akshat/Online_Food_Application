@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 
 namespace BLL.Implementation
@@ -107,6 +108,60 @@ namespace BLL.Implementation
             {
                 string HashPassword = _context.TblUsers.Where(x => x.UserName == Username).Select(x => x.Password).FirstOrDefault();
                 return HashPassword;
+            }
+        }
+
+        public async Task<List<Order>> GetAllOrders(int UserID)
+        {
+            try
+            {
+                await using (var _context= new Online_Food_ApplicationContext())
+                {
+                    List<Order> listorder = _context.TblOrders.Where(x => x.UserId == UserID).Select(x => new Order
+                    {
+                        OrderId=x.OrderId,
+                        OrderDate=x.OrderDate,
+                        OrderStatus=x.OrderStatus,
+                        UserId=x.UserId
+                    }).ToList();
+                        return listorder;
+                   
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<List<OrderDetail>> GetAllOrderDetails(int UserID)
+        {
+            try
+            {
+                await using (var _context = new Online_Food_ApplicationContext())
+                {
+                    List<OrderDetail> listorderDetails = _context.TblOrderDetails.Where(x => x.Order.UserId==UserID).Select(x => new OrderDetail
+                    {
+                        OrderId = x.OrderId,
+                        OrderDetailsId = x.OrderDetailsId,
+                        FoodId=x.FoodId,
+                        FoodName=x.Food.FoodName,
+                        OrderStatus=x.Order.OrderStatus,
+                        OrderDate=x.Order.OrderDate,
+                        Amount=x.Amount,
+                        NoOfServings=x.NoOfServings,
+                        TotalAmount=x.TotalAmount
+                    }).ToList();
+                    return listorderDetails;
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

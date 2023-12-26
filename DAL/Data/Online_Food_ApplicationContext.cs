@@ -317,6 +317,8 @@ namespace OnlineFastFoodDelivery
                     .IsUnicode(false)
                     .HasColumnName("order_status");
 
+                entity.Property(e => e.PaymentId).HasColumnName("payment_id");
+
                 entity.Property(e => e.ProcessedBy).HasColumnName("processed_by");
 
                 entity.Property(e => e.ProcessedDate)
@@ -328,6 +330,11 @@ namespace OnlineFastFoodDelivery
                     .HasColumnName("total_amount");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
+
+                entity.HasOne(d => d.Payment)
+                    .WithMany(p => p.TblOrders)
+                    .HasForeignKey(d => d.PaymentId)
+                    .HasConstraintName("FK_tbl_Order_tbl_PaymentDetails");
 
                 entity.HasOne(d => d.ProcessedByNavigation)
                     .WithMany(p => p.TblOrderProcessedByNavigations)
@@ -371,7 +378,6 @@ namespace OnlineFastFoodDelivery
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.TblOrderDetails)
                     .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbl_orderDetails_tbl_Order");
             });
 
@@ -389,8 +395,6 @@ namespace OnlineFastFoodDelivery
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("amount");
 
-                entity.Property(e => e.OrderId).HasColumnName("order_id");
-
                 entity.Property(e => e.PaidBy)
                     .HasMaxLength(100)
                     .IsUnicode(false)
@@ -406,12 +410,6 @@ namespace OnlineFastFoodDelivery
                     .HasMaxLength(500)
                     .IsUnicode(false)
                     .HasColumnName("transaction_id");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.TblPaymentDetails)
-                    .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_tbl_PaymentDetails_tbl_Order");
 
                 entity.HasOne(d => d.ProcessedByNavigation)
                     .WithMany(p => p.TblPaymentDetails)

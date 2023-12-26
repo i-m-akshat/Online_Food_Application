@@ -58,7 +58,7 @@ namespace BLL.Implementation
             {
                 await using(var _context= new Online_Food_ApplicationContext())
                 {
-                   TblCart tbl =   _context.TblCarts.Where(x=>x.FoodId==FoodID&&x.UserId==UserID).Take(1).FirstOrDefault();
+                   TblCart tbl =   _context.TblCarts.Where(x=>x.FoodId==FoodID&&x.UserId==UserID).FirstOrDefault();
                    
                     if (tbl != null)
                     {

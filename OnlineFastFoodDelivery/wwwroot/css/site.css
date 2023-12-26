@@ -12,6 +12,16 @@ html {
     position: relative;
     min-height: 100%;
 }
+::selection {
+    background-color:white;
+    color: #121212;
+}
+input[type="search"]::selection {
+    background-color: #121212;
+    color:whitesmoke;
+}
+
+
 .btn{
     border-radius:2.5rem;
 }
@@ -23,6 +33,7 @@ html {
 }
 #Body {
     background-color: #121212;
+    
 }
 .navbar-solid {
         background-color: whitesmoke;

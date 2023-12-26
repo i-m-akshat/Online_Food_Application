@@ -95,7 +95,7 @@ namespace OnlineFastFoodDelivery.Controllers
 
 
         }
-        [HttpGet]
+        
         public async Task<IActionResult> RemoveItem(int ItemID)
         {
             if (ItemID != 0 || ItemID != null)
@@ -114,8 +114,10 @@ namespace OnlineFastFoodDelivery.Controllers
                     {
                         HttpContext.Session.SetInt32("CartNumber", (int)CartNumber);
                     }
+                    
                     TempData["Success"] = "Item Removed From the Cart";
                     return RedirectToAction("Index", "Cart");
+
                 }
                 else
                 {

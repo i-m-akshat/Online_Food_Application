@@ -7,12 +7,14 @@ using BLL.Implementation;
 using Models.ViewModel;
 using System.Collections.Generic;
 
+
 namespace OnlineFastFoodDelivery.Controllers
 {
     
     public class HomeController : Controller
     {
         HomePageDAO DAL = new HomePageDao();
+        UserLogin userDAL= new UserLoginDao(); 
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -31,7 +33,7 @@ namespace OnlineFastFoodDelivery.Controllers
             List<FoodType> foodTypes = new List<FoodType>();
             categories = await DAL.GetAllCategories();
             topcategories = await DAL.GetCategoriesForHomepage() ;
-            foodTypes = await DAL.GetAllFoodTypes();
+            foodTypes = await DAL.GetAllFoodTypesForHomepage();
             subCategories = await DAL.GetSubCategoriesForHomePage();
             foods = await DAL.GetFoodsForHomepage();
             var _viewModel = new HomePageViewModel()
@@ -108,13 +110,27 @@ namespace OnlineFastFoodDelivery.Controllers
             model = await DAL.GetFoodByID(FoodID);
             return View(model);
         }
+        
         public async Task<IActionResult> UserProfile(int id)
         {
             try
             {
-                User user = new User();
-                user = await DAL.GetUserDetails(id);
-                return View(user);
+                User user = await DAL.GetUserDetails(id);
+
+                List<Order> listOrders = await userDAL.GetAllOrders((int)id);
+                List<OrderDetail> listOrderDetails = new List<OrderDetail>();
+                //foreach (Order order in listOrders) 
+                //{
+                    listOrderDetails = await userDAL.GetAllOrderDetails((int)id);
+                //}
+                User_ViewModel viewModel = new User_ViewModel()
+                { 
+                    _user=user,
+                    Orders = listOrders,
+                    OrderDetails=listOrderDetails
+                };
+               
+                return View(viewModel);
             }
             catch (Exception)
             {
@@ -122,6 +138,7 @@ namespace OnlineFastFoodDelivery.Controllers
                 throw;
             }
         }
+        
         public IActionResult Privacy()
         {
             return View();
@@ -152,5 +169,16 @@ namespace OnlineFastFoodDelivery.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public async Task<List<String>> getAllFoodsName()
+        {
+            List<string> listFoodNames = await DAL.getAllFoodNames();
+            return listFoodNames;   
+        }
+        public async Task<long> getFoodIDbyName(string FoodName)
+        {
+            long FoodID=await DAL.getFoodByName(FoodName);
+            return FoodID;
+        }
+        
     }
 }

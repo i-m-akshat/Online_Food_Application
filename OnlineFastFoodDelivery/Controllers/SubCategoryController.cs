@@ -49,19 +49,46 @@ namespace OnlineFastFoodDelivery.Controllers
         [HttpPost]
         public async Task<IActionResult> Add_Edit(int? id, SubCategory subcat)
         {
-            if (HttpContext.Request.Form.Files.Count > 0)
+            if (HttpContext.Request.Form.Files.Count > 0) 
             {
                 NecessaryFunctions nec = new NecessaryFunctions();
-                subcat.imageFile_Banner = HttpContext.Request.Form.Files[0];
-                subcat.imageFile_Icon = HttpContext.Request.Form.Files[1];
-                var extension_Banner = Path.GetExtension(subcat.imageFile_Banner.FileName);
-                var extension_Icon = Path.GetExtension(subcat.imageFile_Icon.FileName);
-                if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()) && ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                if (HttpContext.Request.Form.Files.Count == 1)
                 {
-                    subcat.BannerImg = nec.ImageSave(subcat.BannerImg, subcat.imageFile_Banner);
-                    subcat.IconImg = nec.ImageSave(subcat.IconImg, subcat.imageFile_Icon);
+                    if (subcat.imageFile_Banner != null)
+                    {
+                        subcat.imageFile_Banner = HttpContext.Request.Form.Files[0];
+                        var extension_Banner = Path.GetExtension(subcat.imageFile_Banner.FileName);
+
+                        if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()))
+                        {
+                            subcat.BannerImg = nec.ImageSave(subcat.BannerImg, subcat.imageFile_Banner);
+
+                        }
+                    }
+                    else if (subcat.imageFile_Icon != null)
+                    {
+                        subcat.imageFile_Icon = HttpContext.Request.Form.Files[0];
+                        var extension_Icon = Path.GetExtension(subcat.imageFile_Icon.FileName);
+                        if (ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                        {
+                            subcat.IconImg = nec.ImageSave(subcat.IconImg, subcat.imageFile_Icon);
+                        }
+                    }
+                }
+                else
+                {
+                    subcat.imageFile_Banner = HttpContext.Request.Form.Files[0];
+                    subcat.imageFile_Icon = HttpContext.Request.Form.Files[1];
+                    var extension_Banner = Path.GetExtension(subcat.imageFile_Banner.FileName);
+                    var extension_Icon = Path.GetExtension(subcat.imageFile_Icon.FileName);
+                    if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()) && ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                    {
+                        subcat.BannerImg = nec.ImageSave(subcat.BannerImg, subcat.imageFile_Banner);
+                        subcat.IconImg = nec.ImageSave(subcat.IconImg, subcat.imageFile_Icon);
+                    }
                 }
             }
+            
             if (id == null)
             {
                 subcat.CreatedBy = (long)(HttpContext.Session.GetInt32("SessionID"));

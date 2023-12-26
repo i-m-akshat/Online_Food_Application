@@ -77,14 +77,42 @@ namespace OnlineFastFoodDelivery.Controllers
         {
             if (HttpContext.Request.Form.Files.Count > 0)
             {
-                food.imageFile_Icon = HttpContext.Request.Form.Files[0];
-                food.imageFile_Banner = HttpContext.Request.Form.Files[1]; 
-                var extension_Banner = Path.GetExtension(food.imageFile_Banner.FileName);
-                var extension_Icon = Path.GetExtension(food.imageFile_Icon.FileName);
-                if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()) && ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                NecessaryFunctions nec = new NecessaryFunctions();
+                if (HttpContext.Request.Form.Files.Count == 1)
                 {
-                    food.BannerImage = nec.ImageSave(food.BannerImage, food.imageFile_Banner);
-                    food.IconImage = nec.ImageSave(food.IconImage, food.imageFile_Icon);
+                    if (food.imageFile_Banner != null)
+                    {
+                        food.imageFile_Banner = HttpContext.Request.Form.Files[0];
+                        var extension_Banner = Path.GetExtension(food.imageFile_Banner.FileName);
+
+                        if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()))
+                        {
+                            food.BannerImage = nec.ImageSave(food.BannerImage, food.imageFile_Banner);
+
+                        }
+                    }
+                    else if (food.imageFile_Icon != null)
+                    {
+                        food.imageFile_Icon = HttpContext.Request.Form.Files[0];
+                        var extension_Icon = Path.GetExtension(food.imageFile_Icon.FileName);
+                        if (ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                        {
+
+                            food.IconImage = nec.ImageSave(food.IconImage, food.imageFile_Icon);
+                        }
+                    }
+                }
+                else
+                {
+                    food.imageFile_Icon = HttpContext.Request.Form.Files[0];
+                    food.imageFile_Banner = HttpContext.Request.Form.Files[1];
+                    var extension_Banner = Path.GetExtension(food.imageFile_Banner.FileName);
+                    var extension_Icon = Path.GetExtension(food.imageFile_Icon.FileName);
+                    if (ImageExtensions.Contains(extension_Banner.ToUpperInvariant()) && ImageExtensions.Contains(extension_Icon.ToUpperInvariant()))
+                    {
+                        food.BannerImage = nec.ImageSave(food.BannerImage, food.imageFile_Banner);
+                        food.IconImage = nec.ImageSave(food.IconImage, food.imageFile_Icon);
+                    }
                 }
             }
             if (id != null) 
