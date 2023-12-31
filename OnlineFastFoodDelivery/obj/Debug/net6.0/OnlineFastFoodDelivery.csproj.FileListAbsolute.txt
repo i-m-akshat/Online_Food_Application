@@ -254,3 +254,12 @@ D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\BLL
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\DAL.pdb
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Models.pdb
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Stripe.net.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\MailKit.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\MimeKit.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\NETCore.MailKit.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll

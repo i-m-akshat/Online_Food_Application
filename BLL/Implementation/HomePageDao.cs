@@ -120,7 +120,7 @@ namespace BLL.Implementation
         {
             await using (var _context = new Online_Food_ApplicationContext())
             {
-                List<Food> list = _context.TblFoods.Where(x => x.IsActive == true).Select(x => new Food
+                List<Food> list = _context.TblFoods.Where(x => x.IsActive == true &&x.Quantity>0).Select(x => new Food
                 {
                     FoodId = x.FoodId,
                     FoodName = x.FoodName,
@@ -146,7 +146,7 @@ namespace BLL.Implementation
         {
             await using (var _context = new Online_Food_ApplicationContext())
             {
-                List<Food> list = _context.TblFoods.Where(x => x.IsActive == true).Select(x => new Food
+                List<Food> list = _context.TblFoods.Where(x => x.IsActive == true && x.Quantity > 0).Select(x => new Food
                 {
                     FoodId = x.FoodId,
                     FoodName = x.FoodName,
@@ -278,7 +278,7 @@ namespace BLL.Implementation
 
                         if (listFoodType.Count != 0)
                         {
-                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -299,7 +299,7 @@ namespace BLL.Implementation
                         }
                         else
                         {
-                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -322,7 +322,7 @@ namespace BLL.Implementation
                     }
                     else if (listFoodType.Count != 0)
                     {
-                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -342,7 +342,7 @@ namespace BLL.Implementation
                         }).ToList();
                     } else
                     {
-                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -368,7 +368,7 @@ namespace BLL.Implementation
                     {
                         if (listFoodType.Count != 0)
                         {
-                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -389,7 +389,7 @@ namespace BLL.Implementation
                         }
                         else
                         {
-                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -411,7 +411,7 @@ namespace BLL.Implementation
                     }
                     else if (listFoodType.Count != 0)
                     {
-                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -433,7 +433,7 @@ namespace BLL.Implementation
                     }
                     else
                     {
-                        listFood = _context.TblFoods.Where(x =>  listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x =>  listSubCat.Contains(x.SubCatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -459,7 +459,7 @@ namespace BLL.Implementation
                     {
                         if (listCat.Count != 0)
                         {
-                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -480,7 +480,7 @@ namespace BLL.Implementation
                         }
                         else
                         {
-                            listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                            listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                             {
                                 FoodId = x.FoodId,
                                 FoodName = x.FoodName,
@@ -501,7 +501,7 @@ namespace BLL.Implementation
                         }
                     } else if (listCat.Count != 0)
                     {
-                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -522,7 +522,7 @@ namespace BLL.Implementation
                     }
                     else
                     {
-                        listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId)  && x.IsActive == true).Select(x => new Food
+                        listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId)  && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                         {
                             FoodId = x.FoodId,
                             FoodName = x.FoodName,
@@ -544,7 +544,7 @@ namespace BLL.Implementation
                 }
                 else
                 {
-                    listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
+                    listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true && x.Quantity > 0).Select(x => new Food
                     {
                         FoodId = x.FoodId,
                         FoodName = x.FoodName,
@@ -563,209 +563,7 @@ namespace BLL.Implementation
                         ShowOnHomePage = x.ShowOnHomePage
                     }).ToList();
                 }
-                //if (listCat.Count==0&& listFoodType.Count!=0)
-                //{
-                //    if (listSubCat.Count == 0)
-                //    {
-                //         listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId)  && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //    else
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listSubCat.Contains((int)x.SubCatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //}
-                //else if (listSubCat.Count == 0&& listFood.Count != 0)
-                //{
-                //    if (listCat.Count == 0)
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listFoodType.Contains((int)x.FoodTypeId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //    else
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listFoodType.Contains(x.FoodTypeId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                    
-                //}
-                //else if (listFoodType.Count == 0&&listSubCat.Count!=0)
-                //{
-                //    if (listCat.Count == 0)
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listSubCat.Contains((int)x.SubCatId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //    else
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                    
-                // }
-                //else if (listCat.Count != 0 && listFoodType.Count == 0) 
-                //{
-                //    if (listSubCat.Count == 0)
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //    else
-                //    {
-                //        listFood = _context.TblFoods.Where(x => listSubCat.Contains((int)x.SubCatId) && listCat.Contains((int)x.CatId) && x.IsActive == true).Select(x => new Food
-                //        {
-                //            FoodId = x.FoodId,
-                //            FoodName = x.FoodName,
-                //            FoodDesc = x.FoodDesc,
-                //            FoodAmount = x.FoodAmount,
-                //            Quantity = (int)(x.Quantity),
-                //            FoodTypeId = x.FoodTypeId,
-                //            FoodTypeName = x.FoodType.FoodType,
-                //            SubCatId = x.SubCatId,
-                //            SubCategoryName = x.SubCat.SubCatName,
-                //            CatId = x.CatId,
-                //            CategoryName = x.Cat.CatName,
-                //            IsActive = x.IsActive,
-                //            BannerImage = x.BannerImage,
-                //            IconImage = x.IconImage,
-                //            ShowOnHomePage = x.ShowOnHomePage
-                //        }).ToList();
-                //    }
-                //}
-                //else
-                //{
-                //    listFood = _context.TblFoods.Where(x => listCat.Contains((int)x.CatId) && listSubCat.Contains(x.SubCatId) && listFoodType.Contains(x.FoodTypeId)&& x.IsActive == true).Select(x => new Food
-                //    {
-                //        FoodId = x.FoodId,
-                //        FoodName = x.FoodName,
-                //        FoodDesc = x.FoodDesc,
-                //        FoodAmount = x.FoodAmount,
-                //        Quantity = (int)(x.Quantity),
-                //        FoodTypeId = x.FoodTypeId,
-                //        FoodTypeName = x.FoodType.FoodType,
-                //        SubCatId = x.SubCatId,
-                //        SubCategoryName = x.SubCat.SubCatName,
-                //        CatId = x.CatId,
-                //        CategoryName = x.Cat.CatName,
-                //        IsActive = x.IsActive,
-                //        BannerImage = x.BannerImage,
-                //        IconImage = x.IconImage,
-                //        ShowOnHomePage = x.ShowOnHomePage
-                //    }).ToList();
-                //}
+                
 
                     return listFood;
                 }

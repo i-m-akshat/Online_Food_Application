@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using Models;
 using OnlineFastFoodDelivery;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,7 @@ namespace BLL.Implementation
 {
     public class UserLoginDao : UserLogin
     {
+
         public async Task<User> GetUserDetails(string UserID, string Password)
         {
             throw new NotImplementedException();
@@ -37,6 +39,7 @@ namespace BLL.Implementation
                     tbl.FullAddress = user.FullAddress;
                     tbl.FullName = user.FullName;
                     tbl.Image = user.Image;
+                    tbl.Email = user.Email;
                     tbl.PhoneNumber = user.PhoneNumber;
                     _context.TblUsers.Add(tbl);
                     _context.SaveChanges();
@@ -61,6 +64,7 @@ namespace BLL.Implementation
                         Password = x.Password,
                         UserId = x.UserId,
                         UserName = x.UserName,
+                        Email=x.Email,
                         Image = x.Image,
                         PhoneNumber = x.PhoneNumber,
                         IsActive = x.IsActive
@@ -162,6 +166,86 @@ namespace BLL.Implementation
             {
 
                 throw;
+            }
+        }
+
+        public async Task<User> GetUserByUsername(string Username)
+        {
+            try
+            {
+                await using (var _context=new Online_Food_ApplicationContext())
+                {
+                    User user= _context.TblUsers.Where(x => x.UserName == Username).Select(x => new User()
+                    {
+                        FullName = x.FullName,
+                        Password = x.Password,
+                        UserId = x.UserId,
+                        UserName = x.UserName,
+                        Email = x.Email,
+                        Image = x.Image,
+                        PhoneNumber = x.PhoneNumber,
+                        IsActive = x.IsActive
+                    }).FirstOrDefault();
+                    if (user != null)
+                    {
+                        return user;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (ArgumentNullException)
+            {
+
+                return null;
+            }
+            
+        }
+        public async Task<String> GenerateOTP()
+        {
+            try
+            {
+                string OTP = string.Empty;
+                string sTempChars = string.Empty;
+                Random random = new Random();
+                for (int i = 0; i < 4; i++)
+                {
+                    int p = random.Next(0, 10);
+                    sTempChars += p.ToString();
+                }
+                OTP = sTempChars;
+                return OTP;
+            }
+            catch (Exception)
+            {
+               
+                    return null;
+            }
+        }
+
+        public async Task<bool> UpdatePassword(int UserID,User user)
+        {
+            try
+            {
+                using (var _context = new Online_Food_ApplicationContext())
+                {
+                    TblUser tbl =await _context.TblUsers.FindAsync((long)UserID);
+                    if (tbl != null)
+                    {
+                        tbl.Password= user.Password;
+                        tbl.Salt = user.Salt;
+                    }
+                    _context.TblUsers.Update(tbl);
+                    _context.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
             }
         }
     }

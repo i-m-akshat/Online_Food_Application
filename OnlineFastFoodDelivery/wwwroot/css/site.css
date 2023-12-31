@@ -28,21 +28,23 @@ input[type="search"]::selection {
 #UserBody {
     margin-bottom: 60px;
     overflow-x: hidden;
-    
+    /* font-family: 'Montserrat Alternates', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     background-color: #121212;
 }
 #Body {
     background-color: #121212;
-    
+    /*  font-family: 'Montserrat Alternates', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
 }
+
 .navbar-solid {
-        background-color: whitesmoke;
-        transition: background-color 1s ease 0s;
-        color: white;
-    }
+    background-color: whitesmoke;
+    transition: background-color 1s ease 0s;
+    color: white;
+}
 
 .bannerDiv {
-  
     background-image: url('../images/65babfa10a37ee049e6b556f672103e5 (1).jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -341,6 +343,16 @@ input[type="search"]::selection {
 @media only screen and (max-width:950px) and (min-width:650px){
     .TopFoodContainer {
         width:400px;
+    }
+}
+@media only screen and (max-width:600px) and (min-width:300px){
+    #_searchFood{
+        visibility:hidden
+    }
+}
+@media only screen and (max-width:950px) and (min-width:700px) {
+    #_searchFood {
+        visibility: hidden
     }
 }
 

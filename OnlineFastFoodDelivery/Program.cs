@@ -1,13 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineFastFoodDelivery;
 using Stripe;
+using Models;
+using BLL.Interfaces;
+using BLL.Implementation;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//registering the context accessor 
-var provider=builder.Services.BuildServiceProvider();
+//email Configuration
+var emailConfig = builder.Configuration.GetSection("MailSettings").Get<MailSettings>();
+builder.Services.AddSingleton(emailConfig);
+builder.Services.AddScoped<SendMailDAO, SendMailDao>();
+//DBCONtext
+var provider = builder.Services.BuildServiceProvider();
 var config=provider.GetRequiredService<IConfiguration>();
 builder.Services.AddDbContext<Online_Food_ApplicationContext>(item => item.UseSqlServer(config.GetConnectionString("con")));
 var app = builder.Build();
@@ -26,7 +34,6 @@ app.UseStaticFiles();
 app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -120,7 +120,11 @@
                                                 {
                                                     <span class="text-info">@order.OrderStatus</span>
                                                 }
-                                                
+                                                else if (order.OrderStatus == "Picked By Delivery Person")
+                                                {
+                                                    <span class="text-black-50">@order.OrderStatus</span>
+                                                }
+
 
                                             </td>
                                           @*   <td>

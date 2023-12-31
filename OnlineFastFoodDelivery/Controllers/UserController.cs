@@ -148,6 +148,84 @@ namespace OnlineFastFoodDelivery.Controllers
             }
             
         }
+        [HttpPost]
+        public async Task<User> FindUserByUsername([FromBody] string UserName)
+        {
+            User user=await DAL.GetUserByUsername(UserName);
+            if (user != null)
+            {
+                HttpContext.Session.SetInt32("Temp_UserID", Convert.ToInt32(user.UserId));
+                return user;
+            }
+            else
+            {
+                return user;
+            }
+        }
+        [HttpPost]
+        public async Task<bool> VerifyOTP([FromBody] string OTP)
+        {
+            try
+            {
+                var currentTime= DateTime.Now;
+                var creationTime = DateTime.Parse(HttpContext.Session.GetString("OTPCreationTimeStamp"));
+                if ((currentTime-creationTime).TotalSeconds<30)
+                {
+                    if (OTP == (string)HttpContext.Session.GetString("OTP"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    HttpContext.Session.Remove("OTPCreationTimeStamp");
+                    //HttpContext.Session.Remove("")
+                    return false;
+                }
+               
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        public async Task<bool> ResetPassword([FromBody] string Password)
+        {
+            
+            int UserID = Convert.ToInt32(HttpContext.Session.GetInt32("Temp_UserID"));
+            User user = new User();
+            if (Password != null)
+            {
+                
+                byte[] salt;
+                string _hashPassword = _passSecurity.Hashpassword(Password, out salt);
+                if (_hashPassword != null)
+                {
+                   user.Password = _hashPassword;
+                   user.Salt = salt;
+                }
+                IsSuccess = await DAL.UpdatePassword(UserID, user);
+                
+            }
+            if (IsSuccess)
+            {
+                HttpContext.Session.Remove("Temp_UserID");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+       
+        
        
     }
 }
+//twilio Recovery code -449YG2LBA4HH9AXM11LGRKKD

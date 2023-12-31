@@ -24,6 +24,7 @@ namespace OnlineFastFoodDelivery
         public string? AccountStatus { get; set; }
         public bool? IsActive { get; set; }
         public byte[]? Salt { get; set; }
+        public string Email { get; set; }
 
         public virtual ICollection<TblCart> TblCarts { get; set; }
         public virtual ICollection<TblOrder> TblOrderProcessedByNavigations { get; set; }

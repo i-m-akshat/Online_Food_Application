@@ -16,5 +16,8 @@ namespace BLL.Interfaces
         Task<string> GetHashString(string Username);
         Task<List<Order>> GetAllOrders(int UserID);
         Task<List<OrderDetail>> GetAllOrderDetails(int OrderID);
+        Task<User> GetUserByUsername(string Username);
+        Task<String> GenerateOTP();
+        Task<bool> UpdatePassword(int UserID,User user);
     }
 }

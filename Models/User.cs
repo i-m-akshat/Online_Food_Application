@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,9 @@ namespace Models
         public byte[]? Salt { get; set; }
         public string? AccountStatus { get; set; }
         public bool? IsActive { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Order> OrderProcessedByNavigations { get; set; }

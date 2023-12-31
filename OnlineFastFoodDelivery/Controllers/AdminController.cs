@@ -45,6 +45,11 @@ namespace OnlineFastFoodDelivery.Controllers
                 HttpContext.Session.SetString("AdminSession",admin.FullName);
                 HttpContext.Session.SetString("AdminRole", admin.RoleName);
                 HttpContext.Session.SetInt32("AdminID", admin.AdminId);
+                if (HttpContext.Session.GetString("UserName") != null && HttpContext.Session.GetInt32("UserID") != null)
+                {
+                    HttpContext.Session.Remove("UserName");
+                    HttpContext.Session.Remove("UserID");
+                }
                 return RedirectToAction("Dashboard");
             }
             else

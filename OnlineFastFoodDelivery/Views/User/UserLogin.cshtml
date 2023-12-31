@@ -40,6 +40,76 @@
                                        @* <span class="badge bg-danger">Hello</span>*@
                                         new user? Please <span class="badge bg-primary text-bg-light"><a asp-action="UserSignUp" value="SignUp" class="float-start text-white" style="border-radius:2rem;text-decoration:none;">Sign Up</a></span>
                                     </div>
+                                    <div class="form-group my-3 mx-auto">
+                                        <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop_Forgot">
+                                            Forgot Password?
+                                        </a>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop_Forgot" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop_ForgotLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 row-header text-black-50" id="staticBackdrop_ForgotLabel">Forgot Password</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <div class="form-floating my-3">
+                                                      
+                                                        <input type="text" id="txtUsername" placeholder="Please Enter your Username" class="form-control-sm form-control" title="Username" />
+                                                        <label class="form-label">Username:</label>
+                                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="button" id="btnSubmit" class="btn btn-success">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="staticBackdrop_OTP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop_ForgotLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 row-header text-black-50" id="staticBackdrop_ForgotLabel">Reset Password</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-floating my-3">
+                                                        <input type="number" id="txtOTP" placeholder="Please Enter the OTP" class="form-control-sm form-control" title="OTP" />
+                                                        <label class="form-label">OTP:</label>
+                                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="button" id="btnVerify" class="btn btn-success">Verify</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="staticBackdrop_Reset" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop_ForgotLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 row-header text-black-50" id="staticBackdrop_ForgotLabel">Reset Password</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-floating my-3">
+                                                        <input type="password" id="txtResetPassword" placeholder="Please Enter the new Password" class="form-control-sm form-control" title="Password" />
+                                                        <label class="form-label">Password:</label>
+                                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="button" id="btnReset" class="btn btn-success">Reset</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -48,10 +118,87 @@
             </div>
         </div>
     </div>
+    
+       
+  
 </div>
 
 
-<div>
-    <a asp-action="Index" class="text-white" style="text-decoration:none"><i class=""></i> Back to List</a>
-</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSubmit').click(() => {
+            UserName = $("#txtUsername").val();
+            console.log(typeof(UserName));
+            $.ajax({
+                url: 'FindUserByUsername?UserName=',
+                method:'POST',
+                contentType: "application/json",
+                data: JSON.stringify(UserName),
+                success: function (data) {
+                    // Handle the success response
+                    console.log(data);
+                    // swal("Badhai ho!", 'Data aa gaya ', "success");
+                    $('#staticBackdrop_Forgot').modal('hide');
+                    $.ajax({
+                        url: '@Url.Content("~/Email/SendOTP?EMailID=")',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(data.email),
+                        success: function (data) {
+                            swal("OTP sent!", "Please Reset Your Password using the OTP", "success");
+                            $('#staticBackdrop_OTP').modal('show');
+                        },
+                        error: function (error) {
+                            swal("Error !", "Something went wrong", "error");
+                        }
+                    })
+                },
+                error: function (error) {
+                    // Handle the error response
+                    console.error("Error in POST request: ", error);
+                }
+            })
+        }
+        )
+        $('#btnVerify').click(()=>{
+            var txtOTP = $("#txtOTP").val();
+            console.log(txtOTP);
+            $.ajax({
+                url: 'VerifyOTP?OTP=',
+                method:'POST',
+                contentType:'application/json',
+                data:JSON.stringify(txtOTP),
+                success: function (data) {
+                    console.log(data);
+                    $('#staticBackdrop_OTP').modal('hide');
+                    $('#staticBackdrop_Reset').modal('show');
+                },
+                error:function(error){
+                    console.error("ERROR in POST Request", error);
+                }
+            })
+        })
+        $('#btnReset').click(()=>{
+            var ResettedPassword = $('#txtResetPassword').val();
+            $.ajax({
+                url: 'ResetPassword?Password=',
+                method:'POST',
+                contentType:'application/json',
+                data: JSON.stringify(ResettedPassword),
+                success: function (data) {
+                    if(data==true){
+                        swal("Password Reset Successful !", "Please Login ", "success");
+                        $('#staticBackdrop_Reset').modal('hide');
 
+                    }else{
+                        swal("Error !", "Something went wrong", "error");
+                    }
+                },
+                error:function(error){
+                    swal("Error !", "Something went wrong", "error");
+                }
+            })
+        })
+       
+    });
+</script>

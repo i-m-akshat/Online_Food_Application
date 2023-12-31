@@ -13,7 +13,7 @@
                     AxA Foods<br />
                     The Best Food Restaurant In India
                 </span>
-                <div class="row">
+                <div class="row" id="_searchFood">
                     <h2 class="text-white text-center" style="font-family: 'Permanent Marker', cursive;">
                         Search For the Food
                     </h2>
@@ -21,7 +21,7 @@
                         <input type="search" class="form-control" id="tags" style="border-radius:2rem" />
                     </div>
                     <div class="col-md-2 col-sm-1 col-1">
-                        <a role="button" class="btn  btn-outline-light" onclick="goToFoodDetails()">Search</a>
+                        <a role="button" class="btn  btn-outline-light btn-sm" onclick="goToFoodDetails()">Search</a>
                     </div>
                 </div>
 
@@ -30,36 +30,46 @@
     </div>
     <!--Why Choose Us-->
     <div class="DescriptionContainer col-12 my-3">
-        <div class="row my-3 mx-2">
+        <div class="row my-3 mx-2 ">
             <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">Why Choose Us?</h3>
             <p class="text-center text-white" style="font-size:15px">You should Choose us because </p>
-            <div class="col-12">
-               
-                    @* <div class="card-body col-12">*@
-                    <div class="row g-0">
-                        <div class="col-md-6">
-                       @* <div class="card" style="background-color: #121212;">*@
-                            <img src="~/images/bannermain.jpg" class="d-flex img-fluid" style="border-radius:1.5rem" />
-                           @* </div>*@
-                        </div>
-                        <div class="col-md-6" style="justify-content:center; align-items:center;display:flex">
-                       @* <div class="card" style="background-color: #121212;">
-                                <div class="card-body">*@
-                        <p class="text-white ms-3" style="text-align:justify; margin:0">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <div class="col-12 my-2">
+                <div class="row g-0 justify-content-center align-items-center">
+                    <div class=" col-md-3 my-1 mx-2 d-flex align-items-stretch" style="background:none">
+                        <div class=" col-12 d-flex flex-column">
+                            <center><img src="~/Images/kindpng_3260136.png" class="d-flex" style="border-radius:50%;height:200px;widht:250px" /></center>
+                            <div class="col-12 mb-0 mt-auto">
+                            <h5 class="row-header mt-1" style="font-size:20px">Fast Delivery</h5>
+                            <p class="text-center text-white" style="text-align:justify">
+                                Indulge in the joy of instant gratification with AxA Foods. Our commitment to quick and efficient service ensures that your favorite dishes are just moments away from your doorstep.
+                            </p>
+                            </div>
+                       </div>
+                   </div>
+                    <div class=" col-md-3 my-1 mx-2 d-flex align-items-stretch" style="background:none">
+                        <div class=" col-12 d-flex flex-column">
+                            <center><img src="~/Images/kindpng_1519867.png" class="d-flex" style="border-radius:50%;height:200px;widht:250px" /></center>
+                            <div class="col-12 mb-0 mt-auto">
+                                <h5 class="row-header mt-1" style="font-size:20px">Best Foods</h5>
+                                <p class="text-center text-white " style="text-align:justify">
+                                    At AxA Foods, we take pride in delivering an unrivaled culinary experience by consistently providing the best food. Our commitment to excellence starts with sourcing premium ingredients to craft each dish with care and precision.
                                 </p>
-                              @*  </div>
-                            </div>*@
+                            </div>
+                           
+                       </div>
+                   </div>
+                    <div class=" col-md-3 my-1 mx-2 d-flex align-items-stretch" style="background:none">
+                        <div class=" col-12 d-flex flex-column">
+                            <center><img src="~/Images/kindpng_2679606.png" class="d-flex" style="border-radius:50%;height:200px;widht:250px" /></center>
+                            <div class="col-12 mb-0 mt-auto">
+                            <h5 class="row-header mt-1" style="font-size:20px">Party Foods</h5>
+                            <p class="text-center text-white " style="text-align:justify">
+                                Elevate your celebrations with us – your premier destination for the best party foods. From delectable appetizers to crowd-pleasing mains and irresistible desserts, our curated party menu is designed to turn every occasion into a culinary extravaganza.
+                            </p>
+                            </div>
                         </div>
                     </div>
-
-                    @* </div>*@
-               
+               </div>
             </div>
             
         </div>
@@ -137,7 +147,7 @@
         </div>
     </div>
     <!--FoodTypeRow-->
-    <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
+    @* <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
         <div class="row my-2 mx-2 justify-content-center align-content-center">
             <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
                 Types of Foods
@@ -149,7 +159,7 @@
                 {
                                     <div class="col-md-4 col-sm-8 mx-2">
                                         <div class="_cardFoodType card d-flex align-items-stretch" style="background-color: #121212;">
-                                            @* <div class="card-body">*@
+                                            
                                             
                                                 <img src="data:image/png;base64,@Convert.ToBase64String(foodType.FoodTypeImg)" class="card-img" style="border-radius:2rem;" />
 
@@ -158,9 +168,8 @@
                                                         <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
                                                             @foodType.FoodTypeName
                                                         </h3>
-                                                        @*<p>
-                                            @foodType.FoodTypeDesc
-                                        </p>*@
+                                                        
+                                           
 
                                                 <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light mt-auto" asp-asp-controller="Home" asp-action="Foods" asp-route-FoodTypeID="@foodType.FoodTypeId">View More</a></center>
                                                 
@@ -175,22 +184,21 @@
             }
            
         </div>
-    </div>
+    </div> *@
     <!--Description-->
-    <div class="DescriptionContainer col-12 my-3">
-        <div class="row my-3 mx-2">
+    <div class="DescriptionContainer col-12 my-3 d-flex flex-column">
+        <div class="row my-3 mx-2  d-flex align-items-stretch">
             <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">Our Food</h3>
             <div class="col-md-6">
                 <img src="~/indian-cuisine-spice-stock-photography-chili-pepper-seasoning-spices-for-recipe-png-b87eb3bbe793d730e4737f04b6fd5b9d.png" class="card-img-top d-flex" style="width:100%" />
             </div>
-            <div class="col-md-6">
-                <p class="text-center text-white" style="text-align:justify;top:50%;left:50%">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <div class="col-md-6 col-md-6 d-flex align-items-center">
+                <p class="text-center text-white" style="text-align:justify;top:50%;">
+                    "Welcome to AxA Foods, where culinary excellence meets your cravings. Our diverse menu boasts a global fusion of flavors, from timeless classics to innovative creations.
+                    At AxA Foods, we take pride in using quality ingredients and skilled chefs to deliver a gastronomic journey like no other.
+                    Explore our website to savor a diverse range of dishes that blend tradition with innovation. 
+                    Choose AxA Foods for a dining experience that transcends boundaries, offering something delicious for every palate."<br/>
+                    <span class="mt-2">- Akshat Dwivedi</span>
                 </p>
 
             </div>
