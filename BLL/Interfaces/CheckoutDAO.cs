@@ -14,5 +14,6 @@ namespace BLL.Interfaces
         Task<int> CheckOut_PaymentDetails(PaymentDetail payDetails);
         void ChangeCartStatus(int Userid,int Cartid);
         void changeFoodQuantity(int Foodid,int Quantity);
+        Task<string> GetEmailbyUserID(int Userid);
     }
 }

@@ -41,6 +41,7 @@ namespace Models
         public byte[]? Salt { get; set; }
         public string? AccountStatus { get; set; }
         public bool? IsActive { get; set; }
+        public DateTime? AddedDate { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }

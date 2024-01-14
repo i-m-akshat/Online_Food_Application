@@ -23,6 +23,7 @@ namespace Models
         public DateTime? ProcessedDate { get; set; }
         public string ProcessedBy_Name { get; set; }
         public long OrderDetailsId { get; set; }
+        public int PageCount { get; set; }
         public long FoodId { get; set; }
         public string FoodName { get; set; }    
         public decimal Amount { get; set; }
@@ -31,5 +32,11 @@ namespace Models
         public virtual User ProcessedByNavigation { get; set; } = null!;
         public virtual User User { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+    }
+    public class orderModel
+    {
+        public List<Order> listOrder { get; set; }
+        public int CurrentPageIndex { get; set; }
+        public int PageCount { get; set; }
     }
 }

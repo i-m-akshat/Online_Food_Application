@@ -41,21 +41,21 @@
                                     </div>
                                     <div class="col-12 my-2">
                                         <div class="row d-flex" style="display:inline-block">
-                                            <div class="col-md-10">
+                                            <div class="col-md-12">
                                                 <div class="form-floating ">
                                                     <input id="txtUserName" asp-for="UserName" class="form-control form-control-sm" />
                                                     <label asp-for="UserName">Username</label>
                                                     <span asp-validation-for="UserName" class="text-danger"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            @* <div class="col-md-2">
                                                 <a role="button" onclick="searchUsername()" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
-                                            </div>
+                                            </div> *@
                                         </div>
                                     </div>
                                     <div class="form-floating my-2">
                                         <input type="file" asp-for="Image" accept="image/*" value="fileName" name="UserImage" class="form-control form-control-sm" />
-                                        <label asp-for="Image" class="form-label"></label> 
+                                        <label asp-for="Image" class="form-label">Image(Supported Formats- .JPG, .PNG,.BMP)</label> 
                                         <span asp-validation-for="Image" class="text-danger"></span>
                                     </div>
                                     <div class="form-floating my-2">
@@ -107,27 +107,31 @@
 </div>
 
 <script>
-    
-    let searchUsername = () => {
-        
-        var userName = $('#txtUserName').val();
-        
-        $.ajax({
-            url: 'Checkusername?Username=' + userName,
-            type: 'POST',
-            success: function (result) {
-                if(result==true){
-                    alert('Username already exist please enter a different one');
-                }
-                else{
-                    alert('This Username can be used');
-                }
-               
-            },
+    $(document).ready(function () {
+        document.getElementById("txtUserName").addEventListener("blur", searchUsername);
+        function searchUsername(){
+
+            var userName = $('#txtUserName').val();
+
+            $.ajax({
+                url: 'Checkusername?Username=' + userName,
+                type: 'POST',
+                success: function (result) {
+                    if (result == true) {
+                        swal("Error", "Username already exist please use a different one to Sign Up", "error");
+                        document.getElementById("txtUserName").value=null;
+                    }
+                    else {
+                        swal('Success','This Username can be used','success');
+                    }
+
+                },
                 error: function (error) {
-                alert(error);
+                    alert(error);
                 }
-        })
-    }
+            })
+        }
+    })
+    
 
 </script>

@@ -20,6 +20,11 @@ namespace BLL.Implementation
                 {
                     tbl.OrderStatus = "Cancelled";
                     _context.TblOrders.Update(tbl);
+                    TblPaymentDetail tblPay=_context.TblPaymentDetails.Where(x=>x.PaymentId==tbl.PaymentId).FirstOrDefault();
+                    if (tblPay != null)
+                    {
+                        _context.TblPaymentDetails.Remove(tblPay);
+                    }
                     _context.SaveChanges();
                     return true;
                 }
@@ -50,11 +55,13 @@ namespace BLL.Implementation
             }
         }
 
-        public async Task<List<Order>> GetAllOrders()
+        public async Task<orderModel> GetAllOrders(int currentPage)
         {
             await using (var _context=new Online_Food_ApplicationContext())
             {
-                List<Order> listOrder = _context.TblOrders.Where(x => x.OrderStatus != "Cancelled").Select(x => new Order
+                int maxRows = 10;
+                orderModel _model = new orderModel();
+                _model.listOrder= _context.TblOrders.Where(x => x.OrderStatus != "Cancelled").Select(x => new Order
                 {
                     OrderId = x.OrderId,
                     OrderStatus = x.OrderStatus,
@@ -65,8 +72,11 @@ namespace BLL.Implementation
                     ProcessedDate = x.ProcessedDate,
                     ProcessedBy_Name=x.ProcessedByNavigation.FullName
                    
-                }).ToList();
-                return listOrder;
+                }).OrderBy(x=>x.OrderId).Skip((currentPage-1)*maxRows).Take(maxRows).ToList();
+                double pageCount = (double)((decimal)_context.TblOrders.Count()/Convert.ToDecimal(maxRows));
+                _model.PageCount=(int)Math.Ceiling(pageCount);
+                _model.CurrentPageIndex = currentPage;
+                return _model;
             }
         }
 
@@ -169,6 +179,14 @@ namespace BLL.Implementation
                 {
                     return false;
                 }
+            }
+        }
+        public async Task<string> GetEmailbyOrderID(int id)
+        {
+            using (var _context= new Online_Food_ApplicationContext())
+            {
+                string Email = _context.TblOrders.Where(x => x.OrderId == id).Select(x => x.User.Email).FirstOrDefault();
+                return Email;
             }
         }
     }

@@ -43,13 +43,15 @@ namespace BLL.Implementation
             }
         }
 
-        public async Task<List<Category>> GetAllCategories(List<Category> categories)
+        public async Task<CategoryModel> GetAllCategories(int CurrentPage)
         {
             try
             {
+                int maxRows = 5;
+                CategoryModel _catModel=new CategoryModel();
                 await using (var _context = new Online_Food_ApplicationContext())
                 {
-                    categories = _context.TblCategories.Where(x => x.IsActive == true).Select(x => new Category()
+                    _catModel.categories = _context.TblCategories.Where(x => x.IsActive == true).Select(x => new Category()
                     {
                         CatName = x.CatName,
                         CatId = x.CatId,
@@ -57,8 +59,11 @@ namespace BLL.Implementation
                         BannerImage = x.BannerImage,
                         IconImage = x.IconImage
 
-                    }).ToList();
-                    return categories;
+                    }).OrderBy(x=>x.CatId).Skip((CurrentPage-1)*maxRows).Take(maxRows).ToList();
+                    double Pagecount = (double)((decimal)_context.TblCategories.Where(x => x.IsActive == true).Count() / Convert.ToDecimal(maxRows));
+                    _catModel.PageCount = (int)Math.Ceiling(Pagecount);
+                    _catModel.CurrentPageIndex = CurrentPage;
+                    return _catModel;
 
                 }
             }

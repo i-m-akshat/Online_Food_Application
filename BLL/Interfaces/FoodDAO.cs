@@ -14,7 +14,7 @@ namespace BLL.Interfaces
         Task<bool> UpdateFood(long id, Food food);
         Task<bool> DeleteFood(long id,  Food food);
         Task<Food> GetFoodByID(long id);
-        Task<List<Food>> GetAllFoodList();
+        Task<FoodModel> GetAllFoodList(int CurrentPage);
         Task<List<Food>> GetAllCategories();
         Task<List<Food>> GetAllSubCategories();
         Task<List<Food>> GetAllFoodType();

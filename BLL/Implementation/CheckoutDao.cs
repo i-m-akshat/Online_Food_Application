@@ -102,5 +102,13 @@ namespace BLL.Implementation
                 return (int)tbl.PaymentId;
             }
         }
+        public async Task<string> GetEmailbyUserID(int Userid)
+        {
+            await using (var _context= new Online_Food_ApplicationContext())
+            {
+                string Email = _context.TblUsers.Where(x => x.UserId == Userid).Select(x => x.Email).FirstOrDefault();
+                return Email;
+            }
+        }
     }
 }

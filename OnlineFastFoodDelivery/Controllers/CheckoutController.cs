@@ -6,14 +6,24 @@ using Models;
 using BLL.Interfaces;
 using BLL.Implementation;
 using Stripe;
+using MailKit;
 
 
 namespace OnlineFastFoodDelivery.Controllers
 {
     public class CheckoutController : Controller
     {
-        CartDAO _cartDAL = new CartDao();
-        CheckoutDAO DAL = new CheckoutDao();
+        private readonly CartDAO _cartDAL;
+        private readonly CheckoutDAO DAL;
+        private readonly SendMailDAO mailService;
+        public CheckoutController(SendMailDAO _mailService,CheckoutDAO CheckDAL,CartDAO CartDAL)
+        {
+            mailService = _mailService;
+            _cartDAL = CartDAL;
+            DAL = CheckDAL;
+
+        }
+       
         public async Task<IActionResult> Index()
         {
 
@@ -94,7 +104,6 @@ namespace OnlineFastFoodDelivery.Controllers
             List<Cart> listCart = await _cartDAL.GetAllItems((int)UserID);
             PaymentDetail payDetails = new PaymentDetail
             {
-                
                 Amount = payment.Amount/100,
                 PaidBy = session.CustomerDetails.Name,
                 PaymentDate= Convert.ToDateTime(DateTime.Today),
@@ -145,8 +154,18 @@ namespace OnlineFastFoodDelivery.Controllers
 
             if (session.PaymentStatus == "paid")
             {
-                TempData["Success"] = "Payment Done ! "+session.CustomerDetails.Name;
-                return View();
+                string Email = await DAL.GetEmailbyUserID((int)UserID);
+                bool isSuccess =await SendEmailNotifications_OrderPlaced(Email,OrderID, paymentid, "In Process");
+                if (isSuccess)
+                {
+                    TempData["Success"] = "Payment Done ! " + session.CustomerDetails.Name;
+                    return RedirectToAction("Index", "Cart");
+                }
+                else
+                {
+                    TempData["Error"] = "Something Went Wrong Please Try again";
+                    return RedirectToAction("Index", "Cart");
+                }
             }
             else
             {
@@ -154,6 +173,31 @@ namespace OnlineFastFoodDelivery.Controllers
                 return RedirectToAction("Index","Cart");
             }
             
+        }
+        public async Task<bool> SendEmailNotifications_OrderPlaced( string EmailID,int OrderID,string transactionID,string OrderStatus)
+        {
+           
+            bool isSuccess = false;
+            Email emailMessage = new Email();
+            emailMessage.ToEmail = EmailID;
+            emailMessage.Subject = string.Format("RE: Order Placed");
+            emailMessage.Body = string.Format("Congratulations !,<br/><br/> Your order has been placed successfully, <h2>OrderDetails</h2><br/>" +
+                " <b>Order Number</b>-{0}.<br/>" +
+                 " <b>Transaction ID</b>-{1}.<br/>" +
+                  " <b>Order Status</b>-{2}.<br/>" +
+                "<hr/>Thank you for shopping with us! We appreciate your business<br/>If you have any questions or need further assistance, feel free to contact our customer support at @i.m.akshat.dwivedi@gmai.com.\r\n\r\nHave a great day!", OrderID,transactionID,OrderStatus);
+            isSuccess = await mailService.SendMailAsync(emailMessage);
+            if (isSuccess)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
         }
     }
 }

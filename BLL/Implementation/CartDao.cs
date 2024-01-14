@@ -58,11 +58,21 @@ namespace BLL.Implementation
             {
                 await using(var _context= new Online_Food_ApplicationContext())
                 {
-                   TblCart tbl =   _context.TblCarts.Where(x=>x.FoodId==FoodID&&x.UserId==UserID).FirstOrDefault();
+                   TblCart tbl =   _context.TblCarts.Where(x=>x.FoodId==FoodID&&x.UserId==UserID).Select(x=>new TblCart
+                   {
+                       CartId = x.CartId,
+                       CartStatus = x.CartStatus,
+                       AddedDate = x.AddedDate,
+                       FoodId = x.FoodId,
+                       UserId = x.UserId,
+                       Quantity = x.Quantity,
+                       Food=x.Food
+                   }).FirstOrDefault();
                    
                     if (tbl != null)
                     {
                         _context.TblCarts.Remove(tbl);
+                        _context.Entry(tbl).State = EntityState.Deleted;
                         _context.SaveChanges();
                         return true;
 
@@ -87,17 +97,35 @@ namespace BLL.Implementation
                     return false;
             }
         }
+        
         public async Task<bool> AddToExisting(int FoodID,int UserID)
         {
             await using (var _context= new Online_Food_ApplicationContext())
             {
-                TblCart tbl = await _context.TblCarts.Where(x => x.FoodId == FoodID && x.UserId == UserID && x.CartStatus == "Pending").FirstOrDefaultAsync();
-                if (tbl != null)
+                TblCart tbl = _context.TblCarts.Where(x => x.FoodId == FoodID && x.UserId == UserID && x.CartStatus == "Pending").Select(x => new TblCart()
                 {
-                    tbl.Quantity = tbl.Quantity + 1;
-                    _context.TblCarts.Update(tbl);
-                    _context.SaveChanges();
-                    return true;
+                    CartId = x.CartId,
+                    CartStatus = x.CartStatus,
+                    AddedDate = x.AddedDate,
+                    FoodId = x.FoodId,
+                    UserId = x.UserId,
+                    Quantity = x.Quantity,
+                   Food=x.Food
+                }).FirstOrDefault();
+                if (tbl!= null)
+                {
+                    if (tbl.Food.Quantity> tbl.Quantity + 1)
+                    {
+                        tbl.Quantity = tbl.Quantity + 1;
+                        _context.TblCarts.Update(tbl);
+                        _context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
                 }
                 else
                     return false;
@@ -109,12 +137,15 @@ namespace BLL.Implementation
             await using (var _context= new Online_Food_ApplicationContext())
             {
                 TblCart tbl = _context.TblCarts.Where(x => x.UserId == UserID && x.FoodId == FoodID && x.CartStatus == "Pending").FirstOrDefault();
-                if(tbl != null) 
+                
+                if(tbl != null ) 
                 {
-                    tbl.Quantity=tbl.Quantity + 1;
-                    _context.TblCarts.Update(tbl);
-                    _context.SaveChanges();
-                    return 1;
+                   
+                        tbl.Quantity = tbl.Quantity + 1;
+                        _context.TblCarts.Update(tbl);
+                        _context.SaveChanges();
+                        return 1;
+
                 }
                 else
                 {

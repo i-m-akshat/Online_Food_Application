@@ -46,13 +46,15 @@ namespace BLL.Implementation
             throw new NotImplementedException();
         }
 
-        public async Task<List<SubCategory>> GetAllSubCategories(List<SubCategory> subCat)
+        public async Task<SubcategoryModel> GetAllSubCategories(int CurrentPage)
         {
             try
             {
+                int maxRows = 5;
+                SubcategoryModel _subCatModel=new SubcategoryModel();
                 await using (var _context= new Online_Food_ApplicationContext())
                 {
-                    subCat = _context.TblSubCategories.Where(x => x.IsActive == true&&x.Cat.IsActive==true).Select(x => new SubCategory()
+                    _subCatModel.subcategories = _context.TblSubCategories.Where(x => x.IsActive == true&&x.Cat.IsActive==true).Select(x => new SubCategory()
                     {
                         SubCatid = x.SubCatid,
                         SubCatName = x.SubCatName,
@@ -60,9 +62,12 @@ namespace BLL.Implementation
                         BannerImg = x.BannerImg,
                         IconImg = x.IconImg,
                         CatId = (short)(x.CatId),
-                        CatName=x.Cat.CatName
-                    }).ToList();
-                    return subCat;
+                        CatName=x.Cat.CatName,
+                    }).OrderBy(x => x.SubCatid).Skip((CurrentPage - 1) * maxRows).Take(maxRows).ToList();
+                    double Pagecount = (double)((decimal)_context.TblSubCategories.Where(x => x.IsActive == true && x.Cat.IsActive == true).Count() / Convert.ToDecimal(maxRows));
+                    _subCatModel.PageCount = (int)Math.Ceiling(Pagecount);
+                    _subCatModel.CurrentPageIndex = CurrentPage;
+                    return _subCatModel;
                 }
             }
             catch (Exception ex)

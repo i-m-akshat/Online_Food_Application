@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface CategoryDAO
     {
-        public Task<List<Category>> GetAllCategories(List<Category> categories);
+        public Task<CategoryModel> GetAllCategories(int CurrentPageIndex);
         public Task<Category> GetCategoryDetails(int? CategoryID);
         public Task<bool> InsertCategory(Category category);
         public Task<bool> UpdateCategoryDetails(int id, Category category);

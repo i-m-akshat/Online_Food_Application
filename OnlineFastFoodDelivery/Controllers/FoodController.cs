@@ -17,15 +17,29 @@ namespace OnlineFastFoodDelivery.Controllers
         FoodDAO DAL = new FoodDao();
         public async Task<IActionResult> Index()
         {
-            List<Food> list = new List<Food>();
-            list = await DAL.GetAllFoodList();
-            if (list != null)
+            FoodModel _model = new FoodModel();
+            _model = await DAL.GetAllFoodList(1);
+            if (_model!= null)
             {
-                return View(list);
+                return View(_model);
             }
             else
             {
                 return View();  
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(int CurrentPageIndex)
+        {
+            FoodModel _model = new FoodModel();
+            _model = await DAL.GetAllFoodList(CurrentPageIndex);
+            if (_model != null)
+            {
+                return View(_model);
+            }
+            else
+            {
+                return View();
             }
         }
         public async Task<IActionResult> Add_Edit(int? id)

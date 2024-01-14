@@ -41,6 +41,7 @@ namespace BLL.Implementation
                     tbl.Image = user.Image;
                     tbl.Email = user.Email;
                     tbl.PhoneNumber = user.PhoneNumber;
+                    tbl.AddedDate = Convert.ToDateTime(DateTime.Now);
                     _context.TblUsers.Add(tbl);
                     _context.SaveChanges();
                     return true;

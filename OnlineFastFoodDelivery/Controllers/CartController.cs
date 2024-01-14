@@ -49,8 +49,8 @@ namespace OnlineFastFoodDelivery.Controllers
                         }
                         else
                         {
-                            TempData["Error"] = "Something went wrong";
-                            return View();
+                            TempData["Error"] = "Quantity is exceeding than the stock of Food !";
+                            return RedirectToAction("Index", "Cart");
                         }
                     }
                     else
@@ -145,8 +145,8 @@ namespace OnlineFastFoodDelivery.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Something Went Wrong!";
-                    return View("Index");
+                    TempData["Error"] = "Quantity is exceeding than the stock of Food !";
+                    return RedirectToAction("Index", "Cart");
                 }
             }
             else
@@ -169,7 +169,7 @@ namespace OnlineFastFoodDelivery.Controllers
                 else
                 {
                     TempData["Error"] = "Something Went Wrong!";
-                    return View("Index");
+                    return RedirectToAction("Index", "Cart");
                 }
             }
             else

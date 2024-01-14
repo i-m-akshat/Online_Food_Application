@@ -54,6 +54,10 @@
             "MimeKit": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[1.10.0, )"
             }
           },
           "imports": [

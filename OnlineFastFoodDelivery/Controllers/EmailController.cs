@@ -3,6 +3,7 @@ using BLL.Interfaces;
 using MailKit;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using static System.Net.WebRequestMethods;
 
 namespace OnlineFastFoodDelivery.Controllers
 {
@@ -96,5 +97,6 @@ namespace OnlineFastFoodDelivery.Controllers
                 return false;
             }
         }
+        
     }
 }

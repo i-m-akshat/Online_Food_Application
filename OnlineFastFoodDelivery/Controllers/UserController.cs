@@ -91,7 +91,6 @@ namespace OnlineFastFoodDelivery.Controllers
        {
             try
             {
-
                 if (HttpContext.Request.Form.Files.Count > 0) 
                 {
                     user.imageFile = HttpContext.Request.Form.Files[0];

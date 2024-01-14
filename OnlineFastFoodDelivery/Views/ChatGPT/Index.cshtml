@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid my-5 py-5">
+    <div class="row justify-content-center align-items-center my-5">
+        <div class="card col-md-6">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" id="txtQuestions" class="form-control form-control-sm" placeholder="Please Ask Me Anything" />
+                    </div>
+                    <div class="col-2">
+                        <a class="btn btn-sm btn-success" role="button" onclick="ask()">Ask</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12">
+                <textarea class="form-control form-control-sm" id="txt_Response"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function ask() {
+        var dataObject = {
+            message: $('#txtQuestions').val()
+        }
+        var jsonString = JSON.stringify(dataObject);
+        $.ajax({
+            url: 'generateResponse',
+            data: jsonString,
+            contentType:'application/json',
+            method:'POST',
+            success: function (data) {
+                console.log(data);
+            }
+            ,
+            error:function(error){
+                console.log(error);
+            }
+        })
+    }
+</script>

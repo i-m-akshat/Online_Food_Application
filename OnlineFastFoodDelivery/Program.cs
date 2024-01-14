@@ -8,12 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//builder.Services.AddMvc().AddControllersAsServices();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//registering the context accessor 
 //email Configuration
 var emailConfig = builder.Configuration.GetSection("MailSettings").Get<MailSettings>();
 builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<SendMailDAO, SendMailDao>();
+builder.Services.AddScoped<OrderStatusDAO,OrderStatusDao>();
+builder.Services.AddScoped<CartDAO, CartDao>();
+builder.Services.AddScoped<CheckoutDAO, CheckoutDao>();
+builder.Services.AddScoped<IBotAPIService, BotAPIService>();
+builder.Services.AddScoped<IADProductService, ADProductService>();
 //DBCONtext
 var provider = builder.Services.BuildServiceProvider();
 var config=provider.GetRequiredService<IConfiguration>();

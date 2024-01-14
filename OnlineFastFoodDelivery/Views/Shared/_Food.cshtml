@@ -1,5 +1,5 @@
 ﻿@model List<Models.Food>
-@if (Model != null)
+@if (Model.Count() != 0)
 {
     @foreach (var food in Model)
     {
@@ -46,7 +46,7 @@
 }
 else
 {
-    <h3 class="text-center row-header">No items</h3>
+    <h3 class="text-center row-header">No items Available!</h3>
 }
 
 

@@ -4,58 +4,88 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="col-12 my-5 py-5">
-    <h2 class="row-header text-center">Your Cart</h2>
-    <div class="row justify-content-center align-items-center my-2">
-       
-        <table class="table table-responsive table-hover table-striped table-bordered">
-            @foreach (var cartitems in Model)
-            {
-                <tr>
-                    <td class="col-md-6">
-                        @* <img src="data:image/png;base64,@Convert.ToBase64String(cartitems.Food.BannerImage)">*@
-                        <img src="data:image/png;base64,@Convert.ToBase64String(cartitems.BannerImage)" class="p-3 m-3" style="height:300px" />
-                    </td>
-                    <td class="col-md-6">
-                        <div class="col-12 px-2">
-                           
-                        <h3 class="text-center row-header">@cartitems.FoodName</h3>
-                            <p class="text-white">Price/item : <b>₹ <label class="text-white label_Baseprice" id="@cartitems.FoodAmount">@cartitems.FoodAmount</label></b></p>
-                            <p class="text-white-50">@cartitems.Stock</p>
-                            <div class="col-12">
-                                <input type="hidden" id="lblFoodID" value="@cartitems.FoodId"/>
-                            <p class="text-white" >
-                                Quantity:
-                                    @if (cartitems.Quantity > 1)
-                                    {
-                                        <a class="col-2 decreaseButton " role="button" asp-action="DecreaseQuantity" asp-controller="Cart" asp-route-FoodID="@cartitems.FoodId" title="decrease" style="color:white"><i class="fa-solid fa-minus"></i></a>
-                                    }
-                                    <input id="txt_Quantity" type="number" class="col-2 input" style="background-color:whitesmoke" disabled="disabled" value="@cartitems.Quantity" />
-                                    <a class=" col-2 increaseButton" role="button" title="increase" asp-action="IncreaseQuantity" asp-controller="Cart" asp-route-FoodID="@cartitems.FoodId" style="color:white"><i class="fa-solid fa-plus"></i></a>
-                            </p>
-                            </div>
-                            <p class="text-white">Total Price : <b>₹ <label class="text-white label_TotalPrice" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice,2)</label></b></p>
-                            <div class="col-12 mt-3">
-                                <a class="btn btn-sm btn-outline-light" style="border-radius:0px" asp-action="RemoveItem" asp-route-ItemID="@cartitems.FoodId" asp-controller="Cart" role="button" title="Remove" id="remove">Remove Item</a>
-                                <a class="btn btn-sm btn-outline-light" style="border-radius:0px" role="button" title="buy" id="btnBuy" asp-action="Checkout" asp-asp-controller="Checkout" asp-route-UserID="@cartitems.UserId">Pay&nbsp; ₹<label class="label_TotalPrice" style="cursor:pointer" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice,2)</label></a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-        
-            }
-        </table>
-        <div class="mt-auto mb-0">
-            <div class="float-end">
-                @* <a role="button" class="btn btn-block btn-outline-light">Total Price :₹&nbsp;<span class="totalPrice"></span></a> *@
-                @if (ViewBag.SubTotal != 0 )
-                {
-                    <a role="button" class="btn btn-block btn-outline-light" asp-action="Checkout" asp-controller="Checkout">Checkout :₹&nbsp;@Decimal.Round(@ViewBag.SubTotal, 2)</a>
-                }
+@* @if (Model.Count() == 0)
+{
+    <div class="col-12 my-5 py-5" style="background:none">
+        <div class="row justify-content-center align-items-center my-2">
+            <div class="col-md-3">
+                <img src="~/images/1ae8bcdcef865fe7a50e34148c8cb1ce.jpg" class="d-flex" style="width:300px; height:250px" />
+                <h4 class="text-white text-center mt-2"> Bhai ! Kuch to Add Kr Le</h4>
             </div>
+           
         </div>
     </div>
-</div>
+}
+else
+{ *@
+    <div class="col-12 my-5 py-5">
+        <h2 class="row-header text-center">Your Cart</h2>
+        <div class="row justify-content-center align-items-center my-2">
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-responsive table-hover table-striped table-bordered">
+                @foreach (var cartitems in Model)
+                {
+                    <tr>
+                        <td class="col-md-6">
+                            @* <img src="data:image/png;base64,@Convert.ToBase64String(cartitems.Food.BannerImage)">*@
+                            <img src="data:image/png;base64,@Convert.ToBase64String(cartitems.BannerImage)" class="p-3 m-3" style="height:300px" />
+                        </td>
+                        <td class="col-md-6">
+                            <div class="col-12 px-2">
+
+                                <h3 class="text-center row-header">@cartitems.FoodName</h3>
+                                <p class="text-white">Price/item : <b>₹ <label class="text-white label_Baseprice" id="@cartitems.FoodAmount">@cartitems.FoodAmount</label></b></p>
+                                <p class="text-white-50">@cartitems.Stock</p>
+                                <div class="col-12">
+                                    <input type="hidden" id="lblFoodID" value="@cartitems.FoodId" />
+                                    <p class="text-white">
+                                        Quantity:
+                                        @if (cartitems.Quantity > 1)
+                                        {
+                                            <a class="col-2 decreaseButton " role="button" asp-action="DecreaseQuantity" asp-controller="Cart" asp-route-FoodID="@cartitems.FoodId" title="decrease" style="color:white"><i class="fa-solid fa-minus"></i></a>
+                                        }
+                                        <input id="txt_Quantity" type="number" class="col-2 input" style="background-color:whitesmoke" disabled="disabled" value="@cartitems.Quantity" />
+                                        @if ((cartitems.Quantity) + 1 <= cartitems.Stock)
+                                        {
+                                            <a class=" col-2 increaseButton" role="button" title="increase" asp-action="IncreaseQuantity" asp-controller="Cart" asp-route-FoodID="@cartitems.FoodId" style="color:white"><i class="fa-solid fa-plus"></i></a>
+                                        }
+
+                                    </p>
+                                </div>
+                                <p class="text-white">Total Price : <b>₹ <label class="text-white label_TotalPrice" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice, 2)</label></b></p>
+                                <div class="col-12 mt-3">
+                                    <a class="btn btn-sm btn-outline-light" style="border-radius:0px" asp-action="RemoveItem" asp-route-ItemID="@cartitems.FoodId" asp-controller="Cart" role="button" title="Remove" id="remove">Remove Item</a>
+                                    <a class="btn btn-sm btn-outline-light" style="border-radius:0px" role="button" title="buy" id="btnBuy" asp-action="Checkout" asp-asp-controller="Checkout" asp-route-UserID="@cartitems.UserId">Pay&nbsp; ₹<label class="label_TotalPrice" style="cursor:pointer" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice, 2)</label></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+            <div class="mt-auto mb-0">
+                <div class="float-end">
+                    @* <a role="button" class="btn btn-block btn-outline-light">Total Price :₹&nbsp;<span class="totalPrice"></span></a> *@
+                    @if (ViewBag.SubTotal != 0)
+                    {
+                        <a role="button" class="btn btn-block btn-outline-light" asp-action="Checkout" asp-controller="Checkout">Checkout :₹&nbsp;@Decimal.Round(@ViewBag.SubTotal, 2)</a>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-3">
+                <center><img src="~/images/1ae8bcdcef865fe7a50e34148c8cb1ce.jpg" class="d-flex" style="width:300px; height:250px" /></center>
+                <h4 class="text-white text-center mt-2"> Bhai ! Kuch to Add Kr Le</h4>
+            </div>
+        }
+
+        </div>
+    </div>
+}
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('.decreaseButton').on('click',function(){

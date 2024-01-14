@@ -19,12 +19,20 @@ namespace OnlineFastFoodDelivery.Controllers
         public async Task<IActionResult> Index()
         {
             Authorize("Admin");
-            var categories = new List<Category>();
-            categories = await DAL.GetAllCategories(categories);
-            ViewData["categories"] = categories;
-            return View(categories);
+            CategoryModel _catModel = new CategoryModel();
+            _catModel = await DAL.GetAllCategories(1);
+            ViewData["categories"] = _catModel.categories;
+            return View(_catModel);
         }
-
+        [HttpPost]
+        public async Task<IActionResult> Index(int CurrentPageIndex)
+        {
+            Authorize("Admin");
+            CategoryModel _catModel = new CategoryModel();
+            _catModel = await DAL.GetAllCategories(CurrentPageIndex);
+            ViewData["categories"] = _catModel.categories;
+            return View(_catModel);
+        }
 
         public async Task<IActionResult> Add_Edit(int? id)
         {

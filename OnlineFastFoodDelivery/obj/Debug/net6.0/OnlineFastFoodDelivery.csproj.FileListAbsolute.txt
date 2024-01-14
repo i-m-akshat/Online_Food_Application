@@ -263,3 +263,4 @@ D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Sys
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\OpenAI_API.dll

@@ -63,13 +63,15 @@ namespace BLL.Implementation
             }
         }
 
-        public async Task<List<Food>> GetAllFoodList()
+        public async Task<FoodModel> GetAllFoodList(int CurrentPage)
         {
             try
             {
+                int maxRows = 5;
+                FoodModel _foodModel = new FoodModel();
                 await using (var _context = new Online_Food_ApplicationContext())
                 {
-                    List<Food> list = _context.TblFoods.Where(x => x.IsActive == true).Select(x => new Food
+                    _foodModel.listFoods = _context.TblFoods.Where(x => x.IsActive == true).Select(x => new Food
                     {
                         FoodId = x.FoodId,
                         FoodName = x.FoodName,
@@ -86,9 +88,11 @@ namespace BLL.Implementation
                         BannerImage = x.BannerImage,
                         IconImage = x.IconImage,
                         ShowOnHomePage = x.ShowOnHomePage
-                    }
-                        ).ToList();
-                    return list;
+                    }).Skip((CurrentPage-1)*maxRows).Take(maxRows).ToList();
+                    double Pagecount = (double)((decimal)_context.TblFoods.Where(x => x.IsActive == true).Count() / Convert.ToDecimal(maxRows));
+                    _foodModel.PageCount = (int)Math.Ceiling(Pagecount);
+                    _foodModel.CurrentPageIndex = CurrentPage;
+                    return _foodModel;
                 }
             }
             catch (Exception)

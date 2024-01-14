@@ -54,7 +54,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" role="button" asp-area="Go To Home" asp-controller="Home" asp-action="Index" style="font-family: 'Permanent Marker', cursive;font-size:25px;">AxA Food</a>
+                    <a class="navbar-brand" role="button" asp-area="Go To Home" asp-controller="Home" asp-action="Index" style="font-family: 'Permanent Marker', cursive;font-size:25px;">The Chill Curry</a>
                 <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,11 +64,14 @@
 
                     <ul class="navbar-nav mb-2 mb-lg-0 me-auto ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link" style="font-weight:700;" aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link " asp-area="Go To Foods" asp-controller="Home" asp-action="Foods">Foods</a>
+                                <a class="nav-link text-bold" style="font-weight:700;" asp-area="Go To Foods" asp-controller="Home" asp-action="Foods">Foods</a>
                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-bold" target="_blank" role="button" style="font-weight:700;" href="/images/menu.png">Menu</a>
+                            </li>
                        @*  <li class="nav-item">
                             <a class="nav-link " aria-current="page" asp-area="Go To Home" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -158,7 +161,7 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
                 </a>
-                <span class="mb-3 mb-md-0 text-white">&copy; 2023 AxA Foods, Inc</span>
+                <span class="mb-3 mb-md-0 text-white">&copy; 2024 The Chill Curry, Inc</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

@@ -51,5 +51,15 @@ namespace Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
+
+
+
+    }
+
+    public class FoodModel
+    {
+        public List<Food> listFoods { get; set; }
+        public int PageCount { get; set; }
+        public int CurrentPageIndex { get; set; }
     }
 }

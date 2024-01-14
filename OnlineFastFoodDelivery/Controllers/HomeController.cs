@@ -10,11 +10,11 @@ using System.Collections.Generic;
 
 namespace OnlineFastFoodDelivery.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         HomePageDAO DAL = new HomePageDao();
-        UserLogin userDAL= new UserLoginDao(); 
+        UserLogin userDAL = new UserLoginDao();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -26,28 +26,28 @@ namespace OnlineFastFoodDelivery.Controllers
         {
             int? UserID = 0;
             UserID = HttpContext.Session.GetInt32("UserID");
-            List<Category> categories=new List<Category>();
+            List<Category> categories = new List<Category>();
             List<Category> topcategories = new List<Category>();
-            List<SubCategory> subCategories=new List<SubCategory>();
+            List<SubCategory> subCategories = new List<SubCategory>();
             List<Food> foods = new List<Food>();
             List<FoodType> foodTypes = new List<FoodType>();
             categories = await DAL.GetAllCategories();
-            topcategories = await DAL.GetCategoriesForHomepage() ;
+            topcategories = await DAL.GetCategoriesForHomepage();
             foodTypes = await DAL.GetAllFoodTypesForHomepage();
             subCategories = await DAL.GetSubCategoriesForHomePage();
             foods = await DAL.GetFoodsForHomepage();
             var _viewModel = new HomePageViewModel()
             {
                 Categories = categories,
-                TopCategories=topcategories,
-                SubCategories=subCategories,
-                Food=foods,
-                FoodTypes=foodTypes
+                TopCategories = topcategories,
+                SubCategories = subCategories,
+                Food = foods,
+                FoodTypes = foodTypes
             };
-            
-            
-            
-            
+
+
+
+
             return View(_viewModel);
         }
         [Route("Foods")]
@@ -60,15 +60,15 @@ namespace OnlineFastFoodDelivery.Controllers
             List<SubCategory> subCategories = new List<SubCategory>();
             List<Food> foods = new List<Food>();
             List<FoodType> foodTypes = new List<FoodType>();
-            if ( FoodTypeID != null)
+            if (FoodTypeID != null)
             {
-                foods =await DAL.getFoodsByFoodTypoeID((int)FoodTypeID);
+                foods = await DAL.getFoodsByFoodTypoeID((int)FoodTypeID);
             }
-            else if(CatID != null)
+            else if (CatID != null)
             {
-                foods =await DAL.getFoodsByCategoryID((int)CatID);
+                foods = await DAL.getFoodsByCategoryID((int)CatID);
             }
-            else if( SubCatID != null)
+            else if (SubCatID != null)
             {
                 foods = await DAL.getFoodsBySubCategoryID((int)SubCatID);
             }
@@ -76,41 +76,41 @@ namespace OnlineFastFoodDelivery.Controllers
             {
                 foods = await DAL.GetAllFoods();
             }
-                categories = await DAL.GetAllCategories();
-                subCategories = await DAL.GetAllSubCategories(subCategories);
-                topcategories = await DAL.GetCategoriesForHomepage();
-                foodTypes = await DAL.GetAllFoodTypes();
-                //foods = await DAL.GetAllFoods();
+            categories = await DAL.GetAllCategories();
+            subCategories = await DAL.GetAllSubCategories(subCategories);
+            topcategories = await DAL.GetCategoriesForHomepage();
+            foodTypes = await DAL.GetAllFoodTypes();
+            //foods = await DAL.GetAllFoods();
 
-                _viewModel = new HomePageViewModel()
-                {
-                    Categories = categories,
-                    TopCategories = topcategories,
-                    SubCategories = subCategories,
-                    Food = foods,
-                    FoodTypes = foodTypes
-                };
-                return View(_viewModel);
-         
+            _viewModel = new HomePageViewModel()
+            {
+                Categories = categories,
+                TopCategories = topcategories,
+                SubCategories = subCategories,
+                Food = foods,
+                FoodTypes = foodTypes
+            };
+            return View(_viewModel);
+
         }
-        public async Task<IActionResult> Filter(List<int>? listCat,List<int>? listSubCat,List<int>? listFoodType)
+        public async Task<IActionResult> Filter(List<int>? listCat, List<int>? listSubCat, List<int>? listFoodType)
         {
-            
+
             List<Food> listFood = new List<Food>();
             HomePageViewModel _viewModel = new HomePageViewModel();
             listFood = await DAL.GetAllFoods_Filter(listCat, listSubCat, listFoodType);
-            return PartialView("_Food",listFood);
+            return PartialView("_Food", listFood);
 
-            
+
         }
-        
+
         public async Task<IActionResult> FoodDetails(int FoodID)
         {
             Food model = new Food();
             model = await DAL.GetFoodByID(FoodID);
             return View(model);
         }
-        
+
         public async Task<IActionResult> UserProfile(int id)
         {
             try
@@ -121,15 +121,15 @@ namespace OnlineFastFoodDelivery.Controllers
                 List<OrderDetail> listOrderDetails = new List<OrderDetail>();
                 //foreach (Order order in listOrders) 
                 //{
-                    listOrderDetails = await userDAL.GetAllOrderDetails((int)id);
+                listOrderDetails = await userDAL.GetAllOrderDetails((int)id);
                 //}
                 User_ViewModel viewModel = new User_ViewModel()
-                { 
-                    _user=user,
+                {
+                    _user = user,
                     Orders = listOrders,
-                    OrderDetails=listOrderDetails
+                    OrderDetails = listOrderDetails
                 };
-               
+
                 return View(viewModel);
             }
             catch (Exception)
@@ -138,29 +138,30 @@ namespace OnlineFastFoodDelivery.Controllers
                 throw;
             }
         }
-        
+
         public IActionResult Privacy()
         {
             return View();
         }
         public async Task<List<SubCategory>> getSubCategoryBasedOnCat(List<int> list)
         {
-            
+
             List<SubCategory> listSub = await DAL.GetSubCategoriesForHomePage(list);
-            
+
             return listSub;
         }
-       
+
         public IActionResult Logout()
         {
             HttpContext.Session.GetString("UserName");
-            
-            if (HttpContext.Session.GetString("UserName").ToString() != null && HttpContext.Session.GetInt32("UserID")!=null)
+
+            if (HttpContext.Session.GetString("UserName").ToString() != null && HttpContext.Session.GetInt32("UserID") != null)
             {
                 HttpContext.Session.Remove("UserName");
                 HttpContext.Session.Remove("UserID");
                 HttpContext.Session.Remove("CartNumber");
             }
+            TempData["Success"] = "Logged Out Successfully !";
             return RedirectToAction("Index");
 
         }
@@ -172,13 +173,13 @@ namespace OnlineFastFoodDelivery.Controllers
         public async Task<List<String>> getAllFoodsName()
         {
             List<string> listFoodNames = await DAL.getAllFoodNames();
-            return listFoodNames;   
+            return listFoodNames;
         }
         public async Task<long> getFoodIDbyName(string FoodName)
         {
-            long FoodID=await DAL.getFoodByName(FoodName);
+            long FoodID = await DAL.getFoodByName(FoodName);
             return FoodID;
         }
-        
+
     }
 }

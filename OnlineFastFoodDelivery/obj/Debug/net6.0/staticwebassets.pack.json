@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\OnlineFastFoodDelivery.bundle.scp.css"
     },
     {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\1ae8bcdcef865fe7a50e34148c8cb1ce.jpg",
+      "PackagePath": "staticwebassets\\Images\\1ae8bcdcef865fe7a50e34148c8cb1ce.jpg"
+    },
+    {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\322427_cart_icon.svg",
       "PackagePath": "staticwebassets\\Images\\322427_cart_icon.svg"
     },
@@ -17,8 +21,24 @@
       "PackagePath": "staticwebassets\\Images\\791390ef241edb6cc0b0ad7250056b89.jpg"
     },
     {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\AnasAbdin.gif",
+      "PackagePath": "staticwebassets\\Images\\AnasAbdin.gif"
+    },
+    {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\BannerMain.jpg",
       "PackagePath": "staticwebassets\\Images\\BannerMain.jpg"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Burger vs_ Chopsticks.gif",
+      "PackagePath": "staticwebassets\\Images\\Burger vs_ Chopsticks.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Day 5-6 Cat Tail Animation.gif",
+      "PackagePath": "staticwebassets\\Images\\Day 5-6 Cat Tail Animation.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Food Loader - GIF Animation.gif",
+      "PackagePath": "staticwebassets\\Images\\Food Loader - GIF Animation.gif"
     },
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Food delivery biker illustration.jpg",
@@ -29,6 +49,14 @@
       "PackagePath": "staticwebassets\\Images\\Gif Pack_ Food.gif"
     },
     {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Loading.gif",
+      "PackagePath": "staticwebassets\\Images\\Loading.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Menu.png",
+      "PackagePath": "staticwebassets\\Images\\Menu.png"
+    },
+    {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Mienar.gif",
       "PackagePath": "staticwebassets\\Images\\Mienar.gif"
     },
@@ -37,8 +65,24 @@
       "PackagePath": "staticwebassets\\Images\\Ngan Pham Kitten GIF - Ngan Pham Kitten Anime - Discover & Share GIFs.gif"
     },
     {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Nice Loading Animation For Websites » CSS Author.gif",
+      "PackagePath": "staticwebassets\\Images\\Nice Loading Animation For Websites » CSS Author.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Plant.gif",
+      "PackagePath": "staticwebassets\\Images\\Plant.gif"
+    },
+    {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Rotate.jpg",
       "PackagePath": "staticwebassets\\Images\\Rotate.jpg"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\Samosa-Resized.jpg",
+      "PackagePath": "staticwebassets\\Images\\Samosa-Resized.jpg"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\What Emoji Best Describes You_.gif",
+      "PackagePath": "staticwebassets\\Images\\What Emoji Best Describes You_.gif"
     },
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\WideVarietyOfFoods.jpeg",
@@ -51,6 +95,18 @@
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\[deleted by user].gif",
       "PackagePath": "staticwebassets\\Images\\[deleted by user].gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\chill (1).png",
+      "PackagePath": "staticwebassets\\Images\\chill (1).png"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\download.gif",
+      "PackagePath": "staticwebassets\\Images\\download.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\handpan.jpg",
+      "PackagePath": "staticwebassets\\Images\\handpan.jpg"
     },
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\kindpng_1519867.png",
@@ -71,6 +127,10 @@
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\persona3-mitsuru-kirij.gif",
       "PackagePath": "staticwebassets\\Images\\persona3-mitsuru-kirij.gif"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\sakura.gif",
+      "PackagePath": "staticwebassets\\Images\\sakura.gif"
     },
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\Images\\zero-two-dance.gif",
@@ -8527,6 +8587,10 @@
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\js\\Sweetalert.min.js",
       "PackagePath": "staticwebassets\\js\\Sweetalert.min.js"
+    },
+    {
+      "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\js\\apexcharts.js",
+      "PackagePath": "staticwebassets\\js\\apexcharts.js"
     },
     {
       "Id": "D:\\Online Fast Food Delivery project\\OnlineFastFoodDelivery\\wwwroot\\js\\jquery-ui.min.js",

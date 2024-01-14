@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Models.Food>
+﻿@using Models
+@model FoodModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +14,6 @@
         var txtBox = document.getElementById('itemID');
         txtBox.value = itemID;
         $('#staticBackdrop').modal('show');
-        window.location.reload();
     }
     let deleteItem = () => {
         var itemID = $('#itemID').val();
@@ -23,8 +23,8 @@
             //data: { id: itemID },
             success: function (result) {
                 $('#staticBackdrop').modal('hide');
-                window.location.reload();
-            },do 
+               
+            },
             error: function (error) {
                 console.log(error);
             }
@@ -38,37 +38,38 @@
     <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
         <div class="card-body px-2">
             <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Food </a>
+            <form asp-action="Index" method="post" asp-asp-controller="Food">
             <table class="table table-responsive table-hover table-striped table-bordered">
     <thead>
         <tr>
             <th>
-                            @Html.DisplayNameFor(model => model.FoodId)
+                           Food ID
             </th>
             <th>
-                            @Html.DisplayNameFor(model => model.FoodName)
-            </th>
-
-            <th>
-                            @Html.DisplayNameFor(model => model.CategoryName)
+                           Food Name
             </th>
 
             <th>
-                            @Html.DisplayNameFor(model => model.SubCategoryName)
+                          Category Name
             </th>
 
             <th>
-                            @Html.DisplayNameFor(model => model.FoodTypeName)
+                            Sub-Category Name
+            </th>
+
+            <th>
+                            FoodType Name
             </th>
            <th>
-                            @Html.DisplayNameFor(model => model.FoodDesc)
+                           Description
             </th>
          
           
             <th>
-                            @Html.DisplayNameFor(model => model.IconImage)
+                            Icon Image
             </th>
             <th>
-                            @Html.DisplayNameFor(model => model.BannerImage)
+                            Banner Image
             </th>
 
 
@@ -76,7 +77,7 @@
         </tr>
     </thead>
     <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.listFoods)
                     {
                     <tr>
                         <td>
@@ -128,6 +129,31 @@
                     }
     </tbody>
 </table>
+            
+<br/>
+<table cellpadding="0" cellspacing="0">
+                <tr>
+                    @for(var i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (i != Model.CurrentPageIndex)
+                        {
+                          <a class="btn btn-sm btn-outline-dark mx-1" style="border-radius:0;" href="javascript:PagerClick(@i);">@i</a>
+                        }
+                        else
+                        {
+                                <span class="btn btn-sm btn-outline-white mx-1" style="border-radius:0">@i</span>
+                        }
+                    }
+                </tr>
+</table>
+                <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+            </form>
 </div>
 </div>
 </div>
+<script>
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    }
+</script>

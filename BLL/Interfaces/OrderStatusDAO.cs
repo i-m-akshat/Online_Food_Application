@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface OrderStatusDAO
     {
-        Task<List<Order>> GetAllOrders();
+        Task<orderModel> GetAllOrders(int CurrentPage);
         Task<bool> Cancel(int Orderid);
         Task<bool> Waiting(int orderID);
         Task<bool> PickedByCourierPartner(int orderID );
@@ -17,5 +17,6 @@ namespace BLL.Interfaces
         Task<bool> PickedByDeliveryPerson(int orderID );
         Task<bool> OutForDelivery(int orderID );
         Task<bool> Delivered(int OrderID );
+        Task<string> GetEmailbyOrderID(int id);
     }
 }

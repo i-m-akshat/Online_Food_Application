@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface SubCategoryDAO
     {
-        public Task<List<SubCategory>> GetAllSubCategories(List<SubCategory> subCat);
+        public Task<SubcategoryModel> GetAllSubCategories(int CurrentPageIndex);
         public Task<SubCategory> GetSubCategoryById(int? id, SubCategory subCat);
         public Task<bool> InsertSubCategory(SubCategory subCat);
         public Task<bool> UpdateSubCategory(int id, SubCategory subCat);

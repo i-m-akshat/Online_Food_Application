@@ -45,4 +45,10 @@ namespace Models
         public virtual ICollection<FoodType> FoodTypes { get; set; }
         public virtual ICollection<Food> Foods { get; set; }
     }
+    public class SubcategoryModel
+    {
+        public List<SubCategory> subcategories { get; set; }
+        public int PageCount { get; set; }
+        public int CurrentPageIndex { get; set; }
+    }
 }

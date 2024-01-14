@@ -30,7 +30,7 @@
                                     </div>
 
                                     <div class="form-floating my-3">
-                                        <input asp-for="Password" placeholder="Please Enter the password" class="form-control form-control-sm" />
+                                        <input type="password" asp-for="Password" placeholder="Please Enter the password" class="form-control form-control-sm" />
                                         <label asp-for="Password"></label>
                                         <span asp-validation-for="Password"  class="text-danger"></span>
                                     </div>
@@ -110,6 +110,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal fade" id="staticBackdrop_Loader" style="border-radius:20%" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop_ForgotLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                                            <div class="modal-content">
+                                                <img src="~/images/What Emoji Best Describes You_.gif" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -139,12 +146,14 @@
                     console.log(data);
                     // swal("Badhai ho!", 'Data aa gaya ', "success");
                     $('#staticBackdrop_Forgot').modal('hide');
+                    $('#staticBackdrop_Loader').modal('show');
                     $.ajax({
                         url: '@Url.Content("~/Email/SendOTP?EMailID=")',
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(data.email),
                         success: function (data) {
+                            $('#staticBackdrop_Loader').modal('hide');
                             swal("OTP sent!", "Please Reset Your Password using the OTP", "success");
                             $('#staticBackdrop_OTP').modal('show');
                         },
@@ -161,6 +170,8 @@
         }
         )
         $('#btnVerify').click(()=>{
+            $('#staticBackdrop_OTP').modal('hide');
+            // $('#staticBackdrop_Loader').modal('show');
             var txtOTP = $("#txtOTP").val();
             console.log(txtOTP);
             $.ajax({
@@ -170,7 +181,7 @@
                 data:JSON.stringify(txtOTP),
                 success: function (data) {
                     console.log(data);
-                    $('#staticBackdrop_OTP').modal('hide');
+                    // $('#staticBackdrop_Loader').modal('hide');
                     $('#staticBackdrop_Reset').modal('show');
                 },
                 error:function(error){
@@ -180,6 +191,8 @@
         })
         $('#btnReset').click(()=>{
             var ResettedPassword = $('#txtResetPassword').val();
+            $('#staticBackdrop_Reset').modal('hide');
+            // $('#staticBackdrop_Loader').modal('show');
             $.ajax({
                 url: 'ResetPassword?Password=',
                 method:'POST',
@@ -187,8 +200,9 @@
                 data: JSON.stringify(ResettedPassword),
                 success: function (data) {
                     if(data==true){
+                        // $('#staticBackdrop_Loader').modal('hide');
                         swal("Password Reset Successful !", "Please Login ", "success");
-                        $('#staticBackdrop_Reset').modal('hide');
+                        
 
                     }else{
                         swal("Error !", "Something went wrong", "error");

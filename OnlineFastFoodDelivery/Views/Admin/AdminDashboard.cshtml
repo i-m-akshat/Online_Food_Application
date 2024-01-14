@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Models.ViewModel
+@model AdminViewModel
+@{
     ViewData["Title"] = "AdminDashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -10,237 +12,381 @@
 <script src="~/js/chart.js"></script>
 
 <div class="container">
-    <h1 class="row-header">
+    @* <h1 class="row-header">
         Dashboard
-    </h1>
-    <div class="row justify-content-center m-0 w-100 mb-4">
-        <div class="col-md-3 my-2">
-            <a class="card" style="background:linear-gradient(to right,#0096FF,#0096FF,#F0FFFF);border-style:none;text-decoration:none;cursor:pointer">
+    </h1> *@
+    <div class="container-fluid mt-5">
+        
+            <div class="row justify-content-center m-0 w-100 mb-4">
+                <div class="col-md-4 my-2">
+                    <div class="card" style="text-decoration:none;cursor:pointer" >
+                       @*  <div class="card-body"> *@
+                    <h1 class="text-black mt-2 mx-2" style="font-size:18px;color:black;font-weight:800;">Total Orders: &nbsp;@Model.count_Orders </h1>
+                            @* <hr /> *@
+                            <div id="chart_Orders" style="object-fit:cover;position:relative">
+                            </div>
+                        @* </div> *@
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="card text-black" style="text-decoration:none;cursor:pointer" >
+                        @* <div class="card-body"> *@
+                    <h1 class="text-black mt-2 mx-2" style="font-size:18px;color:black;font-weight:800;">Total Payments: &nbsp;@Model.count_Payments</h1>
+                          @*   <hr /> *@
+                        <div id="chart_Payment" style="object-fit:cover;position:relative">
+                            </div>
+                        @* </div> *@
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="card text-black" style="text-decoration:none;cursor:pointer" >
+                       @*  <div class="card-body"> *@
+                    <h1 class="text-black mt-2 mx-2" style="font-size:18px;color:black;font-weight:800;">Total Earnings: ₹&nbsp;@Model.sum_earnings</h1>
+                           @*  <hr /> *@
+                        <div id="chart_Earnings" style="object-fit:cover;position:relative">
+                            </div>
+                       @*  </div> *@
+                    </div>
+                </div>
+                @*  <div class="col-md-3 my-2">
+                <a class="card text-black" style="text-decoration:none;cursor:pointer">
                 <div class="card-body">
-                    <h1 class="row-header">Category</h1>
-                    <p class="text-white" style="font-size:13px">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 my-2">
-            <a class="card" style="background:linear-gradient(to right,#db1b0c,#f44336,#fd7d74);border-style:none;text-decoration:none;cursor:pointer">
-                <div class="card-body">
-                    <h1 class="row-header">Category</h1>
-                    <p class="text-white" style="font-size:13px">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 my-2">
-            <a class="card" style="background:linear-gradient(to right,#f1c232,#ffd966,#ffe599);border-style:none;text-decoration:none;cursor:pointer">
-                <div class="card-body">
-                    <h1 class="row-header">Category</h1>
-                    <p class="text-white" style="font-size:13px">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 my-2">
-            <a class="card" style="background:linear-gradient(to right,#0000ff,#3d85c6,#6fa8dc);border-style:none;text-decoration:none;cursor:pointer">
-                <div class="card-body">
-                    
-                    <h1 class="row-header">Category</h1>
-                    <p class="text-white" style="font-size:13px">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    </p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="row justify-content-center align-content-center g-2">
-        <div class="col-md-5 card mx-1">
-            <div class="card-body">
-                <div style="height:100%">
-                    <canvas id="Category2Chart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 card mx-1">
-            <div class="card-body">
-                <div style="width:100%;height:100%">
-                    <canvas id="CategoryChart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 card mx-1">
-            <div class="card-body">
-                <div style="width:100%;height:100%">
-                    <canvas id="Category1Chart" style="padding:0; margin:auto;display:block;transition:0.8s"></canvas>
-                </div>
-            </div>
-        </div>
+                <h1 class="text-black-50" style="font-size:22px;color:black;font-family: 'Permanent Marker', cursive;">Roles</h1>
+                <hr/>
+                <div id="chart_Roles">
 
+                </div>
+                </div>
+                </a>
+                </div> *@
+            </div>
+        <div class="row justify-content-center m-0 w-100 mb-4">
+                <div class="col-md-6 my-2">
+                    <div class="card text-black" style="height:100%">
+                        <div class="card-body">
+                        <h1 class="text-black" style="font-size:18px;color:black;font-weight:800;">
+                            Total Users: &nbsp;@Model.count_Users
+                        </h1>
+                            <hr/>
+                        <div id="chart_Users">
+                        </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6 my-2">
+                <div class="card" style="height:100%">
+                    <div class="card-body">
+                        <h1 class="text-black" style="font-size:18px;color:black;font-weight:800;">
+                            Total Admins:&nbsp; @Model.count_Admins
+                        </h1><hr />
+                        <div id="chart_Admins" style="height:100%">
+                        </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
     </div>
+    
    
 
 
 </div>
 <script>
     $(document).ready(function () {
-        var myChart1, myChart2, myChart3;
-        function createCategoryChart(Label, Data) {
-
-            if (myChart1 != undefined || myChart1 != null) {
-                myChart1.destroy();
-            }
-            var ctx = $('#CategoryChart').get(0).getContext("2d");
-            myChart1 = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Label,
-                    datasets: [
-                        {
-                            label: 'Name',
-                            data: Data,
-                            fill: false,
-
-                            backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(153, 102, 255)',
-                                'rgb(255, 159, 64)'
-                            ],
-                            borderWidth: 1
-                        }
-                    ]
+        var chart_Foods, chart_Orders, chart_Earnings, chart_Admins, chart_Users;
+        chart_Payment = document.querySelector('#chart_Payment');
+        chart_Orders = document.querySelector('#chart_Orders');
+        chart_Users = document.querySelector('#chart_Users');
+        chart_Earnings = document.querySelector('#chart_Earnings');
+        chart_Admins = document.querySelector('#chart_Admins');
+        // console.log(chart_Orders);
+        var orderData;
+        getOrderPerDate();
+        getPaymentPerMonth();
+        getAdminPerRoles();
+        getUserPerAddedDate();
+        //Bar Chart
+        
+        function BarChart(chartName,data_X,data_Y,_name){
+            console.log(data_X);
+            console.log(data_Y);
+            var options = {
+                series: [{
+                    name:_name,
+                    data:data_Y
+                }],
+                chart: {
+                    type: 'bar',
+                    // height: 350
                 },
-                options: {
-                    Animation: true,
-                    AnimationEffect: 'EaseIn',
-                    duration: 2000,
-                    easing: 'easeInOutQuad',
-                    responsive: true,
-                    acceleration: {
-                        disable: true
+                plotOptions: {
+                    bar: {
+                        borderRadius: 2,
+                        horizontal: false,
+                        distributed: true,
+                        dataLabels: {
+                            position: 'top',
+                            hideOverflowingLabels: false,
+                        },
+                        columnWidht: '20%',
                     },
-                    title: { display: true, text: 'Name' },
-                    legend: { position: 'bottom' },
-                    //scales: {
-                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
-                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
-                    //},
-                }
-
-            });
-        }
-
-        function createCategory1Chart(Label, Data) {
-
-            if (myChart2 != undefined || myChart2 != null) {
-                myChart2.destroy();
-            }
-            var ctx = $('#Category1Chart').get(0).getContext("2d");
-            myChart2 = new Chart(ctx, {
-                type: 'polarArea',
-                data: {
-                    labels: Label,
-                    datasets: [
-                        {
-                            label: 'Name',
-                            data: Data,
-                            fill: false,
-
-                            backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(153, 102, 255)',
-                                'rgb(255, 159, 64)'
-                            ],
-                            borderWidth: 1
-                        }
-                    ]
                 },
-                options: {
-                    Animation: true,
-                    AnimationEffect: 'EaseIn',
-                    duration: 2000,
-                    easing: 'easeInOutQuad',
-                    responsive: true,
-                    acceleration: {
-                        disable: true
-                    },
-                    title: { display: true, text: 'Name' },
-                    legend: { position: 'bottom' },
-                    //scales: {
-                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
-                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
-                    //},
-                }
-
-            });
-        }
-        function createCategory2Chart(Label, Data) {
-
-            if (myChart3 != undefined || myChart3 != null) {
-                myChart3.destroy();
-            }
-            var ctx = $('#Category2Chart').get(0).getContext("2d");
-            myChart3 = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: Label,
-                    datasets: [
-                        {
-                            label: 'Name',
-                            data: Data,
-                            fill: false,
-
-                            backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(153, 102, 255)',
-                                'rgb(255, 159, 64)'
-                            ],
-                            borderWidth: 1
-                        }
-                    ]
+                colors: ['#F43424', '#EF8B22', '#F1EE11', '#926CF1', '#11CCF1', '#086DEE'],
+                dataLabels: {
+                    enabled: true
                 },
-                options: {
-                    Animation: true,
-                    AnimationEffect: 'EaseIn',
-                    duration: 2000,
-                    easing: 'easeInOutQuad',
-                    responsive: true,
-                    acceleration: {
-                        disable: true
-                    },
-                    title: { display: true, text: 'Name' },
-                    legend: { position: 'bottom' },
-                    //scales: {
-                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
-                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
-                    //},
-                }
-
-            });
+                xaxis: {
+                    categories: data_X,
+                },
+                
+            };
+            var chart = new ApexCharts(chartName, options);
+            chart.render();
         }
+        //Area Chart without date time
+        function AreaChart_withoutDateTime(chartName, data_X, data_Y, _name,colors) {
+            var options = {
+                series: [{
+                    name: _name,
+                    data: data_Y
+                }],
+                chart: {
+                    type: 'area',
+                    stacked: false,
+                    // height: 350,
+                    zoom: {
+                        // type: 'x',
+                        enabled: false,
+                        // autoScaleYaxis: true
+                    },
+                    toolbar: {
+                        // autoSelected: 'zoom'
+                        enabled: false,
+                    }
+                },
+                // grid:{
+                //     show:false,
+                // },
+                colors: colors,
+                dataLabels: {
+                    enabled: false
+                },
+                // stroke:{
+                //     curve:'straight'
+                // },
+                markers: {
+                    size: 0,
+                },
+                // title: {
+                //     text: _name,
+                //     align: 'left'
+                // },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        inverseColors: false,
+                        opacityFrom: 0.5,
+                        opacityTo: 0,
+                        stops: [0, 90, 100]
+                    },
+                },
+                yaxis: {
+                    // labels: {
+                    //    data_Y
+                    // },
+                    title: {
+                        // text: _name,
+                        show:false,
+                    },
+                    labels: {
+                        show: false,
+                    },
+                },
+                xaxis: {
+                    // type: 'datetime',
+                    categories: data_X,
+                    labels: {
+                        show: false,
+                    },
+                },
 
-        var ctx1 = $('#Category1Chart').get(0).getContext("2d");
-        var ctx2 = $('#Category2Chart').get(0).getContext("2d");
-        var Label = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-        var Data = [12, 19, 3, 5, 2, 3];
-        createCategoryChart(Label, Data);
-        createCategory1Chart(Label, Data);
-        createCategory2Chart(Label, Data);
+            };
+            var chart = new ApexCharts(chartName, options);
+            chart.render();
+        }
+        //Area Chart with Date time
+        function AreaChart(chartName,data_X,data_Y,_name,colors) {
+              var options = {
+                series: [{
+                    name: _name,
+                    data: data_Y
+                }],
+                chart: {
+                    type: 'area',
+                    stacked: false,
+                    // height: 350,
+                    zoom: {
+                        // type: 'x',
+                        enabled: false,
+                        // autoScaleYaxis: true
+                    },
+                    toolbar: {
+                        // autoSelected: 'zoom'
+                        enabled:false,
+                    }
+                },
+                colors: colors,
+                  // grid: {
+                  //     show:false,
+                  // },
 
+                dataLabels: {
+                    enabled: false
+                },
+                markers: {
+                    size: 0,
+                },
+                // title: {
+                //     text: _name,
+                //     align: 'left'
+                // },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        inverseColors: false,
+                        opacityFrom: 0.5,
+                        opacityTo: 0,
+                        stops: [0, 90, 100]
+                    },
+                },
+                yaxis: {
+                    // labels: {
+                    //    data_Y
+                    // },
+                    title: {
+                        // text: _name,
+                        show:false,
+                    }, labels: {
+                        show: false,
+                    },
+                },
+                xaxis: {
+                    type: 'datetime',
+                    categories:data_X, labels: {
+                        show: false,
+                    },
+                },
+               
+            };
+            var chart = new ApexCharts(chartName, options);
+            chart.render();
+        }
+        //Circular Chart
+        function circularChart(chartName, data_X, data_Y, _name,chartType) {
+            var options = {
+                series: data_Y,
+                chart: {
+                    // width: 400,
+                    height:500,
+                    type: chartType,
+                },
+                legend: {
+                    position:'left'
+                },
+                labels: data_X,
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 400
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart = new ApexCharts(chartName, options);
+            chart.render();
+        }
+        //Getting Orders per date
+        function getOrderPerDate(){
+            $.ajax({
+                url: 'getOrdersPerDate',
+                method:'GET',
+                success:function(data){
+                    orderData = data;
+                    // console.log(orderData);
+                    const data_X = orderData.map(item => item.date);
+                    const data_Y = orderData.map(item => item.count);
+                    var color = ['#926CF1'];
+                    AreaChart(chart_Orders, data_X,data_Y,"Total Orders",color);
+                    
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            })
+        }
+        function getPaymentPerMonth() {
+            $.ajax({
+                url: 'getPaymentPerMonths',
+                method:'GET',
+                success: function (data) {
+                    console.log(data);
+                    
+                    // data_Y_dum1=data.map(item=>item.)
+                    const data_X = data.map(item => item.date);
+                    const data_Y = data.map(item => item.sum_payment);
+                    const data_Y_count = data.map(item => item.count);
+                    var color1 = ['#F03636'];
+                    var color2 = ['#17EF0D'];
+                    
+                    console.log(data_X);
+                    AreaChart_withoutDateTime(chart_Earnings, data_X, data_Y, "Total Earnings:₹", color1);
+                    AreaChart_withoutDateTime(chart_Payment, data_X, data_Y_count, "Total Payments", color2);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+        function getAdminPerRoles() {
+            $.ajax({
+                url: 'getAdminPerRoles',
+                method:'GET',
+                success: function (data) {
+                    console.log(data);
+                    const Count = data.map(items => items.count);
+                    const Role = data.map(items => items.role);
+                    circularChart(chart_Admins, Role, Count, "Total Admins", "donut")
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+        function getUserPerAddedDate() {
+            $.ajax({
+                url: 'getUsersPerAddedDates',
+                method:'GET',
+                success:function(data){
+                    console.log(data);
+                    const data_X = data.map(item => item.monthYear);
+                    const data_Y = data.map(item => item.count);
+                    // var colors = ['#F43424', '#EF8B22', '#F1EE11', '#926CF1', '#11CCF1', '#086DEE'];
+                    BarChart(chart_Users, data_X, data_Y,"Total Users")
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
     })
 </script>

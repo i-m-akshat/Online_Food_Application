@@ -104,19 +104,17 @@ input[type="search"]::selection {
 
 
 .card {
-  
-    border-radius: 1rem;
-  
+   /* border-radius: 1rem;*/
     justify-content: center;
     align-content: center;
     text-justify: auto;
     color: black;
 }
 
-    .card:hover {
+   /* .card:hover {
         box-shadow: 0 1px 15px white;
         transition: ease-in-out 0.5s;
-    }
+    }*/
 
 .card-text {
     margin-top: 5px;

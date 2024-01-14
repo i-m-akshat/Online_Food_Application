@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Models.Order>
+﻿@using Models;
+@model orderModel
 
 @{
     ViewData["Title"] = "Index";
@@ -33,7 +34,7 @@
 </script> *@
 
 <div class="row justify-content-center align-items-center mt-4">
-    <h1 class="row-header text-center">List Of All Foods</h1>
+    <h1 class="row-header text-center">List Of All Orders</h1>
     @* <div class="modal fade" id="staticBackdrop_Order" data-bs-backdrop="static"
          data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -56,32 +57,34 @@
     </div> *@
     <div class="card col-md-12 col-lg-12 px-2 py-2" style="border-radius:0">
         <div class="card-body px-2">
+
+            <form asp-action="Index" asp-controller="Order" method="post">
             @* <a class="btn btn-sm btn-outline-dark btn-light" role="button" asp-action="Add_Edit">Add New Food </a> *@
             <table class="table table-responsive table-hover table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.OrderId)
+                           Order ID
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.OrderStatus)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.ProcessedBy_Name)
+                            @* @Html.DisplayNameFor(model => model.listOrder.OrderStatus) *@
+                            Order Status
                         </th>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.ProcessedDate)
+                           @*  @Html.DisplayNameFor(model => model.ProcessedBy_Name) *@
+                           Processed By
                         </th>
 
-                     
-
+                        <th>
+                            @* @Html.DisplayNameFor(model => model.ProcessedDate) *@
+                            Processed Date
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.listOrder)
                     {
                         <tr>
                             <td>
@@ -114,6 +117,33 @@
                 </tbody>
 
             </table>
+            <br/>
+            <table cellpadding="0" cellspacing="0" class="my-3">
+                    <tr>
+                    @for (int i = 1; i <= Model.PageCount; i++) 
+                    {
+                           <center><td>
+                            @if (i != Model.CurrentPageIndex)
+                            {
+                                    <a class="btn btn-sm btn-outline-dark mx-1" style="border-radius:0;" href="javascript:PagerClick(@i);">@i</a>
+                            }
+                            else
+                            {
+                                    <span class="btn btn-sm btn-outline-light text-dark" style="border-radius:0;">@i</span>
+                            }
+                            </td></center>
+                        }
+                </tr>
+            </table>
+            <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+            </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    }
+</script>

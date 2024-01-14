@@ -6,6 +6,7 @@ using Models;
 using BLL.Implementation;
 using OnlineFastFoodDelivery.Utilites;
 using Microsoft.AspNetCore.Authorization;
+using Models.ViewModel;
 
 namespace OnlineFastFoodDelivery.Controllers
 {
@@ -63,18 +64,24 @@ namespace OnlineFastFoodDelivery.Controllers
         [HttpGet]
         [Route("Dashboard")]
         //[SessionAuthorize]
-        public IActionResult AdminDashboard()
+        public async  Task<IActionResult> AdminDashboard()
        {
-
+            AdminViewModel _viewModel = new AdminViewModel();
             int AdminID = Convert.ToInt32(HttpContext.Session.GetInt32("AdminID"));
             Admin admin = DAL.getImage(AdminID);
             if (admin.Image != null) { 
                 //var AdminImage= Convert.ToBase64String(admin.Image);
              HttpContext.Session.Set("AdminImage",admin.Image);
+                _viewModel.count_Orders = await DAL.getCountOrders();
+                _viewModel.count_Users=await DAL.getCountUsers();
+                _viewModel.count_Admins=await DAL.getCountAdmins();
+                _viewModel.sum_earnings = await DAL.getSumEarnings();
+                _viewModel.count_Payments = await DAL.getCountPayment();
             }
 
-            return View();
+            return View(_viewModel);
         }
+        
         [Route("Logout")]
         public async Task <IActionResult> Logout()
         {
@@ -100,8 +107,34 @@ namespace OnlineFastFoodDelivery.Controllers
             
 
         }
-        
-    }
+        [Route("getOrdersPerDate")]
+        public async Task<List<OrderGroup>> getOrdersPerDate()
+        {
+            List<OrderGroup> listOrder = new List<OrderGroup>();
+            listOrder = await DAL.ReturnOrdersPerMonth();
+            return listOrder;
+
+         }
+        [Route("getPaymentPerMonths")]
+        public async Task<List<PaymentGroup>> getPaymentPerMonths()
+        {
+            List<PaymentGroup> listPayment= new List<PaymentGroup>();
+            return listPayment= await DAL.ReturnPaymentPerMonth();
+        }
+        [Route("getAdminPerRoles")]
+        public async Task<List<AdminGroup>> getAdminPerRoles()
+        {
+            List<AdminGroup> listAdmins=new List<AdminGroup>();
+            listAdmins = await DAL.GetAdminCountByRoles();
+            return listAdmins;
+        }
+        [Route("getUsersPerAddedDates")]
+        public async Task<List<UserGroup>> getUsersPerAddedDates()
+        {
+            return await DAL.GetUserByDate();
+        }
+
+}
 }
 //Scaffold - DbContext "Server=<ServerName>;Database=<DatabaseName>;User=<Username>;Password=<Password>;" Microsoft.EntityFrameworkCore.SqlServer - OutputDir < ModelOutputDirectory > -ContextDir < DbContextOutputDirectory > -Context<DbContextName>
 //Scaffold-DbContext "Server=DESKTOP-RBREH2D\SQLEXPRESS;Database=Online_Food_Application;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "D:\Online Fast Food Delivery project\DAL\Models" -ContextDir "D:\Online Fast Food Delivery project\DAL\Data" -force
