@@ -699,7 +699,7 @@ namespace BLL.Implementation
         {
             await using (var _context = new Online_Food_ApplicationContext())
             {
-                long FoodID = _context.TblFoods.Where(x => x.FoodName == Name).Select(x =>x.FoodId).FirstOrDefault();
+                long FoodID = _context.TblFoods.Where(x => x.FoodName == Name&&x.IsActive==true).Select(x =>x.FoodId).FirstOrDefault();
                 return FoodID;
             }
         }

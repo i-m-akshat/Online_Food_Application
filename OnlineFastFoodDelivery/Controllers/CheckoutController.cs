@@ -195,7 +195,6 @@ namespace OnlineFastFoodDelivery.Controllers
             }
             else
             {
-
                 return false;
             }
         }

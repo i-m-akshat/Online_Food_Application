@@ -66,20 +66,32 @@ namespace OnlineFastFoodDelivery.Controllers
         //[SessionAuthorize]
         public async  Task<IActionResult> AdminDashboard()
        {
+
             AdminViewModel _viewModel = new AdminViewModel();
             int AdminID = Convert.ToInt32(HttpContext.Session.GetInt32("AdminID"));
-            Admin admin = DAL.getImage(AdminID);
-            if (admin.Image != null) { 
-                //var AdminImage= Convert.ToBase64String(admin.Image);
-             HttpContext.Session.Set("AdminImage",admin.Image);
-                _viewModel.count_Orders = await DAL.getCountOrders();
-                _viewModel.count_Users=await DAL.getCountUsers();
-                _viewModel.count_Admins=await DAL.getCountAdmins();
-                _viewModel.sum_earnings = await DAL.getSumEarnings();
-                _viewModel.count_Payments = await DAL.getCountPayment();
-            }
+            string AdminName = Convert.ToString(HttpContext.Session.GetString("AdminSession"));
+            if (AdminName != null&&AdminID!=0)
+            {
+                Admin admin = DAL.getImage(AdminID);
+                if (admin.Image != null)
+                {
+                    //var AdminImage= Convert.ToBase64String(admin.Image);
+                    HttpContext.Session.Set("AdminImage", admin.Image);
+                    _viewModel.count_Orders = await DAL.getCountOrders();
+                    _viewModel.count_Users = await DAL.getCountUsers();
+                    _viewModel.count_Admins = await DAL.getCountAdmins();
+                    _viewModel.sum_earnings = await DAL.getSumEarnings();
+                    _viewModel.count_Payments = await DAL.getCountPayment();
+                }
 
-            return View(_viewModel);
+                return View(_viewModel);
+            }
+            else
+            {
+                TempData["Error"] = "Please Login!";
+                return RedirectToAction("Login");
+            }
+            
         }
         
         [Route("Logout")]
@@ -94,6 +106,7 @@ namespace OnlineFastFoodDelivery.Controllers
                     HttpContext.Session.Remove("AdminSession");
                     HttpContext.Session.Remove("SessionID");
                     HttpContext.Session.Remove("AdminRole");
+                    HttpContext.Session.Remove("AdminID");
                 }
                 TempData["Success"] = "Logout SuccessFull";
                 return RedirectToAction("Index", "Home");

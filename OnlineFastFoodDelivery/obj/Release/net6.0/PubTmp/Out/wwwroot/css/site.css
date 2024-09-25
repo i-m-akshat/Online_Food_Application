@@ -1,0 +1,420 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+::selection {
+    background-color:white;
+    color: #121212;
+}
+input[type="search"]::selection {
+    background-color: #121212;
+    color:whitesmoke;
+}
+
+
+.btn{
+    border-radius:2.5rem;
+}
+#UserBody {
+    margin-bottom: 60px;
+    overflow-x: hidden;
+    /* font-family: 'Montserrat Alternates', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+}
+#Body {
+    background-color: #121212;
+    /*  font-family: 'Montserrat Alternates', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-solid {
+    background-color: whitesmoke;
+    transition: background-color 1s ease 0s;
+    color: white;
+}
+
+.bannerDiv {
+    background-image: url('../images/65babfa10a37ee049e6b556f672103e5 (1).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    border-radius:2rem;
+}
+
+.nav-link {
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+}
+.navbar-orange{
+    background-color:orange;
+    color:white;
+    text-decoration:none;
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.bannerImgText {
+    background: transparent;
+    justify-content: center;
+    align-content: center;
+    padding: 200px;
+    font-size: 45px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    font-family: 'Permanent Marker', cursive;
+    flex-direction: row;
+    text-align: center;
+}
+
+.itemContainer {
+    width: 100%;
+    color: white;
+    padding-top: 100px;
+    height: 100vh;
+}
+
+.Heading {
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+}
+
+
+.card {
+   /* border-radius: 1rem;*/
+    justify-content: center;
+    align-content: center;
+    text-justify: auto;
+    color: black;
+}
+
+   /* .card:hover {
+        box-shadow: 0 1px 15px white;
+        transition: ease-in-out 0.5s;
+    }*/
+
+.card-text {
+    margin-top: 5px;
+    text-align: justify;
+    font-size: 14px;
+    color: black;
+}
+
+.TopFoodContainer {
+    width: 430px;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+.txtArea {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.TopFoodtxt {
+    color: white;
+    font-size: 15px;
+}
+
+.TopFoodImg {
+
+    width:100%;
+    height:580px;
+    background-size: cover;
+    transition: .5s ease-in-out;
+    border-radius: 1.5rem;
+}
+.TopFoodContainer:hover .TopFoodImg {
+    box-shadow: 0 3px 12px black;
+    opacity: 0.3;
+    background-color: white;
+}
+
+.TopFoodContainer:hover .txtArea {
+    opacity: 1;
+}
+
+
+.row-header {
+    font-size: 40px;
+    color: white;
+    font-weight: 400;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.VerticalSnap {
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-flow: row;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+}
+
+    .VerticalSnap > .section {
+    }
+
+.dishCard {
+    height: 250px;
+}
+
+#UserBody::-webkit-scrollbar {
+    width: 0px;
+}
+
+#UserBody::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+}
+
+#UserBody::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+#Body::-webkit-scrollbar {
+    width: 0px;
+}
+
+#Body::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+}
+
+#Body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+#recipeList {
+    top: 5rem;
+}
+
+    #recipeList::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    #recipeList::-webkit-scrollbar-track {
+        background-color: #ffffff;
+    }
+
+    #recipeList::-webkit-scrollbar-thumb {
+      
+       background:black;
+        border-radius: 20px;
+    }
+
+.recipe-item:hover {
+    background: linear-gradient(to left,black,grey,black);
+    border-radius: 10px;
+    color: white;
+}
+
+    .recipe-item:hover a {
+        color: white !important;
+    }
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    width:100%;
+}
+.sideBar {
+    width: 300px;
+    background: white;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    transition: all ease-in-out 0.5s;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 22px;
+    color: black;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.profile img {
+    width: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profileDesc {
+    font-size: 14px;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 200;
+}
+
+.sidebarList {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-style: none;
+}
+
+    .sideBar ul li a {
+        cursor: pointer;
+        position: relative;
+        display: block;
+        padding: 13px 30px;
+        color: rgb(241, 237, 237);
+        font-size: 16px;
+        position: relative;
+        list-style: none;
+    }
+
+        .sideBar ul li a i {
+            margin: 10px;
+            width: 30px;
+            display: inline-block;
+            transition: 0.3s ease-in ease-out;
+        }
+
+        .sideBar ul li a:hover, .sideBar ul li a.active {
+            display: block;
+            background: linear-gradient(to right,black,grey,black);
+            color: white !important;
+            border-radius: 2rem;
+            
+        }
+
+
+
+
+.adminBody {
+    width: 100%;
+    margin-left: 300px;
+    transition: all ease-in-out 0.5s;
+}
+
+
+@media only screen and (max-width:950px) and (min-width:650px){
+    .TopFoodContainer {
+        width:400px;
+    }
+}
+@media only screen and (max-width:600px) and (min-width:300px){
+    #_searchFood{
+        visibility:hidden
+    }
+}
+@media only screen and (max-width:950px) and (min-width:700px) {
+    #_searchFood {
+        visibility: hidden
+    }
+}
+
+@media only screen and (max-width:950px) and (min-width:300px) {
+    
+    
+    .TopFoodContainer:hover .txtArea {
+        top: 50%;
+        left: 50%;
+    }
+
+    .TopFoodContainer:hover .TopFoodtxt {
+        font-size: 10px;
+    }
+  
+    .bannerDiv {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        margin-right: 0px;
+    }
+    
+    ._cardFoodType{
+        overflow-y:hidden;
+        font-size:12px;
+    }
+ 
+}
+
+
+
+._cardFoodType {
+  
+    margin-top: 2rem;
+   
+    display: flex;
+    height:auto;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: white;
+    transition: transform 0.5s ease;
+    border-width: 5px;
+}
+._cardFoodTypeBody {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-justify: auto;
+    text-align: justify;
+    transition:transform 0.5s ease;
+}
+._cardFoodType:hover {
+    transform: scale(1.1);
+    border-width: 0px;
+}
+.head_Name {
+    font-family: 'Permanent Marker', cursive;
+    margin-top:20px;
+}

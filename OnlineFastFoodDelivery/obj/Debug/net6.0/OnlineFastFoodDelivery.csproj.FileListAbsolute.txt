@@ -222,7 +222,6 @@ D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\run
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\obj\Debug\net6.0\OnlineFastFoodDelivery.csproj.CopyComplete
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
@@ -264,3 +263,4 @@ D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\Sys
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
 D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\bin\Debug\net6.0\OpenAI_API.dll
+D:\Online Fast Food Delivery project\OnlineFastFoodDelivery\obj\Debug\net6.0\OnlineFa.B3752BEF.Up2Date

@@ -61,7 +61,7 @@ namespace BLL.Implementation
             {
                 int maxRows = 10;
                 orderModel _model = new orderModel();
-                _model.listOrder= _context.TblOrders.Where(x => x.OrderStatus != "Cancelled").Select(x => new Order
+                _model.listOrder= _context.TblOrders.Where(x => x.OrderStatus != "Cancelled"&&x.OrderStatus!="Delivered").Select(x => new Order
                 {
                     OrderId = x.OrderId,
                     OrderStatus = x.OrderStatus,

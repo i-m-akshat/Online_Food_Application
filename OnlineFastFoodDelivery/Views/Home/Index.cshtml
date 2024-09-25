@@ -3,14 +3,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div>    @*style="background:linear-gradient(to right,black,#121212,grey,#121212,black) ">*@
+<div>   
 
     <!--Banner-->
     <div class="bannerDiv" id="Banner">
         <div class="mask">
             <div>
                 <span class="bannerImgText">
-                   The Chill Curry <br />
+                    Flavours of Ayodhya <br />
                     The Best Food Restaurant In Ayodhya
                 </span>
                 <div class="row" id="_searchFood">
@@ -52,7 +52,7 @@
                             <div class="col-12 mb-0 mt-auto">
                                 <h5 class="row-header mt-1" style="font-size:20px">Best Foods</h5>
                                 <p class="text-center text-white " style="text-align:justify">
-                                    At AxA Foods, we take pride in delivering an unrivaled culinary experience by consistently providing the best food. Our commitment to excellence starts with sourcing premium ingredients to craft each dish with care and precision.
+                                    At Flavours Of Ayodhya, we take pride in delivering an unrivaled culinary experience by consistently providing the best food. Our commitment to excellence starts with sourcing premium ingredients to craft each dish with care and precision.
                                 </p>
                             </div>
                            
@@ -85,22 +85,22 @@
                 foreach(var category in Model.TopCategories)
                 {
 
-                                    <div class="TopFoodContainer">
-                                        @* <div class="card-body">*@
-                                        <a target="_blank" role="button" asp-asp-controller="Home" asp-action="Foods" asp-route-CatID="@category.CatId">
-                                            <img src="data:image/png;base64,@Convert.ToBase64String(category.IconImage)" class="img-fluid TopFoodImg" />
+                                                <div class="TopFoodContainer">
+                                                    @* <div class="card-body">*@
+                                                    <a target="_blank" role="button" asp-asp-controller="Home" asp-action="Foods" asp-route-CatID="@category.CatId">
+                                                        <img src="data:image/png;base64,@Convert.ToBase64String(category.IconImage)" class="img-fluid TopFoodImg" />
 
-                                            <div class="txtArea">
-                                                <div class="TopFoodtxt">
-                                                    <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
-                                                        @category.CatName</h3>
-                                            <p>
-                                               @category.CatDesc
-                                            </p>
-                                        </div>
-                                        </div>
-                                        </a>
-                                    </div>
+                                                        <div class="txtArea">
+                                                            <div class="TopFoodtxt">
+                                                                <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
+                                                                    @category.CatName</h3>
+                                                        <p>
+                                                           @category.CatDesc
+                                                        </p>
+                                                    </div>
+                                                    </div>
+                                                    </a>
+                                                </div>
                   }
                 
             }
@@ -157,9 +157,7 @@
                             </div>
                         </a>
                     </div>
-                   @*  <div class="col-md-2">
-                        <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light my-3 " asp-asp-controller="Home" asp-action="Foods" asp-route-SubCatID="@Subcat.SubCatid">@Subcat.SubCatName</a></center>
-                    </div> *@
+                 
                     }
                
                 
@@ -170,44 +168,7 @@
         </div>
     </div>
     <!--FoodTypeRow-->
-    @* <div class="col-12 mt-3 " style="margin-top:30px" id="CardRow">
-        <div class="row my-2 mx-2 justify-content-center align-content-center">
-            <h3 class="row-header" style="font-family: 'Permanent Marker', cursive;">
-                Types of Foods
-            </h3>
-            <p class="text-center text-white" style="font-size:15px">Variety Of Foods Provided By Us</p>
-          
-            @{
-                foreach (var foodType in Model.FoodTypes)
-                {
-                                    <div class="col-md-4 col-sm-8 mx-2">
-                                        <div class="_cardFoodType card d-flex align-items-stretch" style="background-color: #121212;">
-                                            
-                                            
-                                                <img src="data:image/png;base64,@Convert.ToBase64String(foodType.FoodTypeImg)" class="card-img" style="border-radius:2rem;" />
-
-                                            <div class="_cardFoodTypeBody card-body text-white flex-column" >
-                                                  
-                                                        <h3 class="text-center" style="font-family: 'Permanent Marker', cursive;">
-                                                            @foodType.FoodTypeName
-                                                        </h3>
-                                                        
-                                           
-
-                                                <center><a target="_blank" role="button" class="btn btn-sm btn-outline-light mt-auto" asp-asp-controller="Home" asp-action="Foods" asp-route-FoodTypeID="@foodType.FoodTypeId">View More</a></center>
-                                                
-                                                </div>
-                                            
-                                           
-                                        </div>
-                                    </div>
-                   
-                
-            }
-            }
-           
-        </div>
-    </div> *@
+   
     <!--Description-->
     <div class="DescriptionContainer col-12 my-3 d-flex flex-column">
         <div class="row my-3 mx-2  d-flex align-items-stretch">
@@ -272,15 +233,12 @@
             url: "Home/getFoodIDbyName?FoodName=" + FoodName,
             method:"GET",
             success:function(result){
-                console.log(result);
-                window.location.href = "Home/FoodDetails?FoodID=" + result;
-                // $.ajax({
-                //     url: "Home/FoodDetails?FoodID="+result,
-                //     method:"POST",
-                //     success: function (result) {
-                //         console.log(result);
-                //     }
-                // })
+                if (result != 0) {
+                    window.location.href = "Home/FoodDetails?FoodID=" + result;
+                } else {
+                        swal("Not Available ! ", "This item is Not Available !", "error");
+                }
+                
             }
         })
     }

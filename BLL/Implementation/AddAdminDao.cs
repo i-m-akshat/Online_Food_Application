@@ -81,7 +81,7 @@ namespace BLL.Implementation
                     IsActive = x.IsActive,
                     RoleId = x.RoleId,
                     RoleName = x.Role.Role
-                }).FirstOrDefault();
+                }).Where(x=>x.AdminId==id).FirstOrDefault();
                 return admin;
             }
         }

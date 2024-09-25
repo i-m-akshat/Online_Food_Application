@@ -56,7 +56,7 @@ else
                                 <p class="text-white">Total Price : <b>₹ <label class="text-white label_TotalPrice" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice, 2)</label></b></p>
                                 <div class="col-12 mt-3">
                                     <a class="btn btn-sm btn-outline-light" style="border-radius:0px" asp-action="RemoveItem" asp-route-ItemID="@cartitems.FoodId" asp-controller="Cart" role="button" title="Remove" id="remove">Remove Item</a>
-                                    <a class="btn btn-sm btn-outline-light" style="border-radius:0px" role="button" title="buy" id="btnBuy" asp-action="Checkout" asp-asp-controller="Checkout" asp-route-UserID="@cartitems.UserId">Pay&nbsp; ₹<label class="label_TotalPrice" style="cursor:pointer" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice, 2)</label></a>
+                                   @*  <a class="btn btn-sm btn-outline-light" style="border-radius:0px" role="button" title="buy" id="btnBuy" asp-action="Checkout" asp-asp-controller="Checkout" asp-route-UserID="@cartitems.UserId">Pay&nbsp; ₹<label class="label_TotalPrice" style="cursor:pointer" id="txt_TotalPrice">@Decimal.Round(cartitems.TotalFoodPrice, 2)</label></a> *@
                                 </div>
                             </div>
                         </td>

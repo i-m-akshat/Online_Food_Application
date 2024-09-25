@@ -2600,7 +2600,10 @@
           "OpenAI": "1.10.0"
         },
         "runtime": {
-          "BLL.dll": {}
+          "BLL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DAL/1.0.0": {
@@ -2609,7 +2612,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.21"
         },
         "runtime": {
-          "DAL.dll": {}
+          "DAL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Models/1.0.0": {
@@ -2617,7 +2623,10 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
-          "Models.dll": {}
+          "Models.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

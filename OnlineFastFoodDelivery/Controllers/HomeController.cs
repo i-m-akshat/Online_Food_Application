@@ -178,7 +178,14 @@ namespace OnlineFastFoodDelivery.Controllers
         public async Task<long> getFoodIDbyName(string FoodName)
         {
             long FoodID = await DAL.getFoodByName(FoodName);
-            return FoodID;
+            if (FoodID != 0)
+            {
+                return FoodID;
+            }else
+            {
+                return 0;
+            }
+           
         }
 
     }

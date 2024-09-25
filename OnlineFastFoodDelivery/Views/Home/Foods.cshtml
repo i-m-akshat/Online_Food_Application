@@ -95,33 +95,7 @@
             @Html.Partial("_Food",Model.Food)
         </div>
         
-        @*@await Component.InvokeAsync("Food")*@
-        @*<div class="row my-3">
-            @foreach (var food in Model.Food)
-            {
-                <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
-                    <div class="card my-3">
-
-                        <div class="card-body d-flex flex-column">
-                            <img src="data:image/png;base64,@Convert.ToBase64String(food.BannerImage)" class="d-flex card-img img-fluid" />
-                            <h3 class="text-center head_Name">
-                                @food.FoodName
-                            </h3>
-                            <p class="text-justify">@food.FoodDesc</p>
-                            <div class="col-12 mb-0 mt-auto">
-
-                                <a role="button" class="btn btn-success float-start" title="Buy">Buy Now</a>
-                                <a role="button" class="btn btn-warning" title="Details">Details</a>
-                                <a role="button" class="btn btn-block btn-danger float-end" title="Add To Cart"><i class="fa-regular fa-heart"></i></a>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-        </div>*@
+      
     </div>
 </div>
 <script type="text/javascript">
@@ -155,16 +129,7 @@
                     }
 
                 }
-                //else {
-                //    $.ajax({
-                //        url: '/Foods',
-                //        method: 'GET',
-                //        success: function (data) {
-                //            window.location.reload();
-                //            console.log('reloaded');
-                //        }
-                //    });
-                //}
+              
                 console.log(data);
             },
             error: function (error) {
@@ -173,13 +138,7 @@
         });
     console.log('First ' + listCat);
     });
-    //$('#chk_Cat').on('change', 'input[type=checkbox]', function () {
-    //    listCat=[];
-    //    $('input[type=checkbox]:checked').each(function () {
-    //        listCat.push($(this).val());
-    //    });
-    //    console.log('First '+listCat);
-    //});
+  
     $('#check_SubCat ').on('change', 'input[type=checkbox]', function () {
         debugger;
         listSubCat = [];
@@ -188,13 +147,7 @@
         });
         console.log('Subcat is'+listSubCat);
     });
-    //$('#check_SubCat').on('change', input[type = checkbox], function () {
-    //    listSubCat=[];
-    //    $('input[type=checkbox]:checked').each(function () {
-    //        listSubCat.push($(this).val());
-    //    });
-    //    console.log(listSubCat);
-    //});
+    
     $('#chk_FoodType input[type=checkbox]').on('change',function () {
         listFoodType = [];
         $('#chk_FoodType input[type=checkbox]:checked').each(function () {
@@ -202,13 +155,7 @@
         });
         console.log(listFoodType);
     });
-    //$('#chk_FoodType').on('change', 'input[type=checkbox]', function () {
-    //    listFoodType=[];
-    //    $('input[type=checkbox]:checked').each(function () {
-    //        listFoodType.push($(this).val());
-    //    });
-    //    console.log(listFoodType);
-    //});
+   
           
     $('#btnApply').on('click', function () {
        $.ajax({
@@ -218,62 +165,16 @@ method:'POST',
             success:function(success){
                 $('#FoodRow').html(success);
                 console.log('Success');
-                 //listCat = [];
-                 //listSubCat = [];
-                 //listFoodType = [];
+                 
             },
             error:function(err){
                 console.log(err);
-                //listCat = [];
-                //listSubCat = [];
-                //listFoodType = [];
+              
             }
 
 })
     });
-    //$('#chk_Cat input[type = checkbox]').on('change', function () {
-    //    var all = [];
-    //    $('#chk_Cat input[type=checkbox]:checked').each(function () {
-    //        all.push($(this).val());
-    //    });
-    //    console.log('second '+all);
-    //    $.ajax({
-    //        url: 'Home/getSubCategoryBasedOnCat',
-    //        data: { list: all },
-    //        method: 'POST',
-    //        success: function (data) {
-    //            var size = Object.keys(data).length;
-                
-    //            if (size != 0) {
-    //                $('#check_SubCat').empty();
-    //                    for (var i = 0; i < size; i++) {
-    //                        let string = '<li class="list-group-item">' +
-    //                            ' <label for="' + data[i].subCatid + '">' + data[i].subCatName + '</label>' +
-    //                            '<input id="' + data[i].subCatid + '" class="checkbox" type="checkbox" name="Sub Categories" value="' + data[i].subCatid + '" />' +
-    //                            ' </li>';
-
-    //                        $('#check_SubCat').append(string
-    //                        );
-    //                        console.log(data[i]);
-    //                        console.log(string)
-    //                }
-
-    //            } else {
-    //                $.ajax({
-    //                    url: '/Foods',
-    //                    method: 'GET',
-    //                    success: function (data) {
-    //                        window.location.reload();
-    //                        console.log('reloaded');
-    //                    }
-    //                });
-    //            }
-    //            console.log(data);},
-    //            error: function(error) {
-    //                console.log(error);
-    //            }
-    //        });
-    //});
+   
 
 </script>
 <script>
@@ -285,15 +186,12 @@ method:'POST',
             url: "Home/getFoodIDbyName?FoodName=" + FoodName,
             method: "GET",
             success: function (result) {
-                console.log(result);
-                window.location.href = "Home/FoodDetails?FoodID=" + result;
-                // $.ajax({
-                //     url: "Home/FoodDetails?FoodID="+result,
-                //     method:"POST",
-                //     success: function (result) {
-                //         console.log(result);
-                //     }
-                // })
+                if (result != 0) {
+                    window.location.href = "Home/FoodDetails?FoodID=" + result;
+                } else {
+                    swal("Not Available ! ", "This item is Not Available !", "error");
+                }
+                
             }
         })
     }
@@ -309,128 +207,7 @@ method:'POST',
     })
     $(function () {
        
-        // var availableTags = [
-        //     "carrot",
-        //     "broccoli",
-        //     "asparagus",
-        //     "cauliflower",
-        //     "corn",
-        //     "cucumber",
-        //     "green pepper",
-        //     "lettuce",
-        //     "mushrooms",
-        //     "onion",
-        //     "potato",
-        //     "pumpkin",
-        //     "red pepper",
-        //     "tomato",
-        //     "beetroot",
-        //     "brussel sprouts",
-        //     "peas",
-        //     "zucchini",
-        //     "radish",
-        //     "sweet potato",
-        //     "artichoke",
-        //     "cabbage",
-        //     "celery",
-        //     "basil",
-        //     "parsley",
-        //     "dill",
-        //     "oregano",
-        //     "cinnamon",
-        //     "saffron",
-        //     "green bean",
-        //     "bean",
-        //     "chickpea",
-        //     " lentil",
-        //     "apple",
-        //     "apricot",
-        //     "avocado",
-        //     "banana",
-        //     "blackberry",
-        //     "blackcurrant",
-        //     "blueberry",
-        //     "boysenberry",
-        //     "cherry",
-        //     "coconut",
-        //     "fig",
-        //     "grape",
-        //     "kiwifruit",
-        //     "lemon",
-        //     "lime",
-        //     "lychee",
-        //     "mandarin",
-        //     "mango",
-        //     "melon",
-        //     "nectarine",
-        //     "orange",
-        //     "papaya",
-        //     "passion fruit",
-        //     "peach",
-        //     "pear",
-        //     "pineapple",
-        //     "plum",
-        //     "pomegranate",
-        //     "quince",
-        //     "raspberry",
-        //     "strawberry",
-        //     "watermelon",
-        //     "salad",
-        //     "pizza",
-        //     "pasta",
-        //     "popcorn",
-        //     "lobster",
-        //     "steak",
-        //     "bbq",
-        //     "pudding",
-        //     "hamburger",
-        //     "pie",
-        //     "tacos",
-        //     "kebab",
-        //     "poutine",
-        //     "seafood",
-        //     "chips",
-        //     "fries",
-        //     "masala",
-        //     "paella",
-        //     "som tam",
-        //     "chicken",
-        //     "toast",
-        //     "marzipan",
-        //     "tofu",
-        //     "ketchup",
-        //     "hummus",
-        //     "chili",
-        //     "maple syrup",
-        //     "parma ham",
-        //     "fajitas",
-        //     "champ",
-        //     "lasagna",
-        //     "poke",
-        //     "chocolate",
-        //     "croissant",
-        //     "arepas",
-        //     "bunny chow",
-        //     "pierogi",
-        //     "donuts",
-        //     "rendang",
-        //     "sushi",
-        //     "ice cream",
-        //     "duck",
-        //     "curry",
-        //     "beef",
-        //     "goat",
-        //     "lamb",
-        //     "turkey",
-        //     "pork",
-        //     "fish",
-        //     "crab",
-        //     "bacon",
-        //     "ham",
-        //     "pepperoni",
-        //     "salami",
-        //     "ribs"
-        // ];
+       
         $("#tags").autocomplete({
             minLength: 0,
             source: availableTags

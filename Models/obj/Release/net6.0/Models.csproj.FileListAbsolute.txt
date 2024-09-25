@@ -1,0 +1,12 @@
+D:\Online Fast Food Delivery project\Models\bin\Release\net6.0\Models.deps.json
+D:\Online Fast Food Delivery project\Models\bin\Release\net6.0\Models.dll
+D:\Online Fast Food Delivery project\Models\bin\Release\net6.0\Models.pdb
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.csproj.AssemblyReference.cache
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.AssemblyInfoInputs.cache
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.AssemblyInfo.cs
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.csproj.CoreCompileInputs.cache
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.dll
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\refint\Models.dll
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\Models.pdb
+D:\Online Fast Food Delivery project\Models\obj\Release\net6.0\ref\Models.dll
